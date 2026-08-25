@@ -90,10 +90,17 @@ If a run fails or feels confusing, report: the repository and branch, the action
 - [`AGENTS.md`](AGENTS.md) — public U-GAS entry point.
 - [`ai/`](ai/) — portable guidance for governance, GitHub workflow, continuity, structure, and safe large-file handling.
 - [`ai/MULTI_AGENT_COLLABORATION.md`](ai/MULTI_AGENT_COLLABORATION.md) — portable coordination boundaries.
+- [`ai/README.md`](ai/README.md) — map of portable AI guidance layers.
+- [`ai/COMPLIANCE.md`](ai/COMPLIANCE.md) — local read-only distribution contract.
 - [`skills/`](skills/) — progressive-disclosure resume, safe-patch, verification, and external-research procedures.
 - [`templates/pica/`](templates/pica/) — truthful bootstrap templates for missing PICA controls.
+- [`scripts/check_u_gas.py`](scripts/check_u_gas.py) — optional read-only local self-check.
+- [`tests/`](tests/) — standard-library contract tests; CI runs them automatically.
+- [`.github/workflows/u-gas-self-tests.yml`](.github/workflows/u-gas-self-tests.yml) — read-only GitHub Actions self-test.
 - [`examples/first-project/`](examples/first-project/) — minimal PICA example.
 
 ## Status and license
 
 U-GAS is experimental and intended for early external testing. It is released under the [MIT License](LICENSE).
+
+The checker and tests are optional deterministic capabilities for environments that can run them; ordinary-language intent with a repository-capable agent remains the normal user path.

@@ -12,7 +12,7 @@ U-GAS is in early external testing. The public repository is seeking its first i
 
 ## NEXT
 
-Obtain the first independent test and collect real onboarding, failure, and friction evidence.
+Obtain the first independent external test using the portable parity v0.2 baseline and collect real onboarding, failure, and friction evidence.
 
 ## WAITING / PAUSED
 

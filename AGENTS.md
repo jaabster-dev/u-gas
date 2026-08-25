@@ -29,6 +29,8 @@ Treat the current repository and its authoritative remote branch as the source o
 | External repository or web research | `skills/u-gas-external-research/SKILL.md` |
 | Overlapping or multi-agent work | `ai/MULTI_AGENT_COLLABORATION.md` |
 | Non-trivial accepted behavior change | `ai/REPOSITORY_STRUCTURE.md` change-spec guidance |
+| U-GAS self-check, PICA, route, or public-contract compliance | `ai/COMPLIANCE.md` + `scripts/check_u_gas.py` |
+| Reviewing a new/external skill or durable capability | `skills/u-gas-skill-review/SKILL.md` |
 
 Use the smallest relevant route. The normal sequence remains:
 
@@ -41,6 +43,14 @@ Use the smallest relevant route. The normal sequence remains:
 - Durable continuity complements the current conversation; it does not erase it.
 - A newer compatible owner decision must not be discarded merely because it is not yet persisted.
 - Bootstrap is required when current repository truth, mutation, resume, handoff, or evidence is needed, not for every trivial follow-up.
+
+## Authority and owner abstraction
+
+Instruction precedence is: system/runtime safety and user intent, current target-repository rules, current repository/Git state, durable PICA continuity, then conversation memory or external research. The repository remains authoritative for repository facts. The user states the desired result; the agent handles routine technical mechanics and reports the smallest genuine human boundary.
+
+Use a hybrid route: an existing remote project uses its verified canonical clone; a genuinely new project may begin local-first only when no remote exists and a safe persistent execution path is available. Exported or downloaded artifacts and session-sandbox files are not automatically a durable persistent project.
+
+Do not add infrastructure without evidence of a recurring problem and a simpler-path failure. Completion means the intended write occurred, the actual state and required evidence were verified, and any human/device/manual boundary is explicit; write success alone is not completion.
 
 ## PICA contract
 

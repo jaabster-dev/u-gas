@@ -27,3 +27,15 @@ If a capability appears available but a real read/action reports unavailable, in
 If the current agent cannot execute a known safe operation, discover capability, use an existing repository workflow, then use an authorized persistent coding environment if available. A handoff must contain one complete copyable payload; the owner should not shuttle routine Git or file contents manually.
 
 Do not use a stale clone as authority. Do not probe permissions with a mutation. If remote authority cannot be established, report the blocker and do not claim a remote-current PASS.
+
+## Procedure discovery and lifecycle detail
+
+Read the target `AGENTS.md`, matching `ai/` policy, and relevant skill before inventing a procedure. Capability checks are non-mutating: never create dummy files, branches, commits, PRs, or permission probes.
+
+If no remote exists, a genuinely new project may start local-first only with safe persistent storage and an explicit later publication step. Exported/downloaded artifacts are not automatically a persistent repository. Reuse `<workspace-root>/<owner>/<repo>` as the canonical clone across sessions/agents and inspect unique work before creating, moving, or deleting duplicates.
+
+Before local work, preserve uncommitted, untracked, stashed, worktree, and local-only history. During work, do not reset, clean, force-overwrite, silently revert another agent, or use a stale clone. After work, push only to the known target/branch, fetch, and verify remote ref/content and workflow result.
+
+A real failed write or stale SHA requires re-fetch and reconciliation, not blind retry. Use one bounded read-only retry for a connector/runtime mismatch, then use an authorized repository-native or persistent coding-agent path. If an execution handoff is necessary, provide one complete copyable payload; the returned report is evidence, not authority, so independently re-read the remote result. Follow target-defined agent/release branch roles without inventing promotion semantics.
+
+For small files, obtain a complete current read. For large/truncated/append-only/structured files, route to `ai/LARGE_FILE_PATCHING.md` and its skill. A complete current file plus current identity guard and bounded diff is the minimum safe full-content update property. Routine Git/file/test mechanics are agent-owned; human approval is for credentials/secrets, destructive or irreversible actions, devices, product judgment, and material cost/security/legal/account effects.

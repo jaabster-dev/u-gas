@@ -1,0 +1,43 @@
+name: U-GAS self-tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'AGENTS.md'
+      - 'README.md'
+      - 'ai/**'
+      - 'skills/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'templates/**'
+      - 'examples/**'
+      - '.github/workflows/u-gas-self-tests.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'AGENTS.md'
+      - 'README.md'
+      - 'ai/**'
+      - 'skills/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'templates/**'
+      - 'examples/**'
+      - '.github/workflows/u-gas-self-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run U-GAS self-check
+        run: python scripts/check_u_gas.py
+      - name: Run standard-library tests
+        run: python -m unittest -v
