@@ -4,6 +4,18 @@ U-GAS (Universal Agent System) is a small, Git-native operating model for AI-ass
 
 > **EXPERIMENTAL / EARLY EXTERNAL TESTING** — U-GAS is not a proven industry standard. There is **NO INDEPENDENT USER VALIDATION YET**. It may reduce some context-loss, unsafe-mutation, stale-state, and handoff risks, but it does not guarantee deterministic LLM behaviour, prevent every instruction or memory failure, replace source control/CI/security controls, or remove the need for human, legal, account, or device decisions.
 
+## What you need
+
+To try U-GAS, you need:
+
+- a GitHub repository you control, preferably a safe test or sandbox repository for a first run;
+- an AI coding or agent tool that can access it through a GitHub integration or a local Git clone;
+- permission for the agent to create or update the four PICA files and, when doing real project work, the relevant project files.
+
+You do not need ChatGPT, Codex, or a particular GitHub connector. U-GAS is tool- and model-neutral: ChatGPT, Claude, Codex, Cursor, Copilot, or another agent may be used if it can read the U-GAS instructions, inspect the target repository, preserve existing work, and make and verify the changes required by the task.
+
+If your AI tool cannot access a Git repository at all, the current Quick Start is not the right test path yet.
+
 ## Quick Start (about 5 minutes)
 
 Use an existing GitHub repository that you control. Add these four files at its root, or ask an AI agent to add them after reading this repository's `AGENTS.md`:
