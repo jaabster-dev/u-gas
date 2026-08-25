@@ -45,14 +45,32 @@ def read(root, relative):
 
 def check_project(root):
     errors = []
-    missing = missing_pica([p.name for p in root.iterdir()] if root.is_dir() else [])
+    if not root.is_dir():
+        return ["project path is not a directory"]
+    missing = missing_pica([p.name for p in root.iterdir()])
     if missing:
         errors.append("missing PICA: " + ", ".join(missing))
-    agents = read(root, "AGENTS.md")
-    if agents is None:
-        errors.append("AGENTS.md is not readable")
-    elif "This project uses U-GAS" in agents and CANONICAL_UPSTREAM not in agents:
-        errors.append("U-GAS project AGENTS.md has no canonical upstream anchor")
+    contents = {}
+    for name in PICA_FILES:
+        text = read(root, name)
+        if text is None:
+            if name not in missing:
+                errors.append(f"{name} is not readable")
+            continue
+        contents[name] = text
+        if not text.strip():
+            errors.append(f"{name} is empty")
+
+    agents = contents.get("AGENTS.md")
+    if agents is not None and CANONICAL_UPSTREAM not in agents:
+        errors.append("AGENTS.md has no canonical U-GAS upstream anchor")
+
+    current = contents.get("CURRENT_STATE.md")
+    if current and current.strip():
+        template = load_templates()["CURRENT_STATE.md"].strip()
+        resume_patterns = (r"\bACTIVE\b", r"\bNEXT\b", r"WAITING\s*/\s*PAUSED", r"BLOCKERS\s*/\s*BOUNDARIES")
+        if current.strip() != template and not all(re.search(pattern, current) for pattern in resume_patterns):
+            errors.append("CURRENT_STATE.md lacks the canonical minimal placeholder or resume responsibilities")
     return errors
 
 

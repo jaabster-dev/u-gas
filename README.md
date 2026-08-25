@@ -58,6 +58,8 @@ BLOCKED — <specific reason>
 
 After this PICA shell is installed, future repository-capable sessions can start from the target repository's `AGENTS.md`, which points them back to the current canonical U-GAS authority.
 
+If the target `AGENTS.md` is missing, the template may initialize it. If it already contains substantive project rules, preserve those rules and integrate only the smallest U-GAS bootstrap anchor needed for future sessions; do not replace local instructions with the generic template.
+
 Tell the agent in ordinary language what you want to accomplish. It should briefly restate the first useful result and ask for correction only when the product intent is genuinely unclear.
 
 For the first external test, give feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where you got stuck, what was unclear, what the agent failed to do, unexpected friction, and whether the workflow actually resumed or worked as described. Do not open a new issue for this first-test feedback, and do not post secrets, tokens, passwords, private keys, or sensitive private-repository content.
@@ -104,3 +106,5 @@ If a run fails or feels confusing, report: the repository and branch, the action
 U-GAS is experimental and intended for early external testing. It is released under the [MIT License](LICENSE).
 
 The checker and tests are optional deterministic capabilities for environments that can run them; ordinary-language intent with a repository-capable agent remains the normal user path.
+
+The distribution self-check verifies U-GAS's own files and routes. The optional `--project <path>` check verifies only local project-contract properties: readable non-empty PICA files, the canonical upstream anchor in `AGENTS.md`, and the minimal `CURRENT_STATE.md` resume contract. It does not prove product correctness, the truth of `ACTIVE` or `NEXT`, runtime/model compliance, GitHub access, branch correctness, repository safety, or independent validation.

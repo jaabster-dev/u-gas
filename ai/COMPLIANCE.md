@@ -13,4 +13,9 @@ This is a portable, local, read-only self-check contract. It protects the public
 - U-GAS source self-tests protect this distribution contract.
 - Diagnostics are read-only unless an actual authorized repair is separately requested.
 
-`scripts/check_u_gas.py` checks only what it implements and must not infer product scope, rewrite files, install dependencies, call GitHub, or claim evidence beyond local checks. Fleet registries, managed blocks, organization sync, and consumer rewrites are intentionally outside U-GAS.
+There are two bounded check modes:
+
+- distribution mode checks U-GAS's own files, routes, templates, examples, README markers, and public-content hygiene;
+- `--project <path>` checks only the target project's readable/non-empty PICA set, exact canonical upstream anchor, and either the canonical minimal `CURRENT_STATE.md` placeholder or its four resume responsibilities.
+
+These checks do not prove product correctness, whether `ACTIVE`/`NEXT` are true, runtime/model compliance, successful GitHub access, branch correctness, repository safety, or independent validation. `scripts/check_u_gas.py` must not infer product scope, rewrite files, install dependencies, call GitHub, or claim evidence beyond local checks. Fleet registries, managed blocks, organization sync, and consumer rewrites are intentionally outside U-GAS.
