@@ -56,6 +56,8 @@ no unresolved authority or repository-purpose problem. Otherwise report:
 BLOCKED — <specific reason>
 ```
 
+After this PICA shell is installed, future repository-capable sessions can start from the target repository's `AGENTS.md`, which points them back to the current canonical U-GAS authority.
+
 Tell the agent in ordinary language what you want to accomplish. It should briefly restate the first useful result and ask for correction only when the product intent is genuinely unclear.
 
 For the first external test, give feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where you got stuck, what was unclear, what the agent failed to do, unexpected friction, and whether the workflow actually resumed or worked as described. Do not open a new issue for this first-test feedback, and do not post secrets, tokens, passwords, private keys, or sensitive private-repository content.
