@@ -16,7 +16,7 @@ GAS-vs-U-GAS reconciliation added fuller portable governance, GitHub workflow, c
 
 ## 2026-08-26 — Bounded project-contract hardening
 
-The target-project checker now requires readable/non-empty PICA controls, an unconditional exact canonical U-GAS anchor in `AGENTS.md`, and either the truthful minimal `CURRENT_STATE.md` placeholder or a real four-responsibility resume surface. README/COMPLIANCE now distinguish local contract checks from claims they cannot prove. Local self-check, explicit A–E fixtures, and 18 standard-library tests passed; remote CI result is verified after push. Independent validation remains outstanding.
+The target-project checker now requires readable/non-empty PICA controls, an unconditional exact canonical U-GAS anchor in `AGENTS.md`, and either the truthful minimal `CURRENT_STATE.md` placeholder or a real four-responsibility resume surface. README/COMPLIANCE now distinguish local contract checks from claims they cannot prove. Local self-check, explicit A–E fixtures, and 18 standard-library tests passed; GitHub Actions self-test run `32898765684` passed on the pushed commit. Independent validation remains outstanding.
 
 ## 2026-08-25 — Publication polish
 
