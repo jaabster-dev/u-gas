@@ -63,4 +63,4 @@ If a run fails or feels confusing, report: the repository and branch, the action
 
 ## Status and license
 
-U-GAS is experimental and intended for early external testing. **LICENSE DECISION PENDING.** No license file is included until the owner chooses one.
+U-GAS is experimental and intended for early external testing. It is released under the [MIT License](LICENSE).

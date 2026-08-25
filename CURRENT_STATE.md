@@ -1,19 +1,19 @@
 # Current State
 
-This is the compact U-GAS resume surface. It is intentionally minimal until durable project state exists.
+This is the compact U-GAS resume surface. U-GAS is experimental; independent user validation has not yet been obtained.
 
 ## ACTIVE
 
-No active implementation state recorded yet.
+U-GAS is in early external testing. The public repository is seeking its first independent tester.
 
 ## NEXT
 
-Read the target repository's current state and establish its first concrete, authorized action.
+Obtain the first independent test and collect real onboarding, failure, and friction evidence.
 
 ## WAITING / PAUSED
 
-None recorded.
+Waiting for tester feedback on the public first-tester issue.
 
 ## BLOCKERS / BOUNDARIES
 
-U-GAS is experimental. Do not infer validation, authority, or product scope from this file alone.
+U-GAS remains experimental. Creating a tester issue does not constitute independent validation, prove reliability, or establish an industry standard.
