@@ -15,7 +15,32 @@ Treat the current repository and its authoritative remote branch as the source o
 3. For repository work, use the relevant guidance in `ai/GOVERNANCE.md`, `ai/GITHUB_WORKFLOW.md`, and `ai/REPOSITORY_STRUCTURE.md`.
 4. For resume or handoff work, read `ai/SESSION_CONTINUITY.md` and the target's `CURRENT_STATE.md` completely.
 5. For large, truncated, append-only, or structured files, use `ai/LARGE_FILE_PATCHING.md`.
-6. Make the smallest authorized change, verify it, commit when appropriate, and re-fetch the remote before claiming durable completion.
+6. Read only the procedures relevant to the task; do not load every document mechanically.
+7. Make the smallest authorized change, verify it, commit when appropriate, and re-fetch the remote before claiming durable completion.
+
+## Decision route
+
+| Task signal | Route |
+|---|---|
+| Repository inspection, edit, or GitHub write | `ai/GOVERNANCE.md` + `ai/GITHUB_WORKFLOW.md` |
+| Resume, continue, handoff, or where we stopped | `ai/SESSION_CONTINUITY.md` + `skills/u-gas-resume/SKILL.md` |
+| Large, truncated, append-only, or structured file | `ai/LARGE_FILE_PATCHING.md` + `skills/u-gas-safe-patch/SKILL.md` |
+| Verify a completed change or PASS claim | `skills/u-gas-verify-change/SKILL.md` |
+| External repository or web research | `skills/u-gas-external-research/SKILL.md` |
+| Overlapping or multi-agent work | `ai/MULTI_AGENT_COLLABORATION.md` |
+| Non-trivial accepted behavior change | `ai/REPOSITORY_STRUCTURE.md` change-spec guidance |
+
+Use the smallest relevant route. The normal sequence remains:
+
+`READ CURRENT REPO -> VALIDATE TARGET -> TARGETED CHANGE -> WRITE/COMMIT -> FETCH AGAIN -> VERIFY`
+
+## Active-session context
+
+- Recent explicit owner intent remains valid working context until contradicted.
+- Repository and Git authority win for repository facts.
+- Durable continuity complements the current conversation; it does not erase it.
+- A newer compatible owner decision must not be discarded merely because it is not yet persisted.
+- Bootstrap is required when current repository truth, mutation, resume, handoff, or evidence is needed, not for every trivial follow-up.
 
 ## PICA contract
 

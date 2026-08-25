@@ -35,9 +35,11 @@ I want to use U-GAS with my existing repository: <YOUR-REPOSITORY-URL>
 Before changing anything, read the current U-GAS README and AGENTS.md directly from:
 https://github.com/jaabster-dev/u-gas
 
-Then inspect my repository's current branch, working tree, AGENTS.md, CURRENT_STATE.md,
-PROGRESS.md, and IDEAS.md. Preserve existing work. Explain the smallest first action,
-make the four-file control shell complete if it is missing, and stop when a real human
+Then read U-GAS `AGENTS.md`, inspect my repository's current branch, working tree,
+AGENTS.md, CURRENT_STATE.md, PROGRESS.md, and IDEAS.md. Preserve existing work. Use
+the portable PICA templates only for missing controls; preserve substantive existing
+controls. Explain the smallest first action, make the four-file control shell complete
+if it is missing, and stop when a real human
 decision, authentication, secret, destructive action, device, or unclear product choice
 is required.
 
@@ -85,6 +87,9 @@ If a run fails or feels confusing, report: the repository and branch, the action
 
 - [`AGENTS.md`](AGENTS.md) — public U-GAS entry point.
 - [`ai/`](ai/) — portable guidance for governance, GitHub workflow, continuity, structure, and safe large-file handling.
+- [`ai/MULTI_AGENT_COLLABORATION.md`](ai/MULTI_AGENT_COLLABORATION.md) — portable coordination boundaries.
+- [`skills/`](skills/) — progressive-disclosure resume, safe-patch, verification, and external-research procedures.
+- [`templates/pica/`](templates/pica/) — truthful bootstrap templates for missing PICA controls.
 - [`examples/first-project/`](examples/first-project/) — minimal PICA example.
 
 ## Status and license

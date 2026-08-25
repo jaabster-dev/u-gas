@@ -1,5 +1,9 @@
 # Current State
 
+> Quiet page at dawn<br>
+> State will gather when it matters<br>
+> Ready for the next step
+
 This is the compact U-GAS resume surface. U-GAS is experimental; independent user validation has not yet been obtained.
 
 ## ACTIVE
