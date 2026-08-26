@@ -49,6 +49,10 @@ class CoreContractTests(unittest.TestCase):
 
     def test_readme_local_first_onboarding_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("> Chats fade into night<br>\n> Project truth remains in files<br>\n> Next hands find the path", readme)
+        self.assertIn("[Quick Start](#quick-start)", readme)
+        self.assertIn("[How it works](#how-u-gas-works)", readme)
+        self.assertIn("[Feedback / Status](#status-and-license)", readme)
         self.assertIn("NO GITHUB REPOSITORY IS REQUIRED", readme)
         self.assertIn("### Start a new local project — recommended first test", readme)
         self.assertIn("### Already have a GitHub repository?", readme)
@@ -57,6 +61,8 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("PICA SELF-CHECK", readme)
         self.assertIn("BLOCKED — <specific capability reason>", readme)
         self.assertIn("Do not create a GitHub repository, remote, account", readme)
+        self.assertIn("<summary>Copy the complete local-first prompt</summary>", readme)
+        self.assertIn("flowchart LR\n    A[Plan] --> B[Persist]\n    B --> C[Execute]\n    C --> D[Verify & resume]", readme)
 
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"

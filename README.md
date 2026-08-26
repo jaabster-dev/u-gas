@@ -1,10 +1,16 @@
 # U-GAS
 
+> Chats fade into night<br>
+> Project truth remains in files<br>
+> Next hands find the path
+
 > *The conversation can be temporary; the project state is not.*
 
 U-GAS (Universal Grabbers Agent System) is a small, Git-native operating model for AI-assisted work. It gives a project an explicit place for current instructions, state, progress, ideas, handoffs, and verification so a later or different repository-capable agent can continue from evidence instead of reconstructing everything from chat memory.
 
 > **EXPERIMENTAL / VERY EARLY EXTERNAL TESTING** — Practical testing has primarily been with ChatGPT and Codex. There is **NO INDEPENDENT USER VALIDATION YET**. U-GAS is intended to be portable to other agents and tools, but those paths remain experimental and unvalidated.
+
+**Jump to:** [Quick Start](#quick-start) · [Why U-GAS?](#why-u-gas) · [How it works](#how-u-gas-works) · [Safety](#safety-and-limitations) · [Feedback / Status](#status-and-license)
 
 ## Why U-GAS?
 
@@ -16,12 +22,9 @@ U-GAS moves material project state into the repository that the work already dep
 
 ```mermaid
 flowchart LR
-    A[Human plans / discusses] --> B[Material state enters the repository]
-    B --> C[Agent bootstraps from current authority]
-    C --> D[Agent implements]
-    D --> E[Agent verifies]
-    E --> F[Verified state is the resume point]
-    F --> G[Later AI continues safely]
+    A[Plan] --> B[Persist]
+    B --> C[Execute]
+    C --> D[Verify & resume]
 ```
 
 Different agents do not need to share hidden memory if they can read the same explicit project state, current repository rules, and verified Git history.
@@ -70,6 +73,9 @@ experimental and unvalidated.
 Give the agent only the project name and purpose in ordinary language. Copy this complete
 prompt:
 
+<details>
+<summary>Copy the complete local-first prompt</summary>
+
 ```text
 I want to start a new local U-GAS project. The project name and purpose are:
 <DESCRIBE THE PROJECT IN ORDINARY LANGUAGE>
@@ -109,6 +115,8 @@ report the specific boundary instead.
 The first useful result is the verified local project folder and its PICA controls. Ask
 for correction only if the project purpose is genuinely unclear.
 ```
+
+</details>
 
 ### Already have a GitHub repository?
 
