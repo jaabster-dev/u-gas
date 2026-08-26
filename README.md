@@ -15,13 +15,13 @@ U-GAS moves material project state into the repository that the work already dep
 ### A typical workflow
 
 ```mermaid
-flowchart TD
-    A[Human discusses and plans in ChatGPT, Claude, or another AI] --> B[Material decisions become repository-backed PICA state]
-    B --> C[Codex or another repository-capable agent bootstraps from current authority]
-    C --> D[Agent implements the requested work]
-    D --> E[Agent verifies the actual repository result]
-    E --> F[Verified state becomes the next resume point]
-    F --> G[A later or different AI session continues safely]
+flowchart LR
+    A[Human plans / discusses] --> B[Material state enters the repository]
+    B --> C[Agent bootstraps from current authority]
+    C --> D[Agent implements]
+    D --> E[Agent verifies]
+    E --> F[Verified state is the resume point]
+    F --> G[Later AI continues safely]
 ```
 
 Different agents do not need to share hidden memory if they can read the same explicit project state, current repository rules, and verified Git history.
@@ -72,7 +72,7 @@ Before changing anything, read the current U-GAS README and AGENTS.md directly f
 https://github.com/jaabster-dev/u-gas
 
 Then read U-GAS AGENTS.md, inspect my repository's current branch, working tree,
-AGENTS.md, CURRENT_STATE.md, PROGRESS.md, and IDEAS.md. Preserve existing work. Use
+PROGRESS.md, IDEAS.md, CURRENT_STATE.md, and AGENTS.md in P-I-C-A order. Preserve existing work. Use
 the portable PICA templates only for missing controls; preserve substantive existing
 controls. Explain the smallest first action, make the four-file control shell complete
 if it is missing, and stop when a real human
@@ -82,10 +82,10 @@ is required.
 Before claiming readiness, visibly report:
 
 PICA SELF-CHECK
-- AGENTS.md: PRESENT / CREATED / BLOCKED
-- CURRENT_STATE.md: PRESENT / CREATED / BLOCKED
 - PROGRESS.md: PRESENT / CREATED / BLOCKED
 - IDEAS.md: PRESENT / CREATED / BLOCKED
+- CURRENT_STATE.md: PRESENT / CREATED / BLOCKED
+- AGENTS.md: PRESENT / CREATED / BLOCKED
 
 Claim READY only when all four files are present, readable, and safely initialized, with
 no unresolved authority or repository-purpose problem. Otherwise report:
@@ -133,8 +133,7 @@ If a run fails or feels confusing, record the repository and branch, expected ac
 
 ## Repository contents
 
-- [`AGENTS.md`](AGENTS.md) — public entry point and routing.
-- [`CURRENT_STATE.md`](CURRENT_STATE.md), [`PROGRESS.md`](PROGRESS.md), [`IDEAS.md`](IDEAS.md) — the four-file project control surface.
+- [`PROGRESS.md`](PROGRESS.md), [`IDEAS.md`](IDEAS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`AGENTS.md`](AGENTS.md) — the four-file project control surface, in P-I-C-A order.
 - [`ai/`](ai/) — portable governance, GitHub workflow, continuity, structure, collaboration, and safe large-file guidance.
 - [`skills/`](skills/) — progressive-disclosure resume, safe-patch, verification, external-research, and skill-review procedures.
 - [`handoffs/README.md`](handoffs/README.md) — optional repository-backed long-handoff transport.

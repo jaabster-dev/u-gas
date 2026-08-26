@@ -1,7 +1,7 @@
 # Project Agent Instructions
 
-> Clear paths guide the work
-> State remains where agents meet
+> Clear paths guide the work<br>
+> State remains where agents meet<br>
 > Truth survives each handoff
 
 This project uses U-GAS.

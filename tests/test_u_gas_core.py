@@ -35,14 +35,19 @@ class CoreContractTests(unittest.TestCase):
     def test_readme_human_hierarchy_and_pica_order(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("> *The conversation can be temporary; the project state is not.*", readme)
+        self.assertIn("flowchart LR", readme)
         self.assertLess(readme.index("### A typical workflow"), readme.index("## Quick Start"))
         self.assertLess(readme.index("## How U-GAS works"), readme.index("## Safety and limitations"))
         self.assertLess(readme.index("`PROGRESS.md` — P"), readme.index("`IDEAS.md` — I"))
         self.assertLess(readme.index("`IDEAS.md` — I"), readme.index("`CURRENT_STATE.md` — C"))
         self.assertLess(readme.index("`CURRENT_STATE.md` — C"), readme.index("`AGENTS.md` — A"))
+        self.assertLess(readme.index("- PROGRESS.md: PRESENT"), readme.index("- IDEAS.md: PRESENT"))
+        self.assertLess(readme.index("- IDEAS.md: PRESENT"), readme.index("- CURRENT_STATE.md: PRESENT"))
+        self.assertLess(readme.index("- CURRENT_STATE.md: PRESENT"), readme.index("- AGENTS.md: PRESENT"))
+        self.assertLess(readme.index("PROGRESS.md, IDEAS.md, CURRENT_STATE.md, and AGENTS.md"), readme.index("PICA SELF-CHECK"))
 
     def test_pica_agents_have_identity_haiku(self):
-        haiku = "Clear paths guide the work"
+        haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"
         for relative in ("AGENTS.md", "templates/pica/AGENTS.md", "examples/first-project/AGENTS.md"):
             self.assertIn(haiku, (ROOT / relative).read_text(encoding="utf-8"), relative)
 
