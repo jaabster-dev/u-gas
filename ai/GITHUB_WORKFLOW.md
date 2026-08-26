@@ -24,7 +24,7 @@ Before editing, inspect branch/status, uncommitted and untracked work, unpushed 
 
 If a capability appears available but a real read/action reports unavailable, inspect capabilities read-only and make one bounded read-only retry where appropriate. Classify a persistent mismatch as connector/runtime failure; do not loop or probe with dummy mutations. Use an authorized repository-native or persistent local execution path. If only a genuine human boundary remains, ask for that one action. Do not make Codex or a particular connector mandatory.
 
-If the current agent cannot execute a known safe operation, discover capability, use an existing repository workflow, then use an authorized persistent coding environment if available. A handoff must contain one complete copyable payload; the owner should not shuttle routine Git or file contents manually.
+If the current agent cannot execute a known safe operation, discover capability, use an existing repository workflow, then use an authorized persistent coding environment if available. A compact handoff may remain one complete copyable payload when it is short and reliable to transfer directly. When the complete handoff is long or materially structured, exact-payload loss is credible, the material already exists durably, or a direct clipboard/attachment attempt failed, use the repository-backed pending handoff surface described below so the owner does not shuttle routine Git or file contents manually.
 
 Do not use a stale clone as authority. Do not probe permissions with a mutation. If remote authority cannot be established, report the blocker and do not claim a remote-current PASS.
 
@@ -37,5 +37,11 @@ If no remote exists, a genuinely new project may start local-first only with saf
 Before local work, preserve uncommitted, untracked, stashed, worktree, and local-only history. During work, do not reset, clean, force-overwrite, silently revert another agent, or use a stale clone. After work, push only to the known target/branch, fetch, and verify remote ref/content and workflow result.
 
 A real failed write or stale SHA requires re-fetch and reconciliation, not blind retry. Use one bounded read-only retry for a connector/runtime mismatch, then use an authorized repository-native or persistent coding-agent path. If an execution handoff is necessary, provide one complete copyable payload; the returned report is evidence, not authority, so independently re-read the remote result. Follow target-defined agent/release branch roles without inventing promotion semantics.
+
+### Choosing handoff transport
+
+Use the normal compact one-copy path when the complete payload is short, unstructured enough to transfer reliably, and does not need exact durable preservation. Use a repository-backed pending handoff proactively when the payload is long enough that clipboard/attachment conversion or truncation is a credible risk; contains substantial structured requirements, acceptance criteria, evidence, or exact instructions; already exists as durable structured material; exact preservation matters more than one repository write; or a previous direct transfer failed or became inaccessible. This is a reliability decision, not a character-count ritual: do not create repository handoffs for ordinary short prompts.
+
+The portable repository-local adapter uses `handoffs/pending/<handoff-id>.md`, `status: PENDING`, exact target validation, a read-only checker, and removal only after verified completion. It has no auto-executor, daemon, orchestration, arbitrary remote execution, secret storage, or user-managed file-transfer step.
 
 For small files, obtain a complete current read. For large/truncated/append-only/structured files, route to `ai/LARGE_FILE_PATCHING.md` and its skill. A complete current file plus current identity guard and bounded diff is the minimum safe full-content update property. Routine Git/file/test mechanics are agent-owned; human approval is for credentials/secrets, destructive or irreversible actions, devices, product judgment, and material cost/security/legal/account effects.

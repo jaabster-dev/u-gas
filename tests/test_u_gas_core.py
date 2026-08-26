@@ -37,6 +37,13 @@ class CoreContractTests(unittest.TestCase):
             if ".git" not in path.parts:
                 self.assertIsNone(forbidden.search(path.read_text(encoding="utf-8")), str(path))
 
+    def test_long_handoff_surface_is_present_and_generic(self):
+        readme = (ROOT / "handoffs/README.md").read_text(encoding="utf-8")
+        checker = (ROOT / "scripts/check_handoff.py").read_text(encoding="utf-8")
+        self.assertIn("Compact one-copy handoffs remain the normal path", readme)
+        self.assertIn("optional exact-target assertion", readme)
+        self.assertNotIn("GrabbersApp", checker)
+
 
 if __name__ == "__main__":
     unittest.main()
