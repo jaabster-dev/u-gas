@@ -2,56 +2,23 @@
 
 > *The conversation can be temporary; the project state is not.*
 
-U-GAS (Universal Grabbers Agent System) is a small, Git-native operating model for AI-assisted work. It gives a project an explicit place for current instructions, state, progress, ideas, handoffs, and verification so a later or different repository-capable agent can continue from evidence instead of reconstructing everything from chat memory.
+U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project from losing its place between chats and tools. It stores important project state in ordinary files so another capable agent can continue without asking you to rebuild the whole story by hand.
 
-> **EXPERIMENTAL / VERY EARLY EXTERNAL TESTING** — Practical testing has primarily been with ChatGPT and Codex. There is **NO INDEPENDENT USER VALIDATION YET**. U-GAS is intended to be portable to other agents and tools, but those paths remain experimental and unvalidated.
+> **EXPERIMENTAL / EARLY TESTING:** Practical testing has mainly used ChatGPT and Codex; other tools are not independently validated, and there is **NO INDEPENDENT USER VALIDATION YET**.
 
 **On this page:**
 
-- [Why U-GAS?](#why-u-gas)
 - [Quick Start](#quick-start)
+- [Why U-GAS?](#why-u-gas)
 - [How U-GAS works](#how-u-gas-works)
-- [Safety and limitations](#safety-and-limitations)
-- [Status and feedback](#status-and-license)
-
-## Why U-GAS?
-
-Long-lived AI work often crosses chats, tools, repositories, and sessions. A useful decision can remain buried in a conversation; an execution agent may not see it; a later session may guess what happened; and the human becomes the memory, clipboard, Git/GitHub coordinator, and handoff mechanism.
-
-U-GAS moves material project state into the repository that the work already depends on. It does not give an LLM perfect memory and it does not guarantee that an agent will follow instructions. It gives agents a shared, inspectable authority to reconcile against.
-
-### A typical workflow
-
-**Plan → Persist → Execute → Verify → Resume**
-
-Different agents do not need to share hidden memory if they can read the same explicit project state, current repository rules, and verified Git history.
-
-### Before and with U-GAS
-
-| Without U-GAS | With U-GAS |
-| --- | --- |
-| Chat discussion → decision stays in conversation → execution agent lacks context or guesses → later session reconstructs state | Chat discussion → material state is persisted → execution agent reads current authority → change is implemented and verified |
-| The owner repeats what happened and what comes next | The repository provides an explicit resume point |
-| Handoffs depend on memory, copy/paste, and manual Git coordination | Handoffs can use current PICA, Git history, and an optional exact repository-backed payload |
-
-U-GAS reduces coordination and reconstruction burden. It does not eliminate context loss, unsafe edits, stale state, or human decisions.
-
-### Who is it for?
-
-U-GAS is most relevant when you:
-
-- work across fresh AI sessions or more than one AI tool/agent;
-- separate conversational planning from repository execution;
-- maintain a longer-lived project or multiple repositories;
-- have experienced forgotten decisions, repeated work, stale assumptions, unsafe edits, or difficult resume/handoffs.
-
-You may not need it for a small project completed in one tool and one session, with little continuity or handoff pain. The extra project structure should earn its cost.
+- [Limitations and safety](#limitations-and-safety)
+- [Status and feedback](#status-and-feedback)
 
 ## Quick Start
 
 ### What you need
 
-For the recommended first test, you need:
+You need:
 
 - an AI coding agent that can create and keep files on your computer;
 - permission for the agent to create a project folder and edit its files.
@@ -61,14 +28,10 @@ needs and tell you if something is missing. A plain chat with no persistent file
 cannot perform this workflow; a session sandbox, temporary directory, or download
 location is not durable project storage.
 
-You do not need a specific AI tool. Practical testing so far has primarily used ChatGPT
-and Codex; other agents may also be usable, but those paths remain experimental and
-unvalidated.
-
 ### Start a new local project — recommended first test
 
-Give the agent only the project name and purpose in ordinary language. Copy this complete
-prompt:
+Replace only the project description below, copy the whole block, and give it to your
+AI coding agent. You do not need to understand the technical instructions inside it.
 
 ```text
 I want to start a new local U-GAS project. The project name and purpose are:
@@ -110,15 +73,26 @@ The first useful result is the verified local project folder and its PICA contro
 for correction only if the project purpose is genuinely unclear.
 ```
 
-### Already have a GitHub repository?
+### How to tell if it worked
+
+You should be able to identify the real persistent project folder/path, the four files
+`AGENTS.md`, `CURRENT_STATE.md`, `PROGRESS.md`, and `IDEAS.md`, and the agent's visible
+`PICA SELF-CHECK` with `READY` or a truthful `BLOCKED` result. If the agent only
+describes what it would do, skips actual folder/file evidence, or cannot show the path
+and files, the setup was not completed.
+
+<details>
+<summary>Already use GitHub?</summary>
 
 An existing GitHub-backed project remains supported. Give the agent its repository URL
-and ask it to inspect the current remote/branch/status, preserve existing work, integrate
+and ask it to inspect the current repository and branch, preserve existing work, integrate
 only missing PICA controls from current templates, and verify after writing. The existing
-canonical-clone, remote-authority, branch/PR, and collaboration workflows still apply.
+GitHub-backed, branch, collaboration, and remote-verification workflows still apply.
 GitHub is also an optional later publication/collaboration/durability upgrade for a local
 project, but adding a remote must be an explicit publication step; U-GAS must not create
 one silently.
+
+</details>
 
 For either route, a local-only project uses its persistent filesystem and local Git
 history as authority. Remote fetch/push verification is not applicable until a remote
@@ -127,23 +101,29 @@ exists. For the first external test, give feedback by commenting on [Issue #1](h
 If the agent cannot safely create files, stop and report the specific capability limit.
 Otherwise, it should own the routine file and Git mechanics.
 
-### What happens next
+## Why U-GAS?
 
-The agent handles routine file and Git mechanics. You decide product scope and any real
-human boundary, such as unavailable credentials, environment access, or a consequential
-action. If the target `AGENTS.md` is missing, it may be initialized from the template;
-substantive project rules must be preserved.
+Decisions can get buried in chat. A different session may not know what happened, and
+the owner becomes the memory, clipboard, and coordinator. U-GAS puts important project
+state in inspectable files so capable agents can find the current path and continue.
+
+### A typical workflow
+
+**Plan → Persist → Execute → Verify → Resume**
+
+You may not need U-GAS for a small project completed in one tool and one session. It is
+most useful when work continues across sessions, tools, or repositories.
 
 ## How U-GAS works
 
 ### PICA: the four project controls
 
-Every U-GAS-managed project exposes four visible root controls, in P-I-C-A order:
+Every U-GAS-managed project exposes four visible files, in P-I-C-A order:
 
-- `PROGRESS.md` — P: chronological evidence of what actually happened;
-- `IDEAS.md` — I: possibilities that are not accepted scope;
-- `CURRENT_STATE.md` — C: the compact resume surface: active work, next action, waiting state, and boundaries;
-- `AGENTS.md` — A: how an agent must inspect, change, verify, and hand off work.
+- `PROGRESS.md` — P: what happened;
+- `IDEAS.md` — I: things you may consider later;
+- `CURRENT_STATE.md` — C: where the project is now and what comes next;
+- `AGENTS.md` — A: how an AI agent should work in this project.
 
 PICA is deliberately Markdown-first. It is not a database, installer, orchestration platform, or replacement for source control and CI. A repository-capable agent still reads current repository authority, preserves existing work, makes a bounded change, and verifies the result.
 
@@ -155,7 +135,7 @@ Compact one-copy handoffs remain the default when the complete payload is short 
 
 For deeper procedures, see the [portable policies](ai/README.md), [self-check](scripts/check_u_gas.py), [handoff checker](scripts/check_handoff.py), and standard-library [tests](tests/).
 
-## Safety and limitations
+## Limitations and safety
 
 U-GAS does not:
 
@@ -184,7 +164,7 @@ If a run fails or feels confusing, record the repository and branch, expected ac
 
 </details>
 
-## Status and license
+## Status and feedback
 
 U-GAS is experimental and intended for early external testing. It is released under the [MIT License](LICENSE). For the first independent test, give feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where you got stuck, what was unclear, what the agent failed to do, unexpected friction, and whether the workflow resumed or worked as described. Do not post secrets or sensitive private-repository content.
 
