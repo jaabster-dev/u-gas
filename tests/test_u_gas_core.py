@@ -25,11 +25,26 @@ class CoreContractTests(unittest.TestCase):
 
     def test_readme_and_anchor_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("U-GAS (Universal Grabbers Agent System)", readme)
         self.assertIn("EXPERIMENTAL", readme)
         self.assertIn("NO INDEPENDENT USER VALIDATION YET", readme)
         self.assertIn("PICA SELF-CHECK", readme)
         self.assertIn("Issue #1", readme)
         self.assertIn("https://github.com/jaabster-dev/u-gas", (ROOT / "templates/pica/AGENTS.md").read_text(encoding="utf-8"))
+
+    def test_readme_human_hierarchy_and_pica_order(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("> *The conversation can be temporary; the project state is not.*", readme)
+        self.assertLess(readme.index("### A typical workflow"), readme.index("## Quick Start"))
+        self.assertLess(readme.index("## How U-GAS works"), readme.index("## Safety and limitations"))
+        self.assertLess(readme.index("`PROGRESS.md` — P"), readme.index("`IDEAS.md` — I"))
+        self.assertLess(readme.index("`IDEAS.md` — I"), readme.index("`CURRENT_STATE.md` — C"))
+        self.assertLess(readme.index("`CURRENT_STATE.md` — C"), readme.index("`AGENTS.md` — A"))
+
+    def test_pica_agents_have_identity_haiku(self):
+        haiku = "Clear paths guide the work"
+        for relative in ("AGENTS.md", "templates/pica/AGENTS.md", "examples/first-project/AGENTS.md"):
+            self.assertIn(haiku, (ROOT / relative).read_text(encoding="utf-8"), relative)
 
     def test_public_files_have_no_private_markers(self):
         forbidden = re.compile(r"/" + "Users/" + r"|~/" + "Documents/GitHub|" + "gh" + "p_|" + "github_" + "pat_|BEGIN [A-Z ]*PRIVATE KEY")
@@ -41,7 +56,7 @@ class CoreContractTests(unittest.TestCase):
         readme = (ROOT / "handoffs/README.md").read_text(encoding="utf-8")
         checker = (ROOT / "scripts/check_handoff.py").read_text(encoding="utf-8")
         self.assertIn("Compact one-copy handoffs remain the normal path", readme)
-        self.assertIn("optional exact-target assertion", readme)
+        self.assertIn("exact target assertion", readme)
         self.assertNotIn("GrabbersApp", checker)
 
 

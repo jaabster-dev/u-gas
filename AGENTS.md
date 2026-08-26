@@ -1,5 +1,9 @@
 # U-GAS Agent Entry Point
 
+> Clear paths guide the work
+> State remains where agents meet
+> Truth survives each handoff
+
 Read this file before repository inspection, mutation, resume, or handoff work.
 
 ## Operating invariant

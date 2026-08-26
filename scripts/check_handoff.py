@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 
 REPOSITORY_PATTERN = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
+BRANCH_NAME_PATTERN = re.compile(r"^(?!/)(?!.*//)(?!.*\.\.)[A-Za-z0-9._/-]{1,200}(?<!/)$")
+BRANCH_RULE_PATTERN = re.compile(r"^resolve from current (?:[A-Za-z0-9._/-]+ )?authority(?: \(currently [A-Za-z0-9._/-]+\))?$")
 REQUIRED_METADATA = ("id", "status", "created", "target_repository", "target_branch")
 REQUIRED_SECTIONS = (
     "Objective", "Execution instructions", "Constraints", "Required verification",
@@ -53,6 +55,9 @@ def validate_file(path: Path, expected_target: str | None = None):
         errors.append(f"{path}: target_repository must be a syntactically valid owner/repo")
     elif expected_target is not None and target != expected_target:
         errors.append(f"{path}: target_repository must be exactly {expected_target}")
+    target_branch = metadata.get("target_branch", "")
+    if not BRANCH_NAME_PATTERN.fullmatch(target_branch) and not BRANCH_RULE_PATTERN.fullmatch(target_branch):
+        errors.append(f"{path}: target_branch must be an explicit branch name or an approved authority-resolution rule")
     handoff_id = metadata.get("id", "")
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]{2,80}", handoff_id):
         errors.append(f"{path}: id is not a safe stable identifier")
