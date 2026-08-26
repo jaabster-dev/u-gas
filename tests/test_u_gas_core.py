@@ -34,14 +34,18 @@ class CoreContractTests(unittest.TestCase):
 
     def test_readme_human_hierarchy_and_pica_order(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("MIT License", readme)
+        self.assertIn("Experimental", readme)
+        self.assertIn("Tested with ChatGPT", readme)
         self.assertIn("> *The conversation can be temporary; the project state is not.*", readme)
         self.assertNotIn("```mermaid", readme)
         self.assertIn("Plan → Persist → Execute → Verify → Resume", readme)
         self.assertLess(readme.index("## Quick Start"), readme.index("### A typical workflow"))
         self.assertLess(readme.index("## How U-GAS works"), readme.index("## Limitations and safety"))
-        self.assertLess(readme.index("`PROGRESS.md` — P"), readme.index("`IDEAS.md` — I"))
-        self.assertLess(readme.index("`IDEAS.md` — I"), readme.index("`CURRENT_STATE.md` — C"))
-        self.assertLess(readme.index("`CURRENT_STATE.md` — C"), readme.index("`AGENTS.md` — A"))
+        self.assertIn("| File | Letter | Answers |", readme)
+        self.assertLess(readme.index("| `PROGRESS.md` | P"), readme.index("| `IDEAS.md` | I"))
+        self.assertLess(readme.index("| `IDEAS.md` | I"), readme.index("| `CURRENT_STATE.md` | C"))
+        self.assertLess(readme.index("| `CURRENT_STATE.md` | C"), readme.index("| `AGENTS.md` | A"))
         self.assertLess(readme.index("- AGENTS.md: PRESENT"), readme.index("- CURRENT_STATE.md: PRESENT"))
         self.assertLess(readme.index("- CURRENT_STATE.md: PRESENT"), readme.index("- PROGRESS.md: PRESENT"))
         self.assertLess(readme.index("- PROGRESS.md: PRESENT"), readme.index("- IDEAS.md: PRESENT"))
@@ -66,6 +70,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("```text\nI want to start a new local U-GAS project.", readme)
         self.assertIn("plain chat with no persistent file access", readme)
         self.assertIn("How to tell if it worked", readme)
+        self.assertIn("> [!TIP]", readme)
         self.assertIn("the setup was not completed", readme)
 
     def test_pica_agents_have_identity_haiku(self):

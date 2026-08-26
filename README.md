@@ -1,5 +1,7 @@
 # U-GAS
 
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) [![Experimental](https://img.shields.io/badge/status-experimental-orange.svg)](#status-and-feedback) [![Tested with ChatGPT · Codex](https://img.shields.io/badge/tested%20with-ChatGPT%20%C2%B7%20Codex-blueviolet.svg)](#status-and-feedback)
+
 > *The conversation can be temporary; the project state is not.*
 
 U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project from losing its place between chats and tools. It stores important project state in ordinary files so another capable agent can continue without asking you to rebuild the whole story by hand.
@@ -75,11 +77,12 @@ for correction only if the project purpose is genuinely unclear.
 
 ### How to tell if it worked
 
-You should be able to identify the real persistent project folder/path, the four files
-`AGENTS.md`, `CURRENT_STATE.md`, `PROGRESS.md`, and `IDEAS.md`, and the agent's visible
-`PICA SELF-CHECK` with `READY` or a truthful `BLOCKED` result. If the agent only
-describes what it would do, skips actual folder/file evidence, or cannot show the path
-and files, the setup was not completed.
+> [!TIP]
+> Look for the real persistent project folder/path, the four files `AGENTS.md`,
+> `CURRENT_STATE.md`, `PROGRESS.md`, and `IDEAS.md`, plus the agent's visible `PICA
+> SELF-CHECK` with `READY` or a truthful `BLOCKED` result. If the agent only describes
+> what it would do, skips actual folder/file evidence, or cannot show the path and files,
+> the setup was not completed.
 
 <details>
 <summary>Already use GitHub?</summary>
@@ -101,6 +104,8 @@ exists. For the first external test, give feedback by commenting on [Issue #1](h
 If the agent cannot safely create files, stop and report the specific capability limit.
 Otherwise, it should own the routine file and Git mechanics.
 
+---
+
 ## Why U-GAS?
 
 Decisions can get buried in chat. A different session may not know what happened, and
@@ -114,16 +119,20 @@ state in inspectable files so capable agents can find the current path and conti
 You may not need U-GAS for a small project completed in one tool and one session. It is
 most useful when work continues across sessions, tools, or repositories.
 
+---
+
 ## How U-GAS works
 
 ### PICA: the four project controls
 
 Every U-GAS-managed project exposes four visible files, in P-I-C-A order:
 
-- `PROGRESS.md` — P: what happened;
-- `IDEAS.md` — I: things you may consider later;
-- `CURRENT_STATE.md` — C: where the project is now and what comes next;
-- `AGENTS.md` — A: how an AI agent should work in this project.
+| File | Letter | Answers |
+| --- | --- | --- |
+| `PROGRESS.md` | P | What happened? |
+| `IDEAS.md` | I | What might be useful later? |
+| `CURRENT_STATE.md` | C | Where is the project now, and what comes next? |
+| `AGENTS.md` | A | How should an AI agent work here? |
 
 PICA is deliberately Markdown-first. It is not a database, installer, orchestration platform, or replacement for source control and CI. A repository-capable agent still reads current repository authority, preserves existing work, makes a bounded change, and verifies the result.
 
@@ -135,6 +144,8 @@ Compact one-copy handoffs remain the default when the complete payload is short 
 
 For deeper procedures, see the [portable policies](ai/README.md), [self-check](scripts/check_u_gas.py), [handoff checker](scripts/check_handoff.py), and standard-library [tests](tests/).
 
+---
+
 ## Limitations and safety
 
 U-GAS does not:
@@ -145,7 +156,9 @@ U-GAS does not:
 - replace source control, CI, security controls, or human judgement;
 - claim reliability, adoption, benchmarks, industry-standard status, or independent validation.
 
-If a run fails or feels confusing, record the repository and branch, expected action, actual result, exact observable error, and whether files changed. Never include passwords, tokens, recovery codes, private keys, or other secrets. Practical testing so far has primarily used ChatGPT and Codex; Claude, Cursor, Copilot, and other paths remain experimental where not independently validated.
+If a run fails or feels confusing, record the repository and branch, expected action,
+actual result, exact observable error, and whether files changed. Never include passwords,
+tokens, recovery codes, private keys, or other secrets.
 
 ## Repository contents
 
@@ -164,8 +177,14 @@ If a run fails or feels confusing, record the repository and branch, expected ac
 
 </details>
 
+---
+
 ## Status and feedback
 
-U-GAS is experimental and intended for early external testing. It is released under the [MIT License](LICENSE). For the first independent test, give feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where you got stuck, what was unclear, what the agent failed to do, unexpected friction, and whether the workflow resumed or worked as described. Do not post secrets or sensitive private-repository content.
+It is released under the [MIT License](LICENSE). For the first independent test, give
+feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where
+you got stuck, what was unclear, what the agent failed to do, unexpected friction, and
+whether the workflow resumed or worked as described. Do not post secrets or sensitive
+private-repository content.
 
 The distribution self-check verifies U-GAS's own files and routes. The optional `--project <path>` check verifies only readable, non-empty PICA files, the canonical upstream anchor in `AGENTS.md`, and the minimum `CURRENT_STATE.md` resume contract. These checks do not prove product correctness, current-state truth, runtime/model compliance, GitHub access, branch correctness, repository safety, or independent validation.
