@@ -39,8 +39,16 @@ AI coding agent. You do not need to understand the technical instructions inside
 I want to start a new local U-GAS project. The project name and purpose are:
 <DESCRIBE THE PROJECT IN ORDINARY LANGUAGE>
 
-Before changing anything, read the current U-GAS README.md and AGENTS.md directly from:
+Before changing anything, read the current U-GAS README.md and AGENTS.md directly from
+this public HTTPS source:
 https://github.com/jaabster-dev/u-gas
+
+Actually try to open and read that public URL before saying the U-GAS source is unavailable.
+Use any safe read-only web, browser, or fetch method available to you. If one read method
+is unavailable, discover or use another available read-only method when possible. A missing
+GitHub connector, API access, authenticated integration, or local Git network is not proof
+that this public URL cannot be read. Do not probe access with a write, dummy branch, commit,
+file, or other mutation.
 
 Establish a safe normal persistent local workspace yourself. Do not use a session
 sandbox, temporary directory, or download/export location as the project. Derive a safe
@@ -54,9 +62,16 @@ those current templates. Never overwrite substantive existing content. Record on
 truthful minimal project state, make an initial local commit when appropriate, and
 re-read the actual files and local repository state from disk after writing.
 
-If you cannot access a persistent filesystem or local Git, return exactly:
-BLOCKED — <specific capability reason>
-and do not simulate file creation or claim that anything was created or verified.
+If the public U-GAS source cannot be read after available read-only methods were attempted,
+return exactly:
+BLOCKED — U-GAS public source could not be read after available read-only methods were attempted: <specific reason>
+If you cannot access a persistent filesystem, return exactly:
+BLOCKED — persistent filesystem unavailable: <specific capability reason>
+If you cannot access local Git, return exactly:
+BLOCKED — local Git unavailable: <specific capability reason>
+For another genuine human or capability boundary, return exactly:
+BLOCKED — <specific boundary>
+In every blocked case, do not simulate file creation or claim that anything was created or verified.
 
 Before claiming readiness, visibly report:
 
