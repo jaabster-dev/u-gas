@@ -57,6 +57,8 @@ The current normal workflow requires:
 
 You do not need a specific AI tool or connector. A plain chat session with no repository or file access cannot perform this workflow reliably.
 
+If the agent cannot safely create files, manual creation from the portable PICA templates is an alternative; preserve substantive existing project rules and state.
+
 Ask a repository-capable agent:
 
 ```text
