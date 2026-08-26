@@ -97,6 +97,8 @@ If a run fails or feels confusing, report: the repository and branch, the action
 - [`skills/`](skills/) — progressive-disclosure resume, safe-patch, verification, and external-research procedures.
 - [`templates/pica/`](templates/pica/) — truthful bootstrap templates for missing PICA controls.
 - [`scripts/check_u_gas.py`](scripts/check_u_gas.py) — optional read-only local self-check.
+- [`handoffs/README.md`](handoffs/README.md) — optional repository-backed long-handoff transport for exact structured payloads.
+- [`scripts/check_handoff.py`](scripts/check_handoff.py) — read-only pending-handoff contract checker.
 - [`tests/`](tests/) — standard-library contract tests; CI runs them automatically.
 - [`.github/workflows/u-gas-self-tests.yml`](.github/workflows/u-gas-self-tests.yml) — read-only GitHub Actions self-test.
 - [`examples/first-project/`](examples/first-project/) — minimal PICA example.

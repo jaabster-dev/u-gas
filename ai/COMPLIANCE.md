@@ -19,3 +19,5 @@ There are two bounded check modes:
 - `--project <path>` checks only the target project's readable/non-empty PICA set, exact canonical upstream anchor, and either the canonical minimal `CURRENT_STATE.md` placeholder or its four resume responsibilities.
 
 These checks do not prove product correctness, whether `ACTIVE`/`NEXT` are true, runtime/model compliance, successful GitHub access, branch correctness, repository safety, or independent validation. `scripts/check_u_gas.py` must not infer product scope, rewrite files, install dependencies, call GitHub, or claim evidence beyond local checks. Fleet registries, managed blocks, organization sync, and consumer rewrites are intentionally outside U-GAS.
+
+The optional repository-backed handoff adapter is local and fail-closed: only `PENDING` payloads with valid metadata and non-empty contract sections are executable; consumed or missing payloads cannot be replayed. Compact one-copy prompts remain the default. The adapter does not execute payloads, call GitHub, store secrets, or create orchestration.

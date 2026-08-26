@@ -77,6 +77,7 @@ def check_project(root):
 def check_distribution(root=ROOT):
     errors = []
     required = PICA_FILES + ("README.md", "LICENSE") + AI_FILES + SKILL_FILES
+    required += ("handoffs/README.md", "handoffs/pending/.gitkeep", "scripts/check_handoff.py")
     required += tuple("templates/pica/" + name for name in PICA_FILES)
     required += tuple("examples/first-project/" + name for name in PICA_FILES)
     for relative in required:
