@@ -41,3 +41,5 @@ jobs:
         run: python scripts/check_u_gas.py
       - name: Run standard-library tests
         run: python -m unittest -v
+      - name: Validate pending handoff contracts
+        run: python scripts/check_handoff.py

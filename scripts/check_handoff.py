@@ -93,11 +93,44 @@ def validate_directory(directory: Path, expected_target: str | None = None):
     return errors
 
 
+def validate_exact_handoff(directory: Path, handoff_id: str, expected_target: str):
+    """Validate one pending payload for launcher issuance."""
+    if not re.fullmatch(r"[a-z0-9][a-z0-9-]{2,80}", handoff_id):
+        return [f"handoff id is not a safe stable identifier: {handoff_id}"]
+    if not directory.is_dir():
+        return [f"{directory}: pending handoff directory is missing"]
+    path = directory / f"{handoff_id}.md"
+    if not path.is_file():
+        return [f"{path}: exact pending handoff does not exist"]
+    errors = validate_file(path, expected_target)
+    for other in sorted(directory.glob("*.md")):
+        if other == path:
+            continue
+        try:
+            metadata, _, _ = parse_contract(other)
+        except (OSError, UnicodeError):
+            continue
+        if metadata.get("id") == handoff_id:
+            errors.append(f"duplicate active handoff id: {handoff_id}")
+    return errors
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", nargs="?", type=Path, default=Path("handoffs/pending"))
     parser.add_argument("--target", default=None, help="optional exact target repository assertion")
+    parser.add_argument("--handoff-id", default=None, help="validate exactly handoffs/pending/<id>.md for launcher readiness")
     args = parser.parse_args(argv)
+    if args.handoff_id is not None:
+        if not args.target:
+            parser.error("--target is required with --handoff-id")
+        errors = validate_exact_handoff(Path("handoffs/pending"), args.handoff_id, args.target)
+        if errors:
+            for error in errors:
+                print(f"ERROR: {error}", file=sys.stderr)
+            return 1
+        print(f"HANDOFF_READY: {args.handoff_id} -> {args.target}")
+        return 0
     errors = validate_directory(args.directory, args.target)
     if errors:
         for error in errors:
