@@ -57,6 +57,17 @@ class HandoffContractTests(unittest.TestCase):
             errors = check_handoff.validate_file(path, "different/repository")
             self.assertTrue(any("must be exactly different/repository" in error for error in errors))
 
+    def test_branch_resolution_rule_is_valid(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = self.write_sample(directory)
+            self.assertEqual(check_handoff.validate_file(path), [])
+
+    def test_invalid_branch_shape_fails_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = self.write_sample(directory)
+            path.write_text(SAMPLE.replace("target_branch: main", "target_branch: ../main"), encoding="utf-8")
+            self.assertTrue(any("target_branch" in error for error in check_handoff.validate_file(path)))
+
     def test_consumed_status_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory:
             path = self.write_sample(directory)

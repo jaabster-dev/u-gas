@@ -1,8 +1,8 @@
 # U-GAS
 
-## The conversation can be temporary; the project state is not.
+> *The conversation can be temporary; the project state is not.*
 
-U-GAS (Universal Agent System) is a small, Git-native operating model for AI-assisted work. It gives a project an explicit place for current instructions, state, progress, ideas, handoffs, and verification so a later or different repository-capable agent can continue from evidence instead of reconstructing everything from chat memory.
+U-GAS (Universal Grabbers Agent System) is a small, Git-native operating model for AI-assisted work. It gives a project an explicit place for current instructions, state, progress, ideas, handoffs, and verification so a later or different repository-capable agent can continue from evidence instead of reconstructing everything from chat memory.
 
 > **EXPERIMENTAL / VERY EARLY EXTERNAL TESTING** — Practical testing has primarily been with ChatGPT and Codex. There is **NO INDEPENDENT USER VALIDATION YET**. U-GAS is intended to be portable to other agents and tools, but those paths remain experimental and unvalidated.
 
@@ -12,7 +12,7 @@ Long-lived AI work often crosses chats, tools, repositories, and sessions. A use
 
 U-GAS moves material project state into the repository that the work already depends on. It does not give an LLM perfect memory and it does not guarantee that an agent will follow instructions. It gives agents a shared, inspectable authority to reconcile against.
 
-## A typical workflow
+### A typical workflow
 
 ```mermaid
 flowchart TD
@@ -26,7 +26,7 @@ flowchart TD
 
 Different agents do not need to share hidden memory if they can read the same explicit project state, current repository rules, and verified Git history.
 
-## Before and with U-GAS
+### Before and with U-GAS
 
 | Without U-GAS | With U-GAS |
 | --- | --- |
@@ -36,7 +36,7 @@ Different agents do not need to share hidden memory if they can read the same ex
 
 U-GAS reduces coordination and reconstruction burden. It does not eliminate context loss, unsafe edits, stale state, or human decisions.
 
-## Who is it for?
+### Who is it for?
 
 U-GAS is most relevant when you:
 
@@ -49,6 +49,8 @@ You may not need it for a small project completed in one tool and one session, w
 
 ## Quick Start
 
+### What you need
+
 The current normal workflow requires:
 
 - a GitHub repository you control, preferably a safe test or sandbox repository for a first run;
@@ -58,6 +60,8 @@ The current normal workflow requires:
 You do not need a specific AI tool or connector. A plain chat session with no repository or file access cannot perform this workflow reliably.
 
 If the agent cannot safely create files, manual creation from the portable PICA templates is an alternative; preserve substantive existing project rules and state.
+
+### Copy this
 
 Ask a repository-capable agent:
 
@@ -88,22 +92,26 @@ no unresolved authority or repository-purpose problem. Otherwise report:
 BLOCKED — <specific reason>
 ```
 
+### What happens next
+
 The agent should own routine Git and file mechanics. You should only need to decide product scope, provide unavailable credentials or environment access, or approve a genuinely consequential boundary.
 
 If the target `AGENTS.md` is missing, the agent may initialize it from the template. If it already contains substantive project rules, those rules must be preserved and only the smallest U-GAS bootstrap anchor should be integrated. After the PICA shell is installed, future repository-capable sessions can start from the target repository's `AGENTS.md`, which points back to the current U-GAS authority. Tell the agent in ordinary language what you want to accomplish; it should ask for correction only when product intent is genuinely unclear.
 
-## How it works: PICA
+## How U-GAS works
 
-Every U-GAS-managed project exposes four visible controls:
+### PICA: the four project controls
 
-- `AGENTS.md` — how an agent must inspect, change, verify, and hand off work;
-- `CURRENT_STATE.md` — the compact resume surface: active work, next action, waiting state, and boundaries;
-- `PROGRESS.md` — chronological evidence of what actually happened;
-- `IDEAS.md` — possibilities that are not accepted scope.
+Every U-GAS-managed project exposes four visible root controls, in P-I-C-A order:
+
+- `PROGRESS.md` — P: chronological evidence of what actually happened;
+- `IDEAS.md` — I: possibilities that are not accepted scope;
+- `CURRENT_STATE.md` — C: the compact resume surface: active work, next action, waiting state, and boundaries;
+- `AGENTS.md` — A: how an agent must inspect, change, verify, and hand off work.
 
 PICA is deliberately Markdown-first. It is not a database, installer, orchestration platform, or replacement for source control and CI. A repository-capable agent still reads current repository authority, preserves existing work, makes a bounded change, and verifies the result.
 
-## Pause, resume, handoff, verify
+### Pause, resume, handoff, verify
 
 To pause, record material state in `CURRENT_STATE.md` and useful evidence in `PROGRESS.md`. To resume, the agent reads current repository state first, reconciles it with PICA, verifies before acting, and follows the concrete `NEXT` action. Conversation memory is not a substitute for committed repository state.
 

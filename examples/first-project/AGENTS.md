@@ -1,5 +1,9 @@
 # Project Agent Instructions
 
+> Clear paths guide the work
+> State remains where agents meet
+> Truth survives each handoff
+
 This project uses U-GAS.
 
 Canonical U-GAS authority:
