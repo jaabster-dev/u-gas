@@ -1,7 +1,7 @@
 # U-GAS Agent Entry Point
 
-> Clear paths guide the work
-> State remains where agents meet
+> Clear paths guide the work<br>
+> State remains where agents meet<br>
 > Truth survives each handoff
 
 Read this file before repository inspection, mutation, resume, or handoff work.
@@ -58,7 +58,7 @@ Do not add infrastructure without evidence of a recurring problem and a simpler-
 
 ## PICA contract
 
-Every U-GAS-managed project exposes root `AGENTS.md`, `CURRENT_STATE.md`, `PROGRESS.md`, and `IDEAS.md`. Missing controls may be created as truthful minimal placeholders. Do not overwrite substantive controls or invent product scope, progress, state, ideas, credentials, or validation claims.
+Every U-GAS-managed project exposes root `PROGRESS.md`, `IDEAS.md`, `CURRENT_STATE.md`, and `AGENTS.md` in P-I-C-A order. Missing controls may be created as truthful minimal placeholders. Do not overwrite substantive controls or invent product scope, progress, state, ideas, credentials, or validation claims.
 
 ## Human boundaries
 
