@@ -1,16 +1,18 @@
 # U-GAS
 
-> Chats fade into night<br>
-> Project truth remains in files<br>
-> Next hands find the path
-
 > *The conversation can be temporary; the project state is not.*
 
 U-GAS (Universal Grabbers Agent System) is a small, Git-native operating model for AI-assisted work. It gives a project an explicit place for current instructions, state, progress, ideas, handoffs, and verification so a later or different repository-capable agent can continue from evidence instead of reconstructing everything from chat memory.
 
 > **EXPERIMENTAL / VERY EARLY EXTERNAL TESTING** — Practical testing has primarily been with ChatGPT and Codex. There is **NO INDEPENDENT USER VALIDATION YET**. U-GAS is intended to be portable to other agents and tools, but those paths remain experimental and unvalidated.
 
-**Jump to:** [Quick Start](#quick-start) · [Why U-GAS?](#why-u-gas) · [How it works](#how-u-gas-works) · [Safety](#safety-and-limitations) · [Feedback / Status](#status-and-license)
+**On this page:**
+
+- [Why U-GAS?](#why-u-gas)
+- [Quick Start](#quick-start)
+- [How U-GAS works](#how-u-gas-works)
+- [Safety and limitations](#safety-and-limitations)
+- [Status and feedback](#status-and-license)
 
 ## Why U-GAS?
 
@@ -20,12 +22,7 @@ U-GAS moves material project state into the repository that the work already dep
 
 ### A typical workflow
 
-```mermaid
-flowchart LR
-    A[Plan] --> B[Persist]
-    B --> C[Execute]
-    C --> D[Verify & resume]
-```
+**Plan → Persist → Execute → Verify → Resume**
 
 Different agents do not need to share hidden memory if they can read the same explicit project state, current repository rules, and verified Git history.
 
@@ -56,25 +53,22 @@ You may not need it for a small project completed in one tool and one session, w
 
 For the recommended first test, you need:
 
-- a file/repository-capable AI agent with real persistent local filesystem access;
-- Git available locally where the agent can use it;
-- permission for the agent to create and edit files in a normal persistent user workspace.
+- an AI coding agent that can create and keep files on your computer;
+- permission for the agent to create a project folder and edit its files.
 
-**NO GITHUB REPOSITORY IS REQUIRED for this first local-first path.** A plain chat with no
-persistent file access cannot perform it, and a session sandbox, temporary directory, or
-download location is not durable project storage.
+You do not need to create a GitHub repository. The agent will check the local tools it
+needs and tell you if something is missing. A plain chat with no persistent file access
+cannot perform this workflow; a session sandbox, temporary directory, or download
+location is not durable project storage.
 
-You do not need a specific AI tool or connector. Practical testing so far has primarily
-used ChatGPT and Codex; other agents may also be usable, but those paths remain
-experimental and unvalidated.
+You do not need a specific AI tool. Practical testing so far has primarily used ChatGPT
+and Codex; other agents may also be usable, but those paths remain experimental and
+unvalidated.
 
 ### Start a new local project — recommended first test
 
 Give the agent only the project name and purpose in ordinary language. Copy this complete
 prompt:
-
-<details>
-<summary>Copy the complete local-first prompt</summary>
 
 ```text
 I want to start a new local U-GAS project. The project name and purpose are:
@@ -116,8 +110,6 @@ The first useful result is the verified local project folder and its PICA contro
 for correction only if the project purpose is genuinely unclear.
 ```
 
-</details>
-
 ### Already have a GitHub repository?
 
 An existing GitHub-backed project remains supported. Give the agent its repository URL
@@ -132,13 +124,15 @@ For either route, a local-only project uses its persistent filesystem and local 
 history as authority. Remote fetch/push verification is not applicable until a remote
 exists. For the first external test, give feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where you got stuck, what was unclear, what the agent failed to do, unexpected friction, and whether the workflow actually resumed or worked as described. Do not post secrets, tokens, passwords, private keys, or sensitive private-repository content.
 
-If the agent cannot safely create files, manual creation from the portable PICA templates is an alternative; preserve substantive existing project rules and state. Otherwise, the agent should own routine Git and file mechanics.
+If the agent cannot safely create files, stop and report the specific capability limit.
+Otherwise, it should own the routine file and Git mechanics.
 
 ### What happens next
 
-The agent should own routine Git and file mechanics. You should only need to decide product scope, provide unavailable credentials or environment access, or approve a genuinely consequential boundary.
-
-If the target `AGENTS.md` is missing, the agent may initialize it from the template. If it already contains substantive project rules, those rules must be preserved and only the smallest U-GAS bootstrap anchor should be integrated. After the PICA shell is installed, future repository-capable sessions can start from the target repository's `AGENTS.md`, which points back to the current U-GAS authority. Tell the agent in ordinary language what you want to accomplish; it should ask for correction only when product intent is genuinely unclear.
+The agent handles routine file and Git mechanics. You decide product scope and any real
+human boundary, such as unavailable credentials, environment access, or a consequential
+action. If the target `AGENTS.md` is missing, it may be initialized from the template;
+substantive project rules must be preserved.
 
 ## How U-GAS works
 
@@ -175,6 +169,9 @@ If a run fails or feels confusing, record the repository and branch, expected ac
 
 ## Repository contents
 
+<details>
+<summary>Show the repository map</summary>
+
 - [`PROGRESS.md`](PROGRESS.md), [`IDEAS.md`](IDEAS.md), [`CURRENT_STATE.md`](CURRENT_STATE.md), [`AGENTS.md`](AGENTS.md) — the four-file project control surface, in P-I-C-A order.
 - [`ai/`](ai/) — portable governance, GitHub workflow, continuity, structure, collaboration, and safe large-file guidance.
 - [`skills/`](skills/) — progressive-disclosure resume, safe-patch, verification, external-research, and skill-review procedures.
@@ -184,6 +181,8 @@ If a run fails or feels confusing, record the repository and branch, expected ac
 - [`scripts/check_u_gas.py`](scripts/check_u_gas.py) — optional read-only U-GAS/project self-check.
 - [`scripts/check_handoff.py`](scripts/check_handoff.py) — read-only pending-handoff contract checker.
 - [`tests/`](tests/) and [`.github/workflows/u-gas-self-tests.yml`](.github/workflows/u-gas-self-tests.yml) — standard-library contracts and CI self-tests.
+
+</details>
 
 ## Status and license
 

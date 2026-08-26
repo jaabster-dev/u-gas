@@ -35,13 +35,13 @@ class CoreContractTests(unittest.TestCase):
     def test_readme_human_hierarchy_and_pica_order(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("> *The conversation can be temporary; the project state is not.*", readme)
-        self.assertIn("flowchart LR", readme)
+        self.assertNotIn("```mermaid", readme)
+        self.assertIn("Plan → Persist → Execute → Verify → Resume", readme)
         self.assertLess(readme.index("### A typical workflow"), readme.index("## Quick Start"))
         self.assertLess(readme.index("## How U-GAS works"), readme.index("## Safety and limitations"))
         self.assertLess(readme.index("`PROGRESS.md` — P"), readme.index("`IDEAS.md` — I"))
         self.assertLess(readme.index("`IDEAS.md` — I"), readme.index("`CURRENT_STATE.md` — C"))
         self.assertLess(readme.index("`CURRENT_STATE.md` — C"), readme.index("`AGENTS.md` — A"))
-        self.assertLess(readme.index("- PROGRESS.md: PRESENT"), readme.index("- IDEAS.md: PRESENT"))
         self.assertLess(readme.index("- AGENTS.md: PRESENT"), readme.index("- CURRENT_STATE.md: PRESENT"))
         self.assertLess(readme.index("- CURRENT_STATE.md: PRESENT"), readme.index("- PROGRESS.md: PRESENT"))
         self.assertLess(readme.index("- PROGRESS.md: PRESENT"), readme.index("- IDEAS.md: PRESENT"))
@@ -49,11 +49,11 @@ class CoreContractTests(unittest.TestCase):
 
     def test_readme_local_first_onboarding_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("> Chats fade into night<br>\n> Project truth remains in files<br>\n> Next hands find the path", readme)
+        self.assertNotIn("Chats fade into night", readme)
         self.assertIn("[Quick Start](#quick-start)", readme)
-        self.assertIn("[How it works](#how-u-gas-works)", readme)
-        self.assertIn("[Feedback / Status](#status-and-license)", readme)
-        self.assertIn("NO GITHUB REPOSITORY IS REQUIRED", readme)
+        self.assertIn("- [How U-GAS works](#how-u-gas-works)", readme)
+        self.assertIn("- [Status and feedback](#status-and-license)", readme)
+        self.assertIn("You do not need to create a GitHub repository.", readme)
         self.assertIn("### Start a new local project — recommended first test", readme)
         self.assertIn("### Already have a GitHub repository?", readme)
         self.assertLess(readme.index("### Start a new local project — recommended first test"), readme.index("### Already have a GitHub repository?"))
@@ -61,8 +61,9 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("PICA SELF-CHECK", readme)
         self.assertIn("BLOCKED — <specific capability reason>", readme)
         self.assertIn("Do not create a GitHub repository, remote, account", readme)
-        self.assertIn("<summary>Copy the complete local-first prompt</summary>", readme)
-        self.assertIn("flowchart LR\n    A[Plan] --> B[Persist]\n    B --> C[Execute]\n    C --> D[Verify & resume]", readme)
+        self.assertNotIn("<summary>Copy the complete local-first prompt</summary>", readme)
+        self.assertIn("```text\nI want to start a new local U-GAS project.", readme)
+        self.assertIn("plain chat with no persistent file access", readme)
 
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"
