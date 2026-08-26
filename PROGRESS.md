@@ -22,6 +22,10 @@ The target-project checker now requires readable/non-empty PICA controls, an unc
 
 The public repository reached the early external-testing stage. MIT licensing, repository discoverability metadata, and a first-independent-tester issue were added; independent user validation remains outstanding.
 
+## 2026-08-26 — README human-UX rework
+
+Reorganized the public README around the human reader's journey: value proposition, problem, concrete cross-agent workflow, before/with comparison, fit boundary, Quick Start, PICA, handoff/resume/verification, safety limits, and repository contents. Preserved the Quick Start prompt semantics, PICA contract, long-handoff guidance, self-check/test links, experimental status, ChatGPT/Codex evidence, and no-independent-validation boundary. No architecture or contract files changed; independent validation remains outstanding.
+
 ## 2026-08-26 — Portable long-handoff adapter
 
 The U-GAS parity review confirmed that compact one-copy transfer should remain the default, but long/structured exact payloads and previously failed clipboard/attachment transfers need a repository-native reliability path. Added generic `handoffs/pending/` lifecycle guidance, a read-only `scripts/check_handoff.py`, contract tests, and public-content-safe compliance/readme routing. The adapter has no auto-executor, daemon, orchestration, arbitrary remote execution, secret storage, or manual user file-transfer ritual. `python3 scripts/check_u_gas.py`, `python3 scripts/check_handoff.py`, and `python3 -m unittest -v` passed locally; independent external validation remains outstanding.
