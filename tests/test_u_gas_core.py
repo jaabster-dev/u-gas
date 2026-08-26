@@ -42,9 +42,21 @@ class CoreContractTests(unittest.TestCase):
         self.assertLess(readme.index("`IDEAS.md` — I"), readme.index("`CURRENT_STATE.md` — C"))
         self.assertLess(readme.index("`CURRENT_STATE.md` — C"), readme.index("`AGENTS.md` — A"))
         self.assertLess(readme.index("- PROGRESS.md: PRESENT"), readme.index("- IDEAS.md: PRESENT"))
-        self.assertLess(readme.index("- IDEAS.md: PRESENT"), readme.index("- CURRENT_STATE.md: PRESENT"))
-        self.assertLess(readme.index("- CURRENT_STATE.md: PRESENT"), readme.index("- AGENTS.md: PRESENT"))
-        self.assertLess(readme.index("PROGRESS.md, IDEAS.md, CURRENT_STATE.md, and AGENTS.md"), readme.index("PICA SELF-CHECK"))
+        self.assertLess(readme.index("- AGENTS.md: PRESENT"), readme.index("- CURRENT_STATE.md: PRESENT"))
+        self.assertLess(readme.index("- CURRENT_STATE.md: PRESENT"), readme.index("- PROGRESS.md: PRESENT"))
+        self.assertLess(readme.index("- PROGRESS.md: PRESENT"), readme.index("- IDEAS.md: PRESENT"))
+        self.assertLess(readme.index("AGENTS.md, CURRENT_STATE.md, PROGRESS.md, IDEAS.md"), readme.index("PICA SELF-CHECK"))
+
+    def test_readme_local_first_onboarding_contract(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("NO GITHUB REPOSITORY IS REQUIRED", readme)
+        self.assertIn("### Start a new local project — recommended first test", readme)
+        self.assertIn("### Already have a GitHub repository?", readme)
+        self.assertLess(readme.index("### Start a new local project — recommended first test"), readme.index("### Already have a GitHub repository?"))
+        self.assertIn("initialize local Git if needed", readme)
+        self.assertIn("PICA SELF-CHECK", readme)
+        self.assertIn("BLOCKED — <specific capability reason>", readme)
+        self.assertIn("Do not create a GitHub repository, remote, account", readme)
 
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"

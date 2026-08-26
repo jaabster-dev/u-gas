@@ -51,46 +51,80 @@ You may not need it for a small project completed in one tool and one session, w
 
 ### What you need
 
-The current normal workflow requires:
+For the recommended first test, you need:
 
-- a GitHub repository you control, preferably a safe test or sandbox repository for a first run;
-- an AI agent that can read and change that repository through a GitHub integration, connector, or local Git clone;
-- permission for the agent to create or update the four PICA files and, for real project work, relevant project files.
+- a file/repository-capable AI agent with real persistent local filesystem access;
+- Git available locally where the agent can use it;
+- permission for the agent to create and edit files in a normal persistent user workspace.
 
-You do not need a specific AI tool or connector. A plain chat session with no repository or file access cannot perform this workflow reliably.
+**NO GITHUB REPOSITORY IS REQUIRED for this first local-first path.** A plain chat with no
+persistent file access cannot perform it, and a session sandbox, temporary directory, or
+download location is not durable project storage.
 
-If the agent cannot safely create files, manual creation from the portable PICA templates is an alternative; preserve substantive existing project rules and state.
+You do not need a specific AI tool or connector. Practical testing so far has primarily
+used ChatGPT and Codex; other agents may also be usable, but those paths remain
+experimental and unvalidated.
 
-### Copy this
+### Start a new local project — recommended first test
 
-Ask a repository-capable agent:
+Give the agent only the project name and purpose in ordinary language. Copy this complete
+prompt:
 
 ```text
-I want to use U-GAS with my existing repository: <YOUR-REPOSITORY-URL>
+I want to start a new local U-GAS project. The project name and purpose are:
+<DESCRIBE THE PROJECT IN ORDINARY LANGUAGE>
 
-Before changing anything, read the current U-GAS README and AGENTS.md directly from:
+Before changing anything, read the current U-GAS README.md and AGENTS.md directly from:
 https://github.com/jaabster-dev/u-gas
 
-Then read U-GAS AGENTS.md, inspect my repository's current branch, working tree,
-PROGRESS.md, IDEAS.md, CURRENT_STATE.md, and AGENTS.md in P-I-C-A order. Preserve existing work. Use
-the portable PICA templates only for missing controls; preserve substantive existing
-controls. Explain the smallest first action, make the four-file control shell complete
-if it is missing, and stop when a real human
-decision, authentication, secret, destructive action, device, or unclear product choice
-is required.
+Establish a safe normal persistent local workspace yourself. Do not use a session
+sandbox, temporary directory, or download/export location as the project. Derive a safe
+filesystem name from the requested project name, create the project folder, and
+initialize local Git if needed. Do not create a GitHub repository, remote, account, or
+other external side effect.
+
+Read the current U-GAS AGENTS.md and the portable templates in templates/pica/. Create
+only missing root PICA controls (AGENTS.md, CURRENT_STATE.md, PROGRESS.md, IDEAS.md) from
+those current templates. Never overwrite substantive existing content. Record only
+truthful minimal project state, make an initial local commit when appropriate, and
+re-read the actual files and local repository state from disk after writing.
+
+If you cannot access a persistent filesystem or local Git, return exactly:
+BLOCKED — <specific capability reason>
+and do not simulate file creation or claim that anything was created or verified.
 
 Before claiming readiness, visibly report:
 
 PICA SELF-CHECK
+- AGENTS.md: PRESENT / CREATED / BLOCKED
+- CURRENT_STATE.md: PRESENT / CREATED / BLOCKED
 - PROGRESS.md: PRESENT / CREATED / BLOCKED
 - IDEAS.md: PRESENT / CREATED / BLOCKED
-- CURRENT_STATE.md: PRESENT / CREATED / BLOCKED
-- AGENTS.md: PRESENT / CREATED / BLOCKED
 
-Claim READY only when all four files are present, readable, and safely initialized, with
-no unresolved authority or repository-purpose problem. Otherwise report:
-BLOCKED — <specific reason>
+Claim READY only after the persistent folder, all four readable files, and local Git
+repository state are actually verified. Do not claim CREATED, UPDATED, or VERIFIED from
+prose simulation. If authority, project purpose, or a real human decision is unresolved,
+report the specific boundary instead.
+
+The first useful result is the verified local project folder and its PICA controls. Ask
+for correction only if the project purpose is genuinely unclear.
 ```
+
+### Already have a GitHub repository?
+
+An existing GitHub-backed project remains supported. Give the agent its repository URL
+and ask it to inspect the current remote/branch/status, preserve existing work, integrate
+only missing PICA controls from current templates, and verify after writing. The existing
+canonical-clone, remote-authority, branch/PR, and collaboration workflows still apply.
+GitHub is also an optional later publication/collaboration/durability upgrade for a local
+project, but adding a remote must be an explicit publication step; U-GAS must not create
+one silently.
+
+For either route, a local-only project uses its persistent filesystem and local Git
+history as authority. Remote fetch/push verification is not applicable until a remote
+exists. For the first external test, give feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where you got stuck, what was unclear, what the agent failed to do, unexpected friction, and whether the workflow actually resumed or worked as described. Do not post secrets, tokens, passwords, private keys, or sensitive private-repository content.
+
+If the agent cannot safely create files, manual creation from the portable PICA templates is an alternative; preserve substantive existing project rules and state. Otherwise, the agent should own routine Git and file mechanics.
 
 ### What happens next
 
