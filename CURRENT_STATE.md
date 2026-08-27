@@ -10,7 +10,7 @@ This is the compact U-GAS resume surface. U-GAS is experimental; independent use
 
 U-GAS is the public product authority for portable U-GAS product state, PICA contracts, onboarding/product decisions, and distribution state. It remains in early external testing; the public repository is seeking its first independent tester.
 
-The portable v0.3 baseline also includes an optional repository-backed long-handoff adapter: compact one-copy prompts remain default, while long/structured or previously failed clipboard payloads can use a generic `handoffs/pending/` contract with read-only validation and stale replay protection. This does not execute payloads or create orchestration. The README now presents this model through a human-first value/workflow/Quick Start journey, with local-first as the recommended route for a genuinely new project and GitHub retained for existing or later-published projects.
+The portable v0.3 baseline also includes an optional repository-backed long-handoff adapter: compact one-copy prompts remain default, while long/structured or previously failed clipboard payloads can use a generic `handoffs/pending/` contract with read-only validation and stale replay protection. This does not execute payloads or create orchestration. The README now presents this model through a human-first value/workflow/Quick Start journey, with local-first as the recommended route for a genuinely new project and GitHub retained for existing or later-published projects. The portable governance and README now require capability discovery before escalation and one complete copyable handoff when persistent/local execution is unavailable; Codex is a tested example, not a hard dependency.
 
 Owner-led Project Starter evidence has been reconciled into the product boundary: the route `Project Starter -> ordinary ChatGPT capability boundary -> authorized local execution -> user-controlled persistent workspace -> PICA -> real application -> human browser verification` worked on the owner's Mac. Ordinary ChatGPT correctly failed closed when it lacked Mac filesystem access, and did not substitute provider-hosted/session storage. This is owner-led evidence, not independent validation.
 
@@ -18,7 +18,7 @@ The resulting local inventory prototype was usable and survived a full Safari qu
 
 ## NEXT
 
-Obtain the first independent external test using the portable parity v0.3 baseline and collect real local-first onboarding, handoff-selection, failure, and friction evidence. In parallel, keep the Project Starter route sandbox-only until its generated-project identity, canonical routing, personality marker, attribution, and human-verification return path are corrected and tested.
+Correct and re-test the owner-led local-first Project Starter workflow, including the execution-capability escalation path and human README journey. Keep the Project Starter sandbox-only until the generated-project identity, canonical routing, personality marker, attribution, human-verification return path, and disabled unvalidated routes are tested. After that, obtain the first independent external test using the portable parity v0.3 baseline.
 
 ## WAITING / PAUSED
 

@@ -18,6 +18,27 @@ U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project fro
 
 ## Quick Start
 
+### The tested human workflow
+
+For the currently tested local-first journey, open the U-GAS Project Starter, describe
+what you want to make, choose where it should live, and copy its complete prompt into
+ChatGPT. ChatGPT is primarily the planning and coordination conversation: it should use
+its own safe capabilities first. If the work requires persistent/local execution that
+ChatGPT cannot access, it should discover the available capability and give you one
+ready-to-copy handoff for Codex or another suitable local/coding executor. Paste that
+handoff into the executor; it should create, change, and verify the real durable project
+where indicated. Inspect the actual project/result, then return the executor's concise
+report to ChatGPT so planning and reconciliation can continue there.
+
+This keeps ordinary discussion in ChatGPT and invokes local/coding-agent execution only
+when execution is needed. It may reduce unnecessary use of execution capacity, but U-GAS
+makes no claim about credits, plans, entitlements, pricing, or guaranteed savings.
+
+This exact local-first pattern has been owner-tested with ordinary ChatGPT and Codex on
+macOS. Other tool combinations may work, but are not independently validated; you may
+choose another compatible workflow that preserves the same capability boundaries and
+user-controlled durable workspace.
+
 ### What you need
 
 You need:
@@ -65,8 +86,14 @@ re-read the actual files and local repository state from disk after writing.
 If the public U-GAS source cannot be read after available read-only methods were attempted,
 return exactly:
 BLOCKED — U-GAS public source could not be read after available read-only methods were attempted: <specific reason>
-If you cannot access a persistent filesystem, return exactly:
+If you cannot access a persistent filesystem, first perform safe capability discovery. If
+an authorized persistent/local executor is available, prepare one complete copyable
+handoff containing the project context, exact bounded objective, workspace authority,
+constraints, verification requirements, and the instruction to return a concise result
+to this conversation. Do not ask the user to invent the handoff or perform routine
+Terminal/Git/file-transfer work. If no suitable capability exists, return exactly:
 BLOCKED — persistent filesystem unavailable: <specific capability reason>
+and include that one complete handoff whenever a suitable executor can be addressed.
 If you cannot access local Git, return exactly:
 BLOCKED — local Git unavailable: <specific capability reason>
 For another genuine human or capability boundary, return exactly:

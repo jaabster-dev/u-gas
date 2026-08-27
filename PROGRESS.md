@@ -4,6 +4,10 @@
 > Work will mark the path in time<br>
 > History starts here
 
+## 2026-08-27 — Execution-capability escalation correction
+
+Owner-led clean testing exposed that ordinary ChatGPT correctly failed closed at the Mac filesystem boundary but did not provide the next execution handoff. The portable governance and public README now require safe capability discovery first, use of any available authorized persistent/local executor, and exactly one complete copyable handoff when escalation is needed. Codex is documented as the tested example, not a mandatory dependency; provider/session storage substitution and routine manual Terminal/Git/file-transfer work remain prohibited. Public U-GAS was not promoted or given a Project Starter.
+
 Add chronological evidence here when material work occurs; keep current resume state in `CURRENT_STATE.md`.
 
 ## 2026-08-25 — Operational core parity v0.1

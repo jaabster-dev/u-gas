@@ -80,6 +80,19 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("Do not probe access with a write", normalized)
         self.assertIn("the setup was not completed", readme)
 
+    def test_readme_execution_escalation_contract(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
+        for text in (readme, governance):
+            self.assertIn("capability discovery", text)
+            self.assertIn("one complete", text)
+            self.assertIn("Codex", text)
+        self.assertIn("not mandatory", governance)
+        self.assertIn("ordinary ChatGPT and Codex on", readme)
+        self.assertIn("credits, plans, entitlements", readme)
+        self.assertIn("routine\nTerminal/Git/file-transfer work", readme)
+        self.assertIn("provider/session storage", governance)
+
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"
         for relative in ("AGENTS.md", "templates/pica/AGENTS.md", "examples/first-project/AGENTS.md"):
