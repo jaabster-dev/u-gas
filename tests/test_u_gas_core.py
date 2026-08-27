@@ -178,7 +178,8 @@ class CoreContractTests(unittest.TestCase):
     def test_pages_deployment_publishes_only_starter(self):
         workflow = (ROOT / ".github/workflows/project-starter-pages.yml").read_text(encoding="utf-8")
         self.assertIn("actions/upload-pages-artifact@v3", workflow)
-        self.assertIn("path: starter", workflow)
+        self.assertIn("path: _site", workflow)
+        self.assertIn("cp -R starter/. _site/starter/", workflow)
         self.assertIn("actions/deploy-pages@v4", workflow)
         self.assertIn("pages: write", workflow)
 

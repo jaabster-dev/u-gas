@@ -18,9 +18,11 @@ The resulting local inventory prototype was usable and survived a full Safari qu
 
 The third owner-led Household Inventory E2E reconciled the generated-project identity, canonical routing, haiku/personality marker, attribution, resume artifact, browser smoke evidence, and local Git evidence. The public Project Starter is now promoted at `starter/index.html` with My computer as the only active owner-tested route; GitHub and My server / cloud remain visible but disabled pending dedicated validation. The three accepted UX findings are now public contracts: name Codex first in tested AI-to-executor guidance while remaining tool-neutral, make handoff transitions visually prominent and consistent, and give the human the exact known file/path/verified URL.
 
+The earlier repository-only promotion was incomplete because GitHub rendered `starter/` as source rather than running the HTML. GitHub Pages is now enabled with a workflow that publishes only the Starter under `https://jaabster-dev.github.io/u-gas/starter/`. HTTP and browser verification confirmed the hosted page and main form flow; browser clipboard readback was unavailable, so copy evidence is limited to the rendered prompt and the page's truthful browser fallback behavior.
+
 ## NEXT
 
-Run a fresh nontechnical-user receiving-agent test against the public My computer Starter and record the result without claiming independent validation. Keep GitHub and My server / cloud visibly disabled until each has a dedicated end-to-end test.
+Run a fresh nontechnical-user receiving-agent test against the publicly runnable My computer Starter and record the result without claiming independent validation. Keep GitHub and My server / cloud visibly disabled until each has a dedicated end-to-end test.
 
 ## WAITING / PAUSED
 

@@ -64,4 +64,8 @@ Recorded the accepted product principle: teach users how to use U-GAS before exp
 
 ## 2026-08-27 — Third owner-led E2E and public Starter promotion
 
+## 2026-08-27 — Public Starter deployment correction
+
+The prior Starter promotion was reclassified as incomplete after owner testing showed that a GitHub source-directory link opened repository content rather than a runnable web app. Added a minimal GitHub Pages workflow that publishes only `starter/` under the verified public URL `https://jaabster-dev.github.io/u-gas/starter/`. Pages run `33083330736` succeeded; HTTP returned 200; browser verification confirmed the rendered page, example fill, dynamic local path, active/disabled routes, and generated U-GAS contracts. Clipboard readback was unavailable in the browser session, so no stronger clipboard PASS is claimed. Independent validation remains outstanding.
+
 The completed owner-led Household Inventory E2E reconciled the generated-project identity, canonical U-GAS routing, haiku/personality marker, exact attribution, stable resume artifact, browser smoke evidence, and local Git evidence. Public `starter/index.html` now promotes the tested My computer route; GitHub and My server / cloud remain visible but disabled pending dedicated validation. The public README and governance record the accepted UX contracts for a named Codex-first tested handoff, visually prominent `NEXT ACTION` transitions, and exact known human target file/path/verified URL. This remains owner-led evidence only; no independent validation, universal Free/Codex availability, or exhaustive product QA is claimed.
