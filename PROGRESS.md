@@ -57,3 +57,7 @@ Repository responsibility is reconciled: `jaabster-dev/u-gas` owns portable U-GA
 ## 2026-08-27 — Resume and executor-return UX contract
 
 The second owner-led E2E exposed two accepted human-first requirements: generated projects need a stable `GIVE THIS TO YOUR NEXT AI CHAT.txt` entry ticket that is not a fifth PICA authority, and executor responses need one complete return payload with an explicit instruction to paste it back into the coordinating AI chat. Added both requirements to public governance, README, prompt contract, and regression coverage. Public Project Starter remains unpromoted.
+
+## 2026-08-27 — Human-first action-first onboarding principle
+
+Recorded the accepted product principle: teach users how to use U-GAS before explaining how it works. The public README now leads with the concrete describe -> choose -> copy -> paste -> executor-if-needed -> copy-back -> continue journey, plus the stable new-chat resume action, before deeper mechanics. Owner comparison of BMAD and GitHub Spec Kit is retained only as UX/reference-direction evidence; no technical inferiority or uniqueness claim is made.

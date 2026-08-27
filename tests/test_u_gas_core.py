@@ -104,6 +104,24 @@ class CoreContractTests(unittest.TestCase):
             self.assertIn("restart", text)
         self.assertIn("actual PICA/project state", " ".join(readme.split()))
 
+    def test_action_first_onboarding_contract(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("### Use U-GAS first: the action-first path", readme)
+        actions = (
+            "Describe what you want to make.",
+            "Choose where the project should live.",
+            "Copy the generated prompt.",
+            "Paste it into your coordinating AI chat.",
+            "Copy the executor's complete result back into the coordinating AI chat.",
+            "Continue talking to the AI about the project.",
+        )
+        for action in actions:
+            self.assertIn(action, readme)
+        self.assertLess(readme.index("### Use U-GAS first: the action-first path"), readme.index("## How U-GAS works"))
+        current = (ROOT / "CURRENT_STATE.md").read_text(encoding="utf-8")
+        self.assertIn("PICA, governance, capability discovery", current)
+        self.assertIn("BMAD and GitHub Spec Kit", current)
+
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"
         for relative in ("AGENTS.md", "templates/pica/AGENTS.md", "examples/first-project/AGENTS.md"):

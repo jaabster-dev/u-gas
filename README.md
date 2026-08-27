@@ -18,7 +18,20 @@ U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project fro
 
 ## Quick Start
 
-### The tested human workflow
+### Use U-GAS first: the action-first path
+
+You can use U-GAS without learning its terminology first:
+
+1. Describe what you want to make.
+2. Choose where the project should live.
+3. Copy the generated prompt.
+4. Paste it into your coordinating AI chat.
+5. If that AI asks for local execution, copy its ready-made handoff into a suitable executor.
+6. Copy the executor's complete result back into the coordinating AI chat.
+7. Continue talking to the AI about the project.
+
+Coming back later? Open `GIVE THIS TO YOUR NEXT AI CHAT.txt`, copy all of it, and paste it
+into a new compatible AI chat to continue.
 
 For the currently tested local-first journey, open the U-GAS Project Starter, describe
 what you want to make, choose where it should live, and copy its complete prompt into
