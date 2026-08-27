@@ -30,10 +30,15 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Prepare Starter artifact
+        run: |
+          mkdir -p _site/starter
+          cp -R starter/. _site/starter/
+
       - name: Upload Starter artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: starter
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
