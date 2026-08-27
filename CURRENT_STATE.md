@@ -20,13 +20,23 @@ The third owner-led Household Inventory E2E reconciled the generated-project ide
 
 The earlier repository-only promotion was incomplete because GitHub rendered `starter/` as source rather than running the HTML. GitHub Pages is now enabled with a workflow that publishes only the Starter under `https://jaabster-dev.github.io/u-gas/starter/`. HTTP and browser verification confirmed the hosted page and main form flow; browser clipboard readback was unavailable, so copy evidence is limited to the rendered prompt and the page's truthful browser fallback behavior.
 
+Owner decision: pause new U-GAS feature development. The next session is limited to visual / first-contact cleanup for a non-technical tester; it must not redesign or extend the supported My computer workflow unless a genuine blocker is found.
+
 ## NEXT
 
-Run a fresh nontechnical-user receiving-agent test against the publicly runnable My computer Starter and record the result without claiming independent validation. Keep GitHub and My server / cloud visibly disabled until each has a dedicated end-to-end test.
+NEXT SESSION — VISUAL / FIRST-CONTACT CLEANUP ONLY
+
+1. Make the first README screen immediately communicate **OPEN PROJECT STARTER** and link directly to the verified runnable URL.
+2. Make that public `Open Project Starter` link open the runnable Starter in a new browser tab/window so the originating README/repository page remains available. This is the first concrete implementation item for the next session; do not implement it in this checkpoint.
+3. Reduce README first-contact density and repetition while preserving the action-first path; move PICA, governance, and internal mechanics lower into progressive disclosure.
+4. Review Starter visual hierarchy and wording so a first-time non-technical tester immediately understands what to click, type, copy, and where to paste.
+5. Prepare one short, plain-language public tester invitation without over-marketing or claiming independent validation.
+
+After that visual cleanup, run only the smallest relevant browser/tests and leave U-GAS publicly discoverable while waiting for external evidence. Do not add new product functionality unless a genuine blocker prevents the already-supported My computer workflow.
 
 ## WAITING / PAUSED
 
-Waiting for tester feedback on the public first-tester issue and for sandbox evidence before any Project Starter promotion decision.
+Waiting for independent external tester feedback. GitHub and My server / cloud Starter routes remain visible-disabled pending dedicated route E2Es.
 
 ## BLOCKERS / BOUNDARIES
 
