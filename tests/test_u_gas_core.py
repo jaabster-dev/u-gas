@@ -108,7 +108,8 @@ class CoreContractTests(unittest.TestCase):
 
     def test_public_starter_is_linked_from_action_first_readme(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("[Project Starter](starter/)", readme)
+        self.assertIn("https://jaabster-dev.github.io/u-gas/starter/", readme)
+        self.assertNotIn("[Project Starter](starter/)", readme)
         self.assertLess(readme.index("Use U-GAS first"), readme.index("## How U-GAS works"))
         self.assertIn("## NEXT ACTION", readme)
         self.assertIn("exact file, project path, or verified browser URL", readme)
@@ -146,7 +147,7 @@ class CoreContractTests(unittest.TestCase):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
         starter_readme = (ROOT / "starter/README.md").read_text(encoding="utf-8")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("[Project Starter](starter/)", readme)
+        self.assertIn("https://jaabster-dev.github.io/u-gas/starter/", readme)
         self.assertIn('value="computer" checked', starter)
         self.assertIn('value="github" disabled', starter)
         self.assertIn('value="cloud" disabled', starter)
@@ -173,6 +174,13 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("Compact one-copy handoffs remain the normal path", readme)
         self.assertIn("exact target assertion", readme)
         self.assertNotIn("GrabbersApp", checker)
+
+    def test_pages_deployment_publishes_only_starter(self):
+        workflow = (ROOT / ".github/workflows/project-starter-pages.yml").read_text(encoding="utf-8")
+        self.assertIn("actions/upload-pages-artifact@v3", workflow)
+        self.assertIn("path: starter", workflow)
+        self.assertIn("actions/deploy-pages@v4", workflow)
+        self.assertIn("pages: write", workflow)
 
 
 if __name__ == "__main__":

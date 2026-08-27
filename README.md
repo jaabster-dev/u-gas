@@ -18,6 +18,15 @@ U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project fro
 
 ## Quick Start
 
+## Start here
+
+**[OPEN PROJECT STARTER →](https://jaabster-dev.github.io/u-gas/starter/)**
+
+Use the runnable Starter first. Describe what you want to make, leave **My computer**
+selected, copy the generated prompt, and paste it into ChatGPT or another coordinating AI.
+If it gives you a Codex handoff, copy the whole marked block into Codex; then copy Codex's
+clearly marked result back to ChatGPT and continue.
+
 ### Use U-GAS first: the action-first path
 
 You can use U-GAS without learning its terminology first:
@@ -39,10 +48,10 @@ compatible authorized executor may be used where available.
 Coming back later? Open `GIVE THIS TO YOUR NEXT AI CHAT.txt`, copy all of it, and paste it
 into a new compatible AI chat to continue.
 
-Open the public [Project Starter](starter/) to use this flow. Leave **My computer**
-selected for the currently tested route. GitHub and My server / cloud remain visible in
-the Starter as planned routes, but are disabled until each has dedicated end-to-end
-validation.
+Open the public [Project Starter](https://jaabster-dev.github.io/u-gas/starter/) to use this
+flow. Leave **My computer** selected for the currently tested route. GitHub and My server /
+cloud remain visible in the Starter as planned routes, but are disabled until each has
+dedicated end-to-end validation.
 
 For the currently tested local-first journey, open the U-GAS Project Starter, describe
 what you want to make, choose where it should live, and copy its complete prompt into
