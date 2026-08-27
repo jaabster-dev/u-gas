@@ -93,6 +93,17 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("routine\nTerminal/Git/file-transfer work", readme)
         self.assertIn("provider/session storage", governance)
 
+    def test_resume_and_executor_return_contract(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
+        for text in (readme, governance):
+            self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", text)
+            self.assertIn("not a fifth PICA", text)
+            self.assertIn("Copy this complete result and paste it back into the AI chat that sent you here.", text)
+            self.assertIn("next useful action", text)
+            self.assertIn("restart", text)
+        self.assertIn("actual PICA/project state", " ".join(readme.split()))
+
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"
         for relative in ("AGENTS.md", "templates/pica/AGENTS.md", "examples/first-project/AGENTS.md"):

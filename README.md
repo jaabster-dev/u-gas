@@ -39,6 +39,21 @@ macOS. Other tool combinations may work, but are not independently validated; yo
 choose another compatible workflow that preserves the same capability boundaries and
 user-controlled durable workspace.
 
+The executor's response must include one complete concise return result and clearly tell
+you: `Copy this complete result and paste it back into the AI chat that sent you here.`
+Paste that result back into the coordinating chat so it can reconcile durable state and
+continue. You should not have to decide which part of a technical report to copy.
+
+### Resume after a pause or in a new AI chat
+
+Open the durable project folder and open `GIVE THIS TO YOUR NEXT AI CHAT.txt`. Copy the
+complete text into a new compatible AI chat. That stable human entry ticket points the AI
+to the project's durable `AGENTS.md`, current U-GAS instructions, and actual PICA/project
+state so it can reconstruct the current ACTIVE, NEXT, WAITING, and BLOCKED situation and
+continue from the next useful action. It is not a fifth PICA file or a source of truth;
+the durable project files remain authoritative. The artifact normally remains stable and
+does not require special regeneration at every pause.
+
 ### What you need
 
 You need:
@@ -82,6 +97,12 @@ only missing root PICA controls (AGENTS.md, CURRENT_STATE.md, PROGRESS.md, IDEAS
 those current templates. Never overwrite substantive existing content. Record only
 truthful minimal project state, make an initial local commit when appropriate, and
 re-read the actual files and local repository state from disk after writing.
+Also create or reconcile the separate stable human resume entry ticket
+`GIVE THIS TO YOUR NEXT AI CHAT.txt`; it is not a fifth PICA/state authority. Begin that
+file with a clear instruction to copy its complete text into a new AI chat to continue
+the project. Its prompt must route through durable `AGENTS.md`, current U-GAS, and actual
+PICA/project state, preserve existing work, and continue from the next useful action
+without restarting.
 
 If the public U-GAS source cannot be read after available read-only methods were attempted,
 return exactly:
@@ -94,6 +115,9 @@ to this conversation. Do not ask the user to invent the handoff or perform routi
 Terminal/Git/file-transfer work. If no suitable capability exists, return exactly:
 BLOCKED — persistent filesystem unavailable: <specific capability reason>
 and include that one complete handoff whenever a suitable executor can be addressed.
+Any executor handoff must require the executor's final response to contain one complete
+concise return payload and the visible instruction: Copy this complete result and paste it
+back into the AI chat that sent you here.
 If you cannot access local Git, return exactly:
 BLOCKED — local Git unavailable: <specific capability reason>
 For another genuine human or capability boundary, return exactly:
