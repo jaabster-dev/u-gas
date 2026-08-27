@@ -30,8 +30,19 @@ You can use U-GAS without learning its terminology first:
 6. Copy the executor's complete result back into the coordinating AI chat.
 7. Continue talking to the AI about the project.
 
+## NEXT ACTION
+
+**Copy the complete prompt into your coordinating AI chat.** The tested local-first
+handoff names Codex as the first example when local execution is needed; another
+compatible authorized executor may be used where available.
+
 Coming back later? Open `GIVE THIS TO YOUR NEXT AI CHAT.txt`, copy all of it, and paste it
 into a new compatible AI chat to continue.
+
+Open the public [Project Starter](starter/) to use this flow. Leave **My computer**
+selected for the currently tested route. GitHub and My server / cloud remain visible in
+the Starter as planned routes, but are disabled until each has dedicated end-to-end
+validation.
 
 For the currently tested local-first journey, open the U-GAS Project Starter, describe
 what you want to make, choose where it should live, and copy its complete prompt into
@@ -56,6 +67,13 @@ The executor's response must include one complete concise return result and clea
 you: `Copy this complete result and paste it back into the AI chat that sent you here.`
 Paste that result back into the coordinating chat so it can reconcile durable state and
 continue. You should not have to decide which part of a technical report to copy.
+
+## NEXT ACTION — after execution
+
+**Copy this complete result and paste it back into the AI chat that sent you here.**
+When the executor knows the exact file, project path, or verified browser URL, it should
+name that target directly. You should not have to derive a localhost URL or interpret
+routine command output.
 
 ### Resume after a pause or in a new AI chat
 

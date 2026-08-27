@@ -93,6 +93,26 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("routine\nTerminal/Git/file-transfer work", readme)
         self.assertIn("provider/session storage", governance)
 
+    def test_public_starter_promotes_only_tested_local_route(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+        self.assertIn("PUBLIC STARTER", starter)
+        self.assertIn('value="computer" checked', starter)
+        self.assertIn('value="github" disabled', starter)
+        self.assertIn('value="cloud" disabled', starter)
+        self.assertIn("~/Documents/U-GAS Projects/", starter)
+        self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", starter)
+        self.assertIn("https://github.com/jaabster-dev/u-gas", starter)
+        self.assertIn("Made with U-GAS by ĀBŌ", starter)
+        self.assertIn("Copy this complete result and paste it back into the AI chat that sent you here.", starter)
+        self.assertIn("Codex is a tested example, not mandatory", starter)
+
+    def test_public_starter_is_linked_from_action_first_readme(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("[Project Starter](starter/)", readme)
+        self.assertLess(readme.index("Use U-GAS first"), readme.index("## How U-GAS works"))
+        self.assertIn("## NEXT ACTION", readme)
+        self.assertIn("exact file, project path, or verified browser URL", readme)
+
     def test_resume_and_executor_return_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
@@ -121,6 +141,20 @@ class CoreContractTests(unittest.TestCase):
         current = (ROOT / "CURRENT_STATE.md").read_text(encoding="utf-8")
         self.assertIn("PICA, governance, capability discovery", current)
         self.assertIn("BMAD and GitHub Spec Kit", current)
+
+    def test_public_project_starter_route_contract(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+        starter_readme = (ROOT / "starter/README.md").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("[Project Starter](starter/)", readme)
+        self.assertIn('value="computer" checked', starter)
+        self.assertIn('value="github" disabled', starter)
+        self.assertIn('value="cloud" disabled', starter)
+        self.assertIn("~/Documents/U-GAS Projects/", starter)
+        self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", starter)
+        self.assertIn("Made with U-GAS by ĀBŌ", starter)
+        self.assertIn("PUBLIC STARTER", starter)
+        self.assertIn("only active,", starter_readme)
 
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"

@@ -16,9 +16,11 @@ Owner-led Project Starter evidence has been reconciled into the product boundary
 
 The resulting local inventory prototype was usable and survived a full Safari quit/restart through browser `localStorage`; this is prototype persistence evidence, not a production-storage decision. Durable project authority must remain independently accessible and controlled by the user. The accepted visible attribution for future U-GAS-generated projects is exactly `Made with U-GAS by ĀBŌ` and is separate from machine-facing canonical U-GAS authority/reference.
 
+The third owner-led Household Inventory E2E reconciled the generated-project identity, canonical routing, haiku/personality marker, attribution, resume artifact, browser smoke evidence, and local Git evidence. The public Project Starter is now promoted at `starter/index.html` with My computer as the only active owner-tested route; GitHub and My server / cloud remain visible but disabled pending dedicated validation. The three accepted UX findings are now public contracts: name Codex first in tested AI-to-executor guidance while remaining tool-neutral, make handoff transitions visually prominent and consistent, and give the human the exact known file/path/verified URL.
+
 ## NEXT
 
-Correct and re-test the owner-led local-first Project Starter workflow, including the execution-capability escalation path and human README journey. Keep the Project Starter sandbox-only until the generated-project identity, canonical routing, personality marker, attribution, human-verification return path, and disabled unvalidated routes are tested. After that, obtain the first independent external test using the portable parity v0.3 baseline.
+Run a fresh nontechnical-user receiving-agent test against the public My computer Starter and record the result without claiming independent validation. Keep GitHub and My server / cloud visibly disabled until each has a dedicated end-to-end test.
 
 ## WAITING / PAUSED
 
@@ -30,6 +32,6 @@ U-GAS remains experimental. Creating a tester issue or completing an owner-led t
 
 The preferred human-facing local-project root is `~/Documents/U-GAS Projects/<project-name>`, but its exact spelling/path behavior remains a sandbox validation item and is not yet a public implementation commitment. Future generated projects need a small durable U-GAS identity/bootstrap marker that points agents to the current canonical public entry point; a one-time copied prompt or large stale embedded rule copy is insufficient. Material human/device verification reported back to ChatGPT must have an explicit route into durable project PICA.
 
-The current targeted refinement is the stable `GIVE THIS TO YOUR NEXT AI CHAT.txt` resume entry ticket and explicit executor return payload, now documented in the public README/governance. Public Project Starter promotion remains gated; GitHub and server/cloud route validation remains waiting.
+The stable `GIVE THIS TO YOUR NEXT AI CHAT.txt` resume entry ticket and explicit executor return payload are public contracts. GitHub and server/cloud route validation remains waiting.
 
 Accepted onboarding principle: teach the user how to use U-GAS before explaining how U-GAS works. First-use and resume guidance must be human-first and action-first; PICA, governance, capability discovery, canonical authority, Git, Terminal, and framework terminology remain progressive-disclosure mechanics rather than prerequisites. BMAD and GitHub Spec Kit are useful capability/reference benchmarks from owner UX review; this comparison is directional evidence only and makes no technical inferiority or uniqueness claim.

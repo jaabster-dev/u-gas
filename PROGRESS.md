@@ -61,3 +61,7 @@ The second owner-led E2E exposed two accepted human-first requirements: generate
 ## 2026-08-27 — Human-first action-first onboarding principle
 
 Recorded the accepted product principle: teach users how to use U-GAS before explaining how it works. The public README now leads with the concrete describe -> choose -> copy -> paste -> executor-if-needed -> copy-back -> continue journey, plus the stable new-chat resume action, before deeper mechanics. Owner comparison of BMAD and GitHub Spec Kit is retained only as UX/reference-direction evidence; no technical inferiority or uniqueness claim is made.
+
+## 2026-08-27 — Third owner-led E2E and public Starter promotion
+
+The completed owner-led Household Inventory E2E reconciled the generated-project identity, canonical U-GAS routing, haiku/personality marker, exact attribution, stable resume artifact, browser smoke evidence, and local Git evidence. Public `starter/index.html` now promotes the tested My computer route; GitHub and My server / cloud remain visible but disabled pending dedicated validation. The public README and governance record the accepted UX contracts for a named Codex-first tested handoff, visually prominent `NEXT ACTION` transitions, and exact known human target file/path/verified URL. This remains owner-led evidence only; no independent validation, universal Free/Codex availability, or exhaustive product QA is claimed.
