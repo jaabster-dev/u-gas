@@ -54,9 +54,12 @@ $('example').addEventListener('click',()=>{name.value='Garden planner';descripti
 </script>
 <script>
 const starterRender=window.render;
+// The coordinating AI must act on a known execution boundary immediately: one prominent
+// NEXT ACTION, one named executor, and one complete handoff, without a routine-choice prompt.
 window.render=function(){
   starterRender();
   promptBox.textContent += `\n\nEXECUTION-CAPABILITY ESCALATION\nIf this coordinating chat cannot perform persistent/local execution, first perform safe capability discovery. Use an available authorized persistent/local executor when one exists. If none exists, report the smallest real capability boundary and provide exactly one complete ready-to-copy handoff for a suitable executor. Codex is a tested example, not mandatory. Do not simulate completion, substitute provider/session storage, or ask the user to invent a handoff or perform routine Terminal/Git/file-transfer work.\n\nONE COMPLETE HANDOFF\nBEGIN EXECUTION HANDOFF\nTarget: a suitable authorized persistent/local executor\nProject: ${value(name.value,'<PROJECT NAME>')}\nDescription: ${value(description.value,'<PROJECT DESCRIPTION>')}\nDurable location: ${durableLocation()||'<PROJECT LOCATION>'}\nObjective: establish or reconcile the durable U-GAS workspace, then continue the actual project task\nConstraints: read current U-GAS; preserve PICA; no provider/session sandbox substitution; no secrets; verify before claiming completion\nReturn: give one concise execution result back to this ChatGPT conversation for reconciliation\nEND EXECUTION HANDOFF\nThis is one complete payload; do not split it or make the user reconstruct it.`;
+  promptBox.textContent += `\n\nHANDOFF RULE\nOnce the next useful action and a suitable executor are known, immediately expose one prominent NEXT ACTION naming that executor and provide this one complete handoff. Do not present routine execution choices or ask the owner how to proceed merely to select mechanics.`;
 };
 window.render();
 </script>

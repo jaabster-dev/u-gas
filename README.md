@@ -39,6 +39,10 @@ You can use U-GAS without learning its terminology first:
 6. Copy the executor's complete result back into the coordinating AI chat.
 7. Continue talking to the AI about the project.
 
+If local execution is needed and a suitable executor is known, the coordinating AI should
+immediately show one prominent `NEXT ACTION`, name that executor, and provide one complete
+copyable handoff. It should not ask you to choose routine execution mechanics.
+
 **Next:** copy the complete prompt into your coordinating AI chat. If local execution is
 needed, the tested handoff names Codex first; another compatible authorized executor may
 be used where available.

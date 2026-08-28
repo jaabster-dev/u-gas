@@ -92,6 +92,8 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("credits, plans, entitlements", readme)
         self.assertIn("routine\nTerminal/Git/file-transfer work", readme)
         self.assertIn("provider/session storage", governance)
+        self.assertIn("immediately show one prominent `NEXT ACTION`", readme)
+        self.assertIn("should not ask you to choose routine execution mechanics", readme)
 
     def test_public_starter_promotes_only_tested_local_route(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
@@ -105,6 +107,8 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("Made with U-GAS by ĀBŌ", starter)
         self.assertIn("Copy this complete result and paste it back into the AI chat that sent you here.", starter)
         self.assertIn("Codex is a tested example, not mandatory", starter)
+        self.assertIn("immediately expose one prominent NEXT ACTION naming that executor", starter)
+        self.assertIn("Do not present routine execution choices or ask the owner how to proceed", starter)
 
     def test_public_starter_is_linked_from_action_first_readme(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
