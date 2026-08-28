@@ -107,3 +107,7 @@ Applied the owner-requested presentation-only follow-up: removed the upper-right
 ## 2026-08-28 — Owner-supplied provider logo assets
 
 Replaced the hand-drawn destination marks with the owner-supplied `ChatGPT-Logo.png` and `Claude_AI_logo.svg` files, published as Starter assets. The ChatGPT PNG is used directly; the Claude SVG is visually clipped to its orange symbol so its wordmark is not displayed. Destination URLs, prompt generation, Copy/NEXT STEP behavior, route state, and all other functionality remain unchanged. Local desktop and 390px checks confirmed both supplied assets, no visible Claude text, no horizontal overflow, and the existing Fill example / Copy flow. Independent validation remains outstanding; CURRENT/NEXT/WAITING remain substantively unchanged.
+
+## 2026-08-28 — Public Starter compact first viewport
+
+Applied the owner-requested presentation-only refinement: widened the visible ChatGPT PNG frame so the full supplied mark is shown, matched Claude button colors to the ChatGPT destination control, and reduced the first-contact typography, field sizing, card padding, and vertical gaps. The first-view layout now has a materially shorter page while preserving readability and the existing flow. Local desktop and 390px browser checks confirmed no horizontal overflow, supplied-logo rendering, Fill example, Copy/NEXT STEP behavior, and unchanged provider URLs. Independent validation remains outstanding; CURRENT/NEXT/WAITING remain substantively unchanged.

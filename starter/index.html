@@ -112,6 +112,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 @media(max-width:860px){.wrap{max-width:930px}.hero{grid-template-columns:minmax(0,1fr) minmax(310px,.82fr);gap:18px}.hero h1{font-size:clamp(42px,6vw,58px)}}
 @media(max-width:760px){.hero{grid-template-columns:1fr;gap:10px;margin-bottom:24px}.hero-copy{max-width:none}.hero h1{font-size:clamp(42px,13vw,58px)}.hero-art{min-height:258px;margin-top:4px}.hero-art::before{width:230px;height:230px}.hero-art::after{width:300px;height:300px}.ugas-product{width:min(84vw,325px)}.hero-steps{margin-top:18px;font-size:13px}}
 </style>
+<style>
+/* Compact first viewport while preserving the established flow. */
+.wrap{padding:16px 22px 34px}.back{margin-bottom:12px}.hero{margin:10px 0 16px}.hero-copy{max-width:760px}h1{font-size:clamp(36px,5vw,54px);margin-bottom:8px}.hero p:first-of-type{font-size:clamp(14px,1.8vw,17px);line-height:1.3}.hero-steps{margin-top:10px;font-size:12px;line-height:1.4}.card{padding:14px;margin:9px 0;border-radius:17px}.card h2{font-size:24px}.field{margin-bottom:10px}label{font-size:14px;margin-bottom:5px}input,textarea{padding:9px 11px}textarea{min-height:70px}.routes{gap:7px}.route{padding:10px}.route:has(input:checked){padding:10px}.destination{padding:10px 11px}.note{padding:7px 11px}.next-step{padding:11px}.next-step h3{margin-bottom:6px}.next-step p{margin:4px 0}.destinations{margin-top:8px;gap:7px}.provider-logo{width:30px;height:22px;margin-right:7px;flex-basis:30px}.provider-logo.chatgpt img{width:44px;transform:translateX(-7px)}.provider-logo.claude img{height:22px}.preview{margin-top:10px}.credit{margin-top:12px}
+@media(max-width:680px){.wrap{padding:12px 14px 30px}.back{margin-bottom:10px}.hero{margin:8px 0 13px}.hero h1{font-size:clamp(34px,10.5vw,48px)}.hero-steps{font-size:11px}.card{padding:13px 12px;margin:8px 0}.route{padding:10px}.route:has(input:checked){padding:10px}.actions{gap:7px}}
+</style>
 </head>
 <body>
 <main class="wrap">
