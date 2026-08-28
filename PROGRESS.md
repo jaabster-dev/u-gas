@@ -115,3 +115,7 @@ Applied the owner-requested presentation-only refinement: widened the visible Ch
 ## 2026-08-28 — U-GAS skill operational-completeness correction
 
 The public skills were structurally present but four were semantically over-distilled. Rebuilt `u-gas-resume`, `u-gas-safe-patch`, `u-gas-verify-change`, and `u-gas-external-research` as compact ordered procedures while retaining the existing `u-gas-skill-review`; no new U-GAS skill or feature was added. Added deterministic required-section and anti-stub checks for every public skill plus stable regression markers. `python3 scripts/check_u_gas.py`, all 49 unit tests, and `git diff --check` passed; Starter behavior and independent-validation status are unchanged. The public correction was verified at `e94ec9f`; this continuity entry is documentation-only.
+
+## 2026-08-29 — U-GAS operational-quality correction
+
+The complete repository audit found U-GAS broadly operational and identified one weak-pass policy plus three duplication issues. Strengthened `ai/MULTI_AGENT_COLLABORATION.md` into a compact operational procedure covering triggers, authority, overlap inspection, preservation, reconciliation, fail-closed conflicts, and required outcome. Consolidated duplicated material in `ai/SESSION_CONTINUITY.md`, `ai/LARGE_FILE_PATCHING.md`, and `ai/REPOSITORY_STRUCTURE.md` without changing their safety semantics. Added a targeted semantic regression test for the multi-agent policy. No Starter, README, skill, feature, or product-scope change was made; independent validation remains outstanding.

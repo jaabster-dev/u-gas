@@ -1,24 +1,29 @@
 # U-GAS Repository Structure
 
+## Canonical responsibilities
+
 Every active U-GAS-managed project visibly exposes these root controls:
 
-- `PROGRESS.md` — chronological history/evidence;
-- `IDEAS.md` — unaccepted ideas parking lot;
+- `PROGRESS.md` — chronological history and evidence;
+- `IDEAS.md` — unaccepted possibility space;
 - `CURRENT_STATE.md` — compact current state and resume action;
-- `AGENTS.md` — agent instructions.
+- `AGENTS.md` — agent instructions and routing.
 
-`README.md` is the short human entry point and should link to, rather than duplicate, the other responsibilities. Additional documents are optional and responsibility-driven. Do not create a backlog, installer, orchestration layer, or new document hierarchy merely to make a project appear complete.
+`README.md` is human navigation, not duplicate authority. Missing controls may use truthful templates; substantive existing content must be preserved. Additional documents are optional and responsibility-driven, and referenced optional documents must exist. Do not create a backlog framework, installer, orchestration layer, or new document hierarchy merely to make a project appear complete.
+
+`IDEAS.md` is not accepted scope, a requirement, roadmap, backlog, or authorization. The explicit lifecycle remains `IDEA -> PARKED -> RESEARCHED -> ACCEPTED -> BACKLOG/SCOPE`. During migration, preserve provenance and migrate PICA additively and conservatively; do not concatenate overlapping documents blindly.
+
+Repository name or presence does not establish product purpose. If purpose is unknown, allow only neutral maintenance, ask the smallest owner question, and record a minimal durable purpose after clarification.
 
 ## Lightweight change specification
 
-For a non-trivial accepted behavior or product change with interacting requirements, edge cases, ambiguity rules, or important user-visible scenarios, use the smallest sufficient existing canonical spec/decision document. It should state objective/why, accepted scope, non-goals, requirements, representative positive and negative/unsafe cases, invariants, and acceptance/verification criteria. Do not add a new framework or folder merely to satisfy this guidance.
+For a non-trivial accepted behavior or product change with interacting requirements, edge cases, ambiguity rules, or important user-visible scenarios, use the smallest sufficient existing canonical specification or decision document. It must state:
 
-`IDEAS.md` is not accepted scope. `PROGRESS.md` is not a specification. `CURRENT_STATE.md` is not history. `README.md` is not the canonical home for every policy.
+- objective and why;
+- accepted scope and non-goals;
+- requirements;
+- representative positive and negative, ambiguous, or unsafe cases;
+- invariants;
+- verification, acceptance, and evidence criteria.
 
-## Full responsibility boundaries
-
-`AGENTS.md` owns instructions/routing and safe handoff; `CURRENT_STATE.md` owns compact current state; `PROGRESS.md` owns chronological evidence; `IDEAS.md` owns unaccepted possibility space. Missing controls may use templates, but truthful placeholders and substantive existing content must be preserved. IDEAS is not a requirement, roadmap, backlog, or authorization. A useful lifecycle is `IDEA -> PARKED -> RESEARCHED -> ACCEPTED -> BACKLOG/SCOPE`; acceptance is explicit.
-
-Repository name/presence does not establish product purpose. If purpose is unknown, allow neutral maintenance, ask the smallest owner question, and record a minimal durable purpose after clarification. Optional documents are responsibility-driven; if instructions reference one, it must exist. Do not force global filenames or concatenate overlapping documents blindly during migration: preserve provenance and migrate PICA additively/conservatively.
-
-For a non-trivial accepted change, the smallest sufficient spec states objective/why, accepted scope, non-goals, requirements, positive cases, negative/ambiguous/unsafe cases, invariants, and verification criteria. `PROGRESS` is not `CURRENT_STATE` or a spec, and README is navigation rather than the canonical home for everything.
+`PROGRESS.md` is not a specification. `CURRENT_STATE.md` is not history. `README.md` is not the canonical home for every policy. Do not add a framework or folder merely to satisfy this guidance.

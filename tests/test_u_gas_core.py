@@ -42,6 +42,19 @@ class CoreContractTests(unittest.TestCase):
             for marker in markers:
                 self.assertIn(marker.lower(), text, f"{relative}: {marker}")
 
+    def test_multi_agent_policy_has_operational_boundaries(self):
+        policy = (ROOT / "ai/MULTI_AGENT_COLLABORATION.md").read_text(encoding="utf-8")
+        for marker in (
+            "multiple agents, sessions, or executors",
+            "Do not invoke a heavy collaboration protocol",
+            "shared coordination surface",
+            "preserve unique",
+            "reconcile",
+            "fail closed",
+            "one coherent authoritative result",
+        ):
+            self.assertIn(marker, policy)
+
     def test_readme_and_anchor_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("U-GAS (Universal Grabbers Agent System)", readme)
