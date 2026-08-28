@@ -22,17 +22,11 @@ The earlier repository-only promotion was incomplete because GitHub rendered `st
 
 Owner decision: pause new U-GAS feature development. The next session is limited to visual / first-contact cleanup for a non-technical tester; it must not redesign or extend the supported My computer workflow unless a genuine blocker is found.
 
+Today's visual / first-contact cleanup is complete. The README now leads with the direct Starter CTA and concise action path; the long manual prompt is progressive disclosure; the Starter wording makes the first actions and destination clearer; the haiku canary and temporal-grounding semantics are documented. GitHub rendered the CTA without `target="_blank"`, so the new-tab requirement is platform-limited rather than claimed as a PASS; the Starter has a clear repository return link.
+
 ## NEXT
 
-NEXT SESSION — VISUAL / FIRST-CONTACT CLEANUP ONLY
-
-1. Make the first README screen immediately communicate **OPEN PROJECT STARTER** and link directly to the verified runnable URL.
-2. Make that public `Open Project Starter` link open the runnable Starter in a new browser tab/window so the originating README/repository page remains available. This is the first concrete implementation item for the next session; do not implement it in this checkpoint.
-3. Reduce README first-contact density and repetition while preserving the action-first path; move PICA, governance, and internal mechanics lower into progressive disclosure.
-4. Review Starter visual hierarchy and wording so a first-time non-technical tester immediately understands what to click, type, copy, and where to paste.
-5. Prepare one short, plain-language public tester invitation without over-marketing or claiming independent validation.
-
-After that visual cleanup, run only the smallest relevant browser/tests and leave U-GAS publicly discoverable while waiting for external evidence. Do not add new product functionality unless a genuine blocker prevents the already-supported My computer workflow.
+Leave public U-GAS discoverable and wait for a fresh non-technical external tester. Fix only evidence-backed first-contact friction from that feedback. Later, test GitHub and My server / cloud separately before activating those routes. Do not begin new feature development.
 
 ## WAITING / PAUSED
 

@@ -157,6 +157,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", starter)
         self.assertIn("Made with U-GAS by ĀBŌ", starter)
         self.assertIn("PUBLIC STARTER", starter)
+        self.assertIn("Back to the U-GAS repository", starter)
         self.assertIn("only active,", starter_readme)
 
     def test_pica_agents_have_identity_haiku(self):
