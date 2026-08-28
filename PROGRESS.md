@@ -111,3 +111,7 @@ Replaced the hand-drawn destination marks with the owner-supplied `ChatGPT-Logo.
 ## 2026-08-28 — Public Starter compact first viewport
 
 Applied the owner-requested presentation-only refinement: widened the visible ChatGPT PNG frame so the full supplied mark is shown, matched Claude button colors to the ChatGPT destination control, and reduced the first-contact typography, field sizing, card padding, and vertical gaps. The first-view layout now has a materially shorter page while preserving readability and the existing flow. Local desktop and 390px browser checks confirmed no horizontal overflow, supplied-logo rendering, Fill example, Copy/NEXT STEP behavior, and unchanged provider URLs. Independent validation remains outstanding; CURRENT/NEXT/WAITING remain substantively unchanged.
+
+## 2026-08-28 — U-GAS skill operational-completeness correction
+
+The public skills were structurally present but four were semantically over-distilled. Rebuilt `u-gas-resume`, `u-gas-safe-patch`, `u-gas-verify-change`, and `u-gas-external-research` as compact ordered procedures while retaining the existing `u-gas-skill-review`; no new U-GAS skill or feature was added. Added deterministic required-section and anti-stub checks for every public skill plus stable regression markers. `python3 scripts/check_u_gas.py`, all 49 unit tests, and `git diff --check` passed; Starter behavior and independent-validation status are unchanged. The public correction was verified at `e94ec9f`; this continuity entry is documentation-only.
