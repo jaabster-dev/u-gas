@@ -103,3 +103,7 @@ Applied the owner-supplied visual reference as a presentation-only refinement: w
 ## 2026-08-28 — Public Starter hero removal and provider marks
 
 Applied the owner-requested presentation-only follow-up: removed the upper-right U-GAS hero object entirely and returned the heading to a single-column layout. The existing ChatGPT and Claude destination controls retain their links and behavior, while their marks are presented as the monochrome ChatGPT Blossom and Claude orange starburst treatment. No route, prompt, copy, post-copy, or destination behavior changed. Local browser checks confirmed no hero object, no desktop overflow, the retained provider links, and the Fill example / Copy / NEXT STEP flow. Independent validation remains outstanding; CURRENT/NEXT/WAITING remain substantively unchanged.
+
+## 2026-08-28 — Owner-supplied provider logo assets
+
+Replaced the hand-drawn destination marks with the owner-supplied `ChatGPT-Logo.png` and `Claude_AI_logo.svg` files, published as Starter assets. The ChatGPT PNG is used directly; the Claude SVG is visually clipped to its orange symbol so its wordmark is not displayed. Destination URLs, prompt generation, Copy/NEXT STEP behavior, route state, and all other functionality remain unchanged. Local desktop and 390px checks confirmed both supplied assets, no visible Claude text, no horizontal overflow, and the existing Fill example / Copy flow. Independent validation remains outstanding; CURRENT/NEXT/WAITING remain substantively unchanged.
