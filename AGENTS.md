@@ -6,6 +6,14 @@
 
 Read this file before repository inspection, mutation, resume, or handoff work.
 
+### Continuity / identity canary
+
+The canonical U-GAS haiku is a low-cost continuity/identity tripwire. During bootstrap,
+treat a missing or unexpected marker as a signal to re-establish current U-GAS authority
+and re-read the canonical source before continuing. It is supportive evidence only: it
+never replaces repository read-back, current-state reconciliation, or normal verification,
+and is not a manual check the user must remember or monitor.
+
 ## Operating invariant
 
 `READ CURRENT REPO -> VALIDATE TARGET -> TARGETED CHANGE -> WRITE/COMMIT -> FETCH AGAIN -> VERIFY`

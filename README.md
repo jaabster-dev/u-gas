@@ -20,7 +20,7 @@ U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project fro
 
 ## Start here
 
-**[OPEN PROJECT STARTER →](https://jaabster-dev.github.io/u-gas/starter/)**
+<a href="https://jaabster-dev.github.io/u-gas/starter/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
 
 Use the runnable Starter first. Describe what you want to make, leave **My computer**
 selected, copy the generated prompt, and paste it into ChatGPT or another coordinating AI.
@@ -39,11 +39,9 @@ You can use U-GAS without learning its terminology first:
 6. Copy the executor's complete result back into the coordinating AI chat.
 7. Continue talking to the AI about the project.
 
-## NEXT ACTION
-
-**Copy the complete prompt into your coordinating AI chat.** The tested local-first
-handoff names Codex as the first example when local execution is needed; another
-compatible authorized executor may be used where available.
+**Next:** copy the complete prompt into your coordinating AI chat. If local execution is
+needed, the tested handoff names Codex first; another compatible authorized executor may
+be used where available.
 
 Coming back later? Open `GIVE THIS TO YOUR NEXT AI CHAT.txt`, copy all of it, and paste it
 into a new compatible AI chat to continue.
@@ -72,17 +70,15 @@ macOS. Other tool combinations may work, but are not independently validated; yo
 choose another compatible workflow that preserves the same capability boundaries and
 user-controlled durable workspace.
 
-The executor's response must include one complete concise return result and clearly tell
-you: `Copy this complete result and paste it back into the AI chat that sent you here.`
-Paste that result back into the coordinating chat so it can reconcile durable state and
-continue. You should not have to decide which part of a technical report to copy.
-
-## NEXT ACTION — after execution
-
-**Copy this complete result and paste it back into the AI chat that sent you here.**
-When the executor knows the exact file, project path, or verified browser URL, it should
-name that target directly. You should not have to derive a localhost URL or interpret
+The executor returns one clearly marked complete result for you to paste back into the
+coordinating chat. When it knows the exact file, project path, or verified browser URL,
+it should name that target directly; you should not have to derive a URL or interpret
 routine command output.
+
+## NEXT ACTION
+
+If execution is handed off, copy the executor's complete result and paste it back into
+the coordinating AI chat.
 
 ### Resume after a pause or in a new AI chat
 
@@ -105,6 +101,9 @@ You do not need to create a GitHub repository. The agent will check the local to
 needs and tell you if something is missing. A plain chat with no persistent file access
 cannot perform this workflow; a session sandbox, temporary directory, or download
 location is not durable project storage.
+
+<details>
+<summary>Advanced/manual fallback: copy the full local-project prompt</summary>
 
 ### Start a new local project — recommended first test
 
@@ -180,6 +179,8 @@ report the specific boundary instead.
 The first useful result is the verified local project folder and its PICA controls. Ask
 for correction only if the project purpose is genuinely unclear.
 ```
+
+</details>
 
 ### How to tell if it worked
 
@@ -286,6 +287,14 @@ tokens, recovery codes, private keys, or other secrets.
 ---
 
 ## Status and feedback
+
+### Try the public Starter
+
+U-GAS is an experimental way to keep an AI project from losing its place between chats
+and tools. The first public local-project flow is live. I’m looking for someone who has
+not used it before to try the [Project Starter](https://jaabster-dev.github.io/u-gas/starter/)
+without extra instructions and tell me where it becomes confusing or fails. Share
+feedback on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1).
 
 It is released under the [MIT License](LICENSE). For the first independent test, give
 feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where

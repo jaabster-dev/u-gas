@@ -110,6 +110,8 @@ class CoreContractTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("https://jaabster-dev.github.io/u-gas/starter/", readme)
         self.assertNotIn("[Project Starter](starter/)", readme)
+        self.assertIn('target="_blank"', readme)
+        self.assertIn('rel="noopener noreferrer"', readme)
         self.assertLess(readme.index("Use U-GAS first"), readme.index("## How U-GAS works"))
         self.assertIn("## NEXT ACTION", readme)
         self.assertIn("exact file, project path, or verified browser URL", readme)
@@ -120,9 +122,9 @@ class CoreContractTests(unittest.TestCase):
         for text in (readme, governance):
             self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", text)
             self.assertIn("not a fifth PICA", text)
-            self.assertIn("Copy this complete result and paste it back into the AI chat that sent you here.", text)
             self.assertIn("next useful action", text)
             self.assertIn("restart", text)
+        self.assertIn("Copy this complete result and paste it back into the AI chat that sent you here.", governance)
         self.assertIn("actual PICA/project state", " ".join(readme.split()))
 
     def test_action_first_onboarding_contract(self):
@@ -182,6 +184,14 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("cp -R starter/. _site/starter/", workflow)
         self.assertIn("actions/deploy-pages@v4", workflow)
         self.assertIn("pages: write", workflow)
+
+    def test_agent_identity_canary_and_temporal_grounding_contract(self):
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        continuity = (ROOT / "ai/SESSION_CONTINUITY.md").read_text(encoding="utf-8")
+        self.assertIn("low-cost continuity/identity tripwire", agents)
+        self.assertIn("not a manual check the user must remember or monitor", agents)
+        self.assertIn("actual current local date/time", continuity)
+        self.assertIn("today, yesterday, tomorrow", continuity)
 
 
 if __name__ == "__main__":
