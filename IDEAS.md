@@ -43,3 +43,15 @@ This is external comparative research only. It is not U-GAS authority, validatio
 - U-GAS -> currently exploring a lightweight repository/project-native continuity, authority, scope, handoff, and verification layer without requiring a new agent runtime.
 
 The repeated independent appearance of context loss, scope expansion, stale or ambiguous state, weak completion claims, and capability/trust boundaries is evidence that this problem family merits continued research. It is not evidence that U-GAS is unique, superior, independently validated, or should expand scope now.
+
+## 2026-08-28 — Briefboard comparative research (PARKED)
+
+Primary source: https://github.com/shinKatana0/briefboard
+
+This is external comparative research only. It is not U-GAS authority, validation, a dependency, backlog, or accepted product scope.
+
+- Briefboard is a lightweight kanban + CLI that governs a coding-task lifecycle through `backlog -> open -> ready -> in_progress -> review -> done`.
+- Markdown backlog/tasks and briefs are authoritative rather than relying on chat structure alone.
+- Useful comparator signals: distinguish declared task state from mechanically observed Git/session state; make external or waiting dependencies first-class; use consequence-based human gates rather than confirming every reversible action; and distinguish designed behavior, actually-tested behavior, and independently-validated proof.
+- Product boundary: Briefboard governs coding-task lifecycle; U-GAS explores durable project continuity and authority across chats, agents, and execution environments.
+- Do not adopt Briefboard's kanban/task board, orchestrator/worker roles, worktree-per-task flow, server/dashboard, or mandatory briefs into U-GAS from this research alone.
