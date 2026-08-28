@@ -24,6 +24,8 @@ Owner decision: pause new U-GAS feature development. The next session is limited
 
 Today's visual / first-contact cleanup is complete. The README now leads with the direct Starter CTA and concise action path; the long manual prompt is progressive disclosure; the Starter wording makes the first actions and destination clearer; the haiku canary and temporal-grounding semantics are documented. GitHub rendered the CTA without `target="_blank"`, so the new-tab requirement is platform-limited rather than claimed as a PASS; the Starter has a clear repository return link.
 
+The next owner-observed first-contact finding was that the Starter explained copying but did not make the post-copy destination/action prominent enough. The narrow correction adds a short value statement, a visible post-copy `NEXT STEP` telling the owner to open an AI chat, paste the copied prompt, and send it, plus truthful Open ChatGPT, Open Claude, and Other AI destinations. These controls do not auto-paste or auto-send; the coordinating AI remains responsible for guiding the next step and escalating to Codex, Claude Code, or another suitable executor when local execution is needed. Feature development remains paused, independent validation remains outstanding, and the next evidence target is a fresh non-technical external tester.
+
 ## NEXT
 
 Leave public U-GAS discoverable and wait for a fresh non-technical external tester. Fix only evidence-backed first-contact friction from that feedback. Later, test GitHub and My server / cloud separately before activating those routes. Do not begin new feature development.

@@ -110,6 +110,23 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("immediately expose one prominent NEXT ACTION naming that executor", starter)
         self.assertIn("Do not present routine execution choices or ask the owner how to proceed", starter)
 
+    def test_public_starter_first_contact_destination_contract(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+        self.assertIn("U-GAS helps your AI build and continue a project without losing its place", starter)
+        self.assertIn('id="nextStep"', starter)
+        self.assertIn("NEXT STEP", starter)
+        self.assertIn("Your prompt is copied.", starter)
+        self.assertIn("Open your AI chat, paste it, and send it.", starter)
+        self.assertIn('href="https://chatgpt.com/"', starter)
+        self.assertIn('href="https://claude.ai/"', starter)
+        self.assertIn("Open ChatGPT", starter)
+        self.assertIn("Open Claude", starter)
+        self.assertIn("Other AI", starter)
+        self.assertIn("does not automatically paste or send your prompt", starter)
+        self.assertIn("Codex, Claude Code, or another suitable executor", starter)
+        self.assertIn("value=\"github\" disabled", starter)
+        self.assertIn("value=\"cloud\" disabled", starter)
+
     def test_public_starter_is_linked_from_action_first_readme(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("https://jaabster-dev.github.io/u-gas/starter/", readme)
