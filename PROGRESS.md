@@ -4,6 +4,12 @@
 > Work will mark the path in time<br>
 > History starts here
 
+## 2026-08-28 — Public outreach and arka.norn research reconciliation
+
+The owner reports that U-GAS was published organically in Reddit coding-agent communities, including a self-promotion context with the repository, Issue #1 first-tester feedback route, an explicit early/experimental and not-independently-validated boundary, and a request for one real independent user to try it. The owner also reports that the prepared comment was posted in a relevant r/ClaudeCodeTLDR Weekly Showcase discussion. Exact Reddit URLs and thread identities are not claimed because the available repository evidence does not establish them. This outreach does not change the product, and independent validation remains `NO`; the next evidence target is fresh non-technical external tester feedback rather than traffic or stars.
+
+Recorded a parked comparison of the current public `https://github.com/arka-squad/arka-norn` repository in `IDEAS.md`. The comparison preserves research questions about mechanical evidence versus agent claims, fail-closed scope/ownership, concrete preview/fingerprint authorization, dirty/divergent repository state, and unknown measurements. It explicitly records arka.norn's heavier orchestration/enforcement architecture as a comparator only; no dependency, implementation scope, validation claim, or architecture expansion is accepted. Existing U-GAS/GAS principles remain authoritative where they already cover the finding.
+
 ## 2026-08-27 — Execution-capability escalation correction
 
 Owner-led clean testing exposed that ordinary ChatGPT correctly failed closed at the Mac filesystem boundary but did not provide the next execution handoff. The portable governance and public README now require safe capability discovery first, use of any available authorized persistent/local executor, and exactly one complete copyable handoff when escalation is needed. Codex is documented as the tested example, not a mandatory dependency; provider/session storage substitution and routine manual Terminal/Git/file-transfer work remain prohibited. Public U-GAS was not promoted or given a Project Starter.
