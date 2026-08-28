@@ -6,7 +6,7 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from check_u_gas import AI_FILES, SKILL_FILES, check_distribution
+from check_u_gas import AI_FILES, SKILL_FILES, REQUIRED_SKILL_SECTIONS, check_distribution, skill_structure_errors
 
 
 class CoreContractTests(unittest.TestCase):
@@ -22,6 +22,25 @@ class CoreContractTests(unittest.TestCase):
         for relative in SKILL_FILES:
             name = pathlib.Path(relative).parent.name
             self.assertIn(f"`{name}`", inventory)
+
+    def test_all_public_skills_have_operational_structure(self):
+        for relative in SKILL_FILES:
+            text = (ROOT / relative).read_text(encoding="utf-8")
+            self.assertEqual(skill_structure_errors(relative, text), [], relative)
+            for section in REQUIRED_SKILL_SECTIONS:
+                self.assertIn(f"## {section}", text, relative)
+
+    def test_rebuilt_skills_retain_operational_markers(self):
+        expected = {
+            "skills/u-gas-resume/SKILL.md": ("RESUME ACTION", "PROJECT NEXT", "CURRENT_STATE.md", "WAITING/PAUSED", "read-back"),
+            "skills/u-gas-safe-patch/SKILL.md": ("PARTIAL READ", "BLOCKED", "authoritative", "bounded", "idempotency"),
+            "skills/u-gas-verify-change/SKILL.md": ("REQUIREMENT", "ACTUAL DIFF", "REQUIRED TESTS", "REQUIRED EVIDENCE", "PASS", "FAIL", "human verification", "not itself proof"),
+            "skills/u-gas-external-research/SKILL.md": ("research/evidence, not authority", "observed fact", "inference", "dependency", "security", "license", "u-gas-skill-review"),
+        }
+        for relative, markers in expected.items():
+            text = (ROOT / relative).read_text(encoding="utf-8").lower()
+            for marker in markers:
+                self.assertIn(marker.lower(), text, f"{relative}: {marker}")
 
     def test_readme_and_anchor_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")

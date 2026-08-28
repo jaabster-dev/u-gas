@@ -21,6 +21,7 @@ SKILL_FILES = (
     "skills/u-gas-verify-change/SKILL.md", "skills/u-gas-external-research/SKILL.md",
     "skills/u-gas-skill-review/SKILL.md",
 )
+REQUIRED_SKILL_SECTIONS = ("Purpose", "When to use", "When not to use", "Procedure", "Required outcome")
 ROUTE_TARGETS = (
     "ai/GOVERNANCE.md", "ai/GITHUB_WORKFLOW.md", "ai/SESSION_CONTINUITY.md",
     "ai/LARGE_FILE_PATCHING.md", "ai/MULTI_AGENT_COLLABORATION.md",
@@ -41,6 +42,29 @@ FORBIDDEN = re.compile(
 def read(root, relative):
     path = root / relative
     return path.read_text(encoding="utf-8") if path.is_file() else None
+
+
+def skill_structure_errors(relative, text):
+    """Require a useful operational skeleton without attempting semantic review."""
+    errors = []
+    headings = list(re.finditer(r"^##+\s+(.+?)\s*$", text, re.MULTILINE))
+    sections = {}
+    for index, match in enumerate(headings):
+        title = match.group(1).strip().lower()
+        end = headings[index + 1].start() if index + 1 < len(headings) else len(text)
+        sections[title] = text[match.end():end].strip()
+    for required in REQUIRED_SKILL_SECTIONS:
+        key = required.lower()
+        if key not in sections:
+            errors.append(f"{relative} missing required section: ## {required}")
+        elif not sections[key]:
+            errors.append(f"{relative} has empty required section: ## {required}")
+    procedure = sections.get("procedure", "")
+    numbered_steps = re.findall(r"^\s*\d+[.)]\s+\S+", procedure, re.MULTILINE)
+    meaningful_lines = [line for line in text.splitlines() if line.strip() and not line.lstrip().startswith("#")]
+    if len(meaningful_lines) < 12 or len(numbered_steps) < 3:
+        errors.append(f"{relative} fails anti-stub operational floor (need substantive content and at least 3 procedure steps)")
+    return errors
 
 
 def check_project(root):
@@ -113,6 +137,11 @@ def check_distribution(root=ROOT):
     for phrase in ("EXPERIMENTAL", "NO INDEPENDENT USER VALIDATION YET", "PICA SELF-CHECK", "Issue #1"):
         if phrase not in readme:
             errors.append(f"README marker missing: {phrase}")
+
+    for relative in SKILL_FILES:
+        text = read(root, relative)
+        if text is not None:
+            errors.extend(skill_structure_errors(relative, text))
 
     operational = []
     for relative in required:
