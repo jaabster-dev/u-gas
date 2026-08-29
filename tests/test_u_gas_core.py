@@ -35,12 +35,28 @@ class CoreContractTests(unittest.TestCase):
             "skills/u-gas-resume/SKILL.md": ("RESUME ACTION", "PROJECT NEXT", "CURRENT_STATE.md", "WAITING/PAUSED", "read-back"),
             "skills/u-gas-safe-patch/SKILL.md": ("PARTIAL READ", "BLOCKED", "authoritative", "bounded", "idempotency"),
             "skills/u-gas-verify-change/SKILL.md": ("REQUIREMENT", "ACTUAL DIFF", "REQUIRED TESTS", "REQUIRED EVIDENCE", "PASS", "FAIL", "human verification", "not itself proof"),
-            "skills/u-gas-external-research/SKILL.md": ("research/evidence, not authority", "observed fact", "inference", "dependency", "security", "license", "u-gas-skill-review"),
+            "skills/u-gas-external-research/SKILL.md": ("research/evidence, not authority", "observed fact", "inference", "dependency", "security", "license", "u-gas-skill-review", "acceptance chain", "killer assumptions", "cheapest safe pre-flight", "UNKNOWN", "buildability is not acceptance evidence"),
         }
         for relative, markers in expected.items():
             text = (ROOT / relative).read_text(encoding="utf-8").lower()
             for marker in markers:
                 self.assertIn(marker.lower(), text, f"{relative}: {marker}")
+
+    def test_critical_path_sanity_pause_is_agent_owned_and_fail_visible(self):
+        governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8").lower()
+        for marker in (
+            "materially costly or dependency-heavy",
+            "killer assumptions",
+            "later hard gates",
+            "cheapest pre-flight",
+            "simpler existing route",
+            "intermediate solution",
+            "agent-owned reasoning",
+            "not human approval",
+            "unknown",
+            "ordinary bounded work",
+        ):
+            self.assertIn(marker, governance, marker)
 
     def test_multi_agent_policy_has_operational_boundaries(self):
         policy = (ROOT / "ai/MULTI_AGENT_COLLABORATION.md").read_text(encoding="utf-8")

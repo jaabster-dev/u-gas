@@ -67,3 +67,7 @@ Independent U-GAS validation remains outstanding.
 ## 2026-08-29 — Privacy-first Starter usage analytics
 
 Added privacy-first aggregate GoatCounter visit tracking for the canonical `/starter/` path and a once-per-tab successful-copy `starter-attempt` event. Analytics failures remain isolated from Starter copy behavior; no project/form values, cookies, or fingerprinting are introduced. Independent U-GAS validation remains outstanding.
+
+## 2026-08-29 — Bounded critical-path portability correction
+
+Adapted the accepted GAS critical-path sanity pause into compact public governance and added the corresponding external-research requirement to trace relevant eligibility and acceptance gates before substantial implementation or adoption work. Added targeted regression markers for the agent-owned, fail-visible, non-ritual semantics. This is bounded policy-quality portability work, not feature development; independent validation remains outstanding.
