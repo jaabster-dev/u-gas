@@ -12,6 +12,8 @@ U-GAS is a portable workflow model, not authority over a repository. Current rep
 - The user states intent; the agent owns routine technical mechanics and reports meaningful boundaries.
 - Do not add infrastructure without recurring evidence that simpler repository-native behavior is insufficient; this is the complexity budget.
 
+Before a materially costly or dependency-heavy path, pause briefly to test its killer assumptions: identify later hard gates, separate assumptions from evidence, find the cheapest pre-flight for the riskiest premise, check whether a simpler existing route solves the final goal, and notice when attachment to an intermediate solution is replacing that goal. This is agent-owned reasoning, not human approval or a new checklist; do not apply it mechanically to ordinary bounded work. If a critical gate cannot yet be preflighted, keep it explicit as risk or `UNKNOWN` and re-plan rather than continuing merely because the path was chosen.
+
 ## Work modes
 
 Use the lightest mode that fits: `audit`, `proposal`, `edit`, `maintenance`, or `review`. A proposal or parked idea is not accepted scope.
