@@ -34,7 +34,7 @@ class CoreContractTests(unittest.TestCase):
         expected = {
             "skills/u-gas-resume/SKILL.md": ("RESUME ACTION", "PROJECT NEXT", "CURRENT_STATE.md", "WAITING/PAUSED", "read-back"),
             "skills/u-gas-safe-patch/SKILL.md": ("PARTIAL READ", "BLOCKED", "authoritative", "bounded", "idempotency"),
-            "skills/u-gas-verify-change/SKILL.md": ("REQUIREMENT", "ACTUAL DIFF", "REQUIRED TESTS", "REQUIRED EVIDENCE", "PASS", "FAIL", "human verification", "not itself proof"),
+            "skills/u-gas-verify-change/SKILL.md": ("REQUIREMENT", "ACTUAL DIFF", "REQUIRED TESTS", "REQUIRED EVIDENCE", "PASS", "FAIL", "human verification", "not itself proof", "rendered", "structural evidence only", "source identity", "visual correctness", "unverified", "not a Figma-specific subsystem"),
             "skills/u-gas-external-research/SKILL.md": ("research/evidence, not authority", "observed fact", "inference", "dependency", "security", "license", "u-gas-skill-review", "acceptance chain", "killer assumptions", "cheapest safe pre-flight", "UNKNOWN", "buildability is not acceptance evidence"),
         }
         for relative, markers in expected.items():

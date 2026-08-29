@@ -71,3 +71,7 @@ Added privacy-first aggregate GoatCounter visit tracking for the canonical `/sta
 ## 2026-08-29 — Bounded critical-path portability correction
 
 Adapted the accepted GAS critical-path sanity pause into compact public governance and added the corresponding external-research requirement to trace relevant eligibility and acceptance gates before substantial implementation or adoption work. Added targeted regression markers for the agent-owned, fail-visible, non-ritual semantics. This is bounded policy-quality portability work, not feature development; independent validation remains outstanding.
+
+## 2026-08-29 — Rendered-artifact verification boundary
+
+Extended the portable verification procedure so rendered/presented results are inspected in the representation that matters; structural metadata and successful tool operations remain structural evidence only; selected visual source identity is preserved across validation transformations; and missing render inspection remains unverified. The generic rule is not a Figma-specific subsystem. U-GAS self-check and 52 tests passed; GAS lineage closeout remains a separate reconciliation step.
