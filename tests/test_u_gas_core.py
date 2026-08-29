@@ -42,6 +42,25 @@ class CoreContractTests(unittest.TestCase):
             for marker in markers:
                 self.assertIn(marker.lower(), text, f"{relative}: {marker}")
 
+    def test_skill_review_requires_end_to_end_operational_contract(self):
+        text = (ROOT / "skills/u-gas-skill-review/SKILL.md").read_text(encoding="utf-8").lower()
+        required_patterns = (
+            r"trigger.*non-trigger|non-trigger.*trigger",
+            r"input.*precondition|precondition.*input",
+            r"ordered.*procedure|procedure.*ordered",
+            r"reference.*tool.*authority|authority.*reference.*tool",
+            r"decision.*failure.*fail-closed|fail-closed.*decision.*failure",
+            r"verif(?:iable|ied).*completion.*outcome|completion.*outcome.*verif",
+            r"competent agent.*execute.*capability.*verified result",
+            r"operationally incomplete",
+            r"adopt",
+        )
+        for pattern in required_patterns:
+            self.assertRegex(text, pattern, pattern)
+        for verdict in ("adapt principle", "adopt", "build internal", "reject"):
+            self.assertIn(verdict, text)
+        self.assertRegex(text, r"not (?:return|allow).*adopt.*(?:gap|incomplete|unresolved)")
+
     def test_critical_path_sanity_pause_is_agent_owned_and_fail_visible(self):
         governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8").lower()
         for marker in (
