@@ -63,3 +63,7 @@ Rebuilt four public skills as compact ordered procedures while retaining the exi
 The complete repository audit found U-GAS broadly operational, with one weak-pass policy and avoidable duplication in continuity, large-file safety, and repository-structure guidance. Strengthened multi-agent collaboration into a compact operational procedure covering triggers, authority, overlap inspection, preservation, reconciliation, fail-closed conflicts, and required outcome. Consolidated the three duplicated policy surfaces without semantic loss and added targeted regression protection. This was quality hardening, not feature expansion.
 
 Independent U-GAS validation remains outstanding.
+
+## 2026-08-29 — Privacy-first Starter usage analytics
+
+Added privacy-first aggregate GoatCounter visit tracking for the canonical `/starter/` path and a once-per-tab successful-copy `starter-attempt` event. Analytics failures remain isolated from Starter copy behavior; no project/form values, cookies, or fingerprinting are introduced. Independent U-GAS validation remains outstanding.

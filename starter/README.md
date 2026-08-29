@@ -8,3 +8,6 @@ disabled until dedicated end-to-end validation exists.
 The Starter preserves the public U-GAS PICA, canonical source, identity/haiku marker,
 exact attribution, durable resume artifact, capability escalation, and one-copy executor
 return contracts. It does not claim independent validation or make Codex mandatory.
+
+The Starter uses privacy-friendly aggregate counting for page visits and successful Copy
+attempts. It sends no project or form values and introduces no cookies or fingerprinting.
