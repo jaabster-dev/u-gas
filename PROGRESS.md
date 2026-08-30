@@ -75,3 +75,7 @@ Adapted the accepted GAS critical-path sanity pause into compact public governan
 ## 2026-08-29 — Rendered-artifact verification boundary
 
 Extended the portable verification procedure so rendered/presented results are inspected in the representation that matters; structural metadata and successful tool operations remain structural evidence only; selected visual source identity is preserved across validation transformations; and missing render inspection remains unverified. The generic rule is not a Figma-specific subsystem. U-GAS self-check and 52 tests passed; GAS lineage closeout remains a separate reconciliation step.
+
+## 2026-08-30 — Live-obligation continuity hardening
+
+Made explicit that unresolved work which can change a future agent's next action must remain represented in current-state continuity until resolved, explicitly deferred or paused, explicitly dropped or rejected, or otherwise transitioned out of live work. `PROGRESS.md` remains history and evidence, not the sole durable location for a live obligation. Added deterministic semantic regression protection without changing the resume skill or introducing a new continuity mechanism.

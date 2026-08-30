@@ -2,6 +2,8 @@
 
 `CURRENT_STATE.md` is compact resume authority. `PROGRESS.md` is chronological history and evidence. `IDEAS.md` is unaccepted possibility space. `README.md` is navigation, not a second state or policy authority.
 
+A live obligation is not safely captured for resume merely because it appears in `PROGRESS.md`. If a newly discovered unresolved issue, blocker, pending verification, accepted follow-up, hardening case, risk or dependency, or open handoff can change what a future agent should do next, keep it represented in `CURRENT_STATE.md` or the repository's current-state/continuity surface until it is resolved, explicitly deferred or paused with its return condition, explicitly dropped or rejected, or otherwise transitioned out of live work. `PROGRESS.md` may preserve discovery, evidence, and decision history, but it must not be the sole location of such unresolved work.
+
 Follow `RESUME ACTION -> RECONCILE -> VERIFY -> PROJECT NEXT`.
 
 ## Resume and reconciliation

@@ -308,6 +308,17 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("actual current local date/time", continuity)
         self.assertIn("today, yesterday, tomorrow", continuity)
 
+    def test_live_obligations_cannot_exist_only_in_progress_history(self):
+        continuity = " ".join(
+            (ROOT / "ai/SESSION_CONTINUITY.md").read_text(encoding="utf-8").lower().split()
+        )
+        self.assertRegex(continuity, r"live obligation.*not .*captured.*progress\.md")
+        self.assertRegex(continuity, r"unresolved .*current_state\.md|current_state\.md.*unresolved")
+        self.assertRegex(continuity, r"progress\.md.*evidence.*history")
+        for transition in ("resolved", "deferred", "dropped"):
+            self.assertIn(transition, continuity)
+        self.assertRegex(continuity, r"progress\.md.*must not be the sole location.*unresolved")
+
 
 if __name__ == "__main__":
     unittest.main()
