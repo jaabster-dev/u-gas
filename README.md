@@ -20,23 +20,29 @@ U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project fro
 
 <a href="https://jaabster-dev.github.io/u-gas/starter/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
 
-Start with the runnable Starter. Leave **My computer** selected, describe what you want to
-make, and copy the generated prompt into ChatGPT or another coordinating AI.
+Start with the runnable Starter. Choose **Start a new project** (the default) or
+**Continue an existing project**, answer a few ordinary-language questions, and copy the
+generated prompt into the AI that should continue the work.
 
 ### How to use it
 
-1. Describe what you want to make.
-2. Copy the generated prompt into your coordinating AI chat.
-3. If local execution is genuinely needed, let the coordinating AI use its safe available
+1. Choose whether you are starting a new project or continuing one you already have.
+2. Describe the project and the outcome you want in ordinary language.
+3. For an existing project already open in Codex or another capable coding agent, paste
+   the generated prompt there. Otherwise paste it into your coordinating AI chat.
+4. If local execution is genuinely needed, let the coordinating AI use its safe available
    capabilities first. If it needs an executor, it should immediately show one prominent
    `NEXT ACTION`, name that executor, and give you one complete copyable handoff. Use that
    handoff to create, change, and verify the real durable project; you should not choose
    routine execution mechanics.
-4. Copy the executor's complete result back into the coordinating AI chat and continue.
+5. Copy the executor's complete result back into the coordinating AI chat and continue.
 
 Ordinary ChatGPT and Codex on macOS are the currently tested examples. Other compatible tools may
 work, but are not independently validated. **My computer** is the only active Starter
-route; GitHub and My server / cloud remain visible but disabled until dedicated validation.
+location route for a new project; GitHub and My server / cloud remain visible but disabled
+there until dedicated validation. The separate existing-project mode accepts a known
+repository URL, a local path, or an honest "I don't know" so the agent can inspect and
+continue the real project rather than create another one.
 When an executor knows the exact file, project path, or verified browser URL, it should
 name that target directly; you should not derive it from routine output.
 U-GAS makes no claim about credits, plans, entitlements, pricing, or guaranteed savings.
@@ -151,15 +157,28 @@ for correction only if the project purpose is genuinely unclear.
 > the setup was not completed.
 
 <details>
-<summary>Already use GitHub?</summary>
+<summary>Manual fallback: continue an existing project</summary>
 
-An existing GitHub-backed project remains supported. Give the agent its repository URL
-and ask it to inspect the current repository and branch, preserve existing work, integrate
-only missing PICA controls from current templates, and verify after writing. The existing
-GitHub-backed, branch, collaboration, and remote-verification workflows still apply.
-GitHub is also an optional later publication/collaboration/durability upgrade for a local
-project, but adding a remote must be an explicit publication step; U-GAS must not create
-one silently.
+Prefer the Starter-generated prompt because it carries the complete preservation and
+verification boundaries. If the Starter is unavailable, give this short fallback to the
+coding agent that already has the project open, or to your coordinating AI:
+
+```text
+Continue this EXISTING PROJECT with U-GAS: <PROJECT NAME>.
+Known repository URL or local folder (or "I don't know"): <LOCATION>.
+Purpose/context: <ORDINARY-LANGUAGE PURPOSE>.
+Current desired outcome: <WHAT I WANT NOW>.
+Optional obstacle and important work/behavior not to lose: <CONTEXT>.
+
+Read the current U-GAS source at https://github.com/jaabster-dev/u-gas, inspect the
+actual existing project first, preserve all existing work and history, add only missing
+minimum PICA controls, and continue with the smallest safe action toward my outcome.
+Own routine repository, file, test, and verification mechanics; ask me only about a
+genuine decision or access boundary. Verify actual state before reporting READY or PASS.
+```
+
+You do not need to supply Git commands, branch names, commit identifiers, test commands,
+architecture details, or merge instructions. The agent should inspect those itself.
 
 </details>
 

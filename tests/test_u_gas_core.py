@@ -127,8 +127,8 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("- [Status and feedback](#status-and-feedback)", readme)
         self.assertIn("You do not need to create a GitHub repository.", readme)
         self.assertIn("### Start a new local project — recommended first test", readme)
-        self.assertIn("<summary>Already use GitHub?</summary>", readme)
-        self.assertLess(readme.index("### Start a new local project — recommended first test"), readme.index("<summary>Already use GitHub?</summary>"))
+        self.assertIn("<summary>Manual fallback: continue an existing project</summary>", readme)
+        self.assertLess(readme.index("### Start a new local project — recommended first test"), readme.index("<summary>Manual fallback: continue an existing project</summary>"))
         self.assertIn("initialize local Git if needed", readme)
         self.assertIn("PICA SELF-CHECK", readme)
         self.assertIn("BLOCKED — persistent filesystem unavailable: <specific capability reason>", readme)
@@ -220,8 +220,8 @@ class CoreContractTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("### How to use it", readme)
         actions = (
-            "Describe what you want to make.",
-            "Copy the generated prompt into",
+            "starting a new project or continuing one you already have",
+            "Describe the project and the outcome you want",
             "If local execution is genuinely needed",
             "Copy the executor's complete result back into the coordinating AI chat",
         )
@@ -242,6 +242,65 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn('value="computer" checked', starter)
         self.assertIn('value="github" disabled', starter)
         self.assertIn('value="cloud" disabled', starter)
+
+    def test_public_starter_existing_project_mode_and_generated_prompt(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn('name="projectMode" value="new" checked', starter)
+        self.assertIn('name="projectMode" value="existing"', starter)
+        for field_id in (
+            "existingLocation",
+            "existingLocationUnknown",
+            "existingPurpose",
+            "existingGoal",
+            "existingObstacle",
+            "existingPreserve",
+        ):
+            self.assertIn(f'id="{field_id}"', starter)
+        self.assertIn("If this project is already open in Codex", starter)
+        self.assertIn("follow the single NEXT ACTION", starter)
+        self.assertIn("You do not need to supply Git commands", readme)
+
+        template_match = re.search(
+            r'<template id="existingPromptTemplate">(.*?)</template>', starter, re.S
+        )
+        self.assertIsNotNone(template_match)
+        values = {
+            "projectName": "Flashcard Generator",
+            "projectLocation": "~/Documents/Flashcard Generator",
+            "projectPurpose": "Turn pasted notes into study flashcards.",
+            "currentGoal": "Import the next deck without breaking existing behavior.",
+            "currentObstacle": "Routine agent work became slow after accumulated safeguards.",
+            "mustPreserve": "Saved decks, import behavior, tests, history, and working changes.",
+        }
+        rendered = re.sub(
+            r"\{\{(\w+)\}\}", lambda match: values[match.group(1)], template_match.group(1)
+        )
+        self.assertIn("EXISTING PROJECT", rendered)
+        self.assertIn(values["currentGoal"], rendered)
+        for semantic_marker in (
+            "Inspect the actual existing project",
+            "Do not create a duplicate project",
+            "Preserve existing code, history, uncommitted changes, untracked files, unpushed work",
+            "add only the minimum missing PICA controls",
+            "Do not restart, rewrite, redesign, migrate, broadly clean up, or simplify",
+            "Distinguish required safeguards from redundant or risk-disproportionate ceremony",
+            "smallest safe next action",
+            "Do not remove protections without project-specific evidence",
+            "PICA/bootstrap completion is not completion of the project request",
+            "Verify the actual repository/workspace state",
+        ):
+            self.assertIn(semantic_marker, rendered)
+        for owner_question in (
+            "branch names",
+            "commit identifiers",
+            "status output",
+            "PICA terminology",
+            "test commands",
+            "architecture",
+            "merge mechanics",
+        ):
+            self.assertIn(owner_question, rendered)
 
     def test_public_starter_privacy_first_usage_analytics_contract(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
@@ -265,14 +324,29 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("no project or form values", starter_readme)
         self.assertIn("no cookies or fingerprinting", starter_readme)
         event_block = re.search(r"counter\.count\(\{(.*?)\}\)", starter, re.S).group(1)
-        for value_name in ("name", "description", "location", "customLocation", "durableLocation"):
+        for value_name in (
+            "name",
+            "description",
+            "location",
+            "customLocation",
+            "durableLocation",
+            "projectMode",
+            "existingLocation",
+            "existingPurpose",
+            "existingGoal",
+            "existingObstacle",
+            "existingPreserve",
+        ):
             self.assertNotIn(value_name, event_block)
         self.assertIn("~/Documents/U-GAS Projects/", starter)
         self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", starter)
         self.assertIn("Made with U-GAS by ĀBŌ", starter)
         self.assertIn("PUBLIC STARTER", starter)
         self.assertIn("Back to the U-GAS repository", starter)
-        self.assertIn("only active,", starter_readme)
+        self.assertIn(
+            "GitHub and My server / cloud remain visible but disabled",
+            " ".join(starter_readme.split()),
+        )
 
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"
