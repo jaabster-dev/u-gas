@@ -18,81 +18,36 @@ U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project fro
 
 ## Quick Start
 
-## Start here
-
 <a href="https://jaabster-dev.github.io/u-gas/starter/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
 
-Use the runnable Starter first. Describe what you want to make, leave **My computer**
-selected, copy the generated prompt, and paste it into ChatGPT or another coordinating AI.
-If it gives you a Codex handoff, copy the whole marked block into Codex; then copy Codex's
-clearly marked result back to ChatGPT and continue.
+Start with the runnable Starter. Leave **My computer** selected, describe what you want to
+make, and copy the generated prompt into ChatGPT or another coordinating AI.
 
-### Use U-GAS first: the action-first path
-
-You can use U-GAS without learning its terminology first:
+### How to use it
 
 1. Describe what you want to make.
-2. Choose where the project should live.
-3. Copy the generated prompt.
-4. Paste it into your coordinating AI chat.
-5. If that AI asks for local execution, copy its ready-made handoff into a suitable executor.
-6. Copy the executor's complete result back into the coordinating AI chat.
-7. Continue talking to the AI about the project.
+2. Copy the generated prompt into your coordinating AI chat.
+3. If local execution is genuinely needed, let the coordinating AI use its safe available
+   capabilities first. If it needs an executor, it should immediately show one prominent
+   `NEXT ACTION`, name that executor, and give you one complete copyable handoff. Use that
+   handoff to create, change, and verify the real durable project; you should not choose
+   routine execution mechanics.
+4. Copy the executor's complete result back into the coordinating AI chat and continue.
 
-If local execution is needed and a suitable executor is known, the coordinating AI should
-immediately show one prominent `NEXT ACTION`, name that executor, and provide one complete
-copyable handoff. It should not ask you to choose routine execution mechanics.
+Ordinary ChatGPT and Codex on macOS are the currently tested examples. Other compatible tools may
+work, but are not independently validated. **My computer** is the only active Starter
+route; GitHub and My server / cloud remain visible but disabled until dedicated validation.
+When an executor knows the exact file, project path, or verified browser URL, it should
+name that target directly; you should not derive it from routine output.
+U-GAS makes no claim about credits, plans, entitlements, pricing, or guaranteed savings.
 
-**Next:** copy the complete prompt into your coordinating AI chat. If local execution is
-needed, the tested handoff names Codex first; another compatible authorized executor may
-be used where available.
+### Coming back later?
 
-Coming back later? Open `GIVE THIS TO YOUR NEXT AI CHAT.txt`, copy all of it, and paste it
-into a new compatible AI chat to continue.
-
-Open the public [Project Starter](https://jaabster-dev.github.io/u-gas/starter/) to use this
-flow. Leave **My computer** selected for the currently tested route. GitHub and My server /
-cloud remain visible in the Starter as planned routes, but are disabled until each has
-dedicated end-to-end validation.
-
-For the currently tested local-first journey, open the U-GAS Project Starter, describe
-what you want to make, choose where it should live, and copy its complete prompt into
-ChatGPT. ChatGPT is primarily the planning and coordination conversation: it should use
-its own safe capabilities first. If the work requires persistent/local execution that
-ChatGPT cannot access, it should discover the available capability and give you one
-ready-to-copy handoff for Codex or another suitable local/coding executor. Paste that
-handoff into the executor; it should create, change, and verify the real durable project
-where indicated. Inspect the actual project/result, then return the executor's concise
-report to ChatGPT so planning and reconciliation can continue there.
-
-This keeps ordinary discussion in ChatGPT and invokes local/coding-agent execution only
-when execution is needed. It may reduce unnecessary use of execution capacity, but U-GAS
-makes no claim about credits, plans, entitlements, pricing, or guaranteed savings.
-
-This exact local-first pattern has been owner-tested with ordinary ChatGPT and Codex on
-macOS. Other tool combinations may work, but are not independently validated; you may
-choose another compatible workflow that preserves the same capability boundaries and
-user-controlled durable workspace.
-
-The executor returns one clearly marked complete result for you to paste back into the
-coordinating chat. When it knows the exact file, project path, or verified browser URL,
-it should name that target directly; you should not have to derive a URL or interpret
-routine command output.
-
-## NEXT ACTION
-
-If execution is handed off, copy the executor's complete result and paste it back into
-the coordinating AI chat.
-
-### Resume after a pause or in a new AI chat
-
-Open the durable project folder and open `GIVE THIS TO YOUR NEXT AI CHAT.txt`. Copy the
-complete text into a new compatible AI chat. That stable human entry ticket points the AI
-to the project's durable `AGENTS.md`, current U-GAS instructions, and actual PICA/project
-state so it can reconstruct the current ACTIVE, NEXT, WAITING, and BLOCKED situation and
-continue from the next useful action. It is not a fifth PICA file or a source of truth;
-the durable project files remain authoritative. The artifact normally remains stable and
-does not require special regeneration at every pause.
+Open `GIVE THIS TO YOUR NEXT AI CHAT.txt`, copy all of it, and paste it into a new
+compatible AI chat. This stable human resume ticket points the AI to the durable
+`AGENTS.md`, current U-GAS instructions, and actual PICA/project state so it can continue
+from the next useful action. It is not a fifth PICA file or a source of truth; durable
+project files remain authoritative, and the ticket normally stays stable between pauses.
 
 ### What you need
 
@@ -210,7 +165,7 @@ one silently.
 
 For either route, a local-only project uses its persistent filesystem and local Git
 history as authority. Remote fetch/push verification is not applicable until a remote
-exists. For the first external test, give feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where you got stuck, what was unclear, what the agent failed to do, unexpected friction, and whether the workflow actually resumed or worked as described. Do not post secrets, tokens, passwords, private keys, or sensitive private-repository content.
+exists.
 
 If the agent cannot safely create files, stop and report the specific capability limit.
 Otherwise, it should own the routine file and Git mechanics.
@@ -297,13 +252,10 @@ tokens, recovery codes, private keys, or other secrets.
 U-GAS is an experimental way to keep an AI project from losing its place between chats
 and tools. The first public local-project flow is live. I’m looking for someone who has
 not used it before to try the [Project Starter](https://jaabster-dev.github.io/u-gas/starter/)
-without extra instructions and tell me where it becomes confusing or fails. Share
-feedback on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1).
-
-It is released under the [MIT License](LICENSE). For the first independent test, give
-feedback by commenting on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1): where
-you got stuck, what was unclear, what the agent failed to do, unexpected friction, and
-whether the workflow resumed or worked as described. Do not post secrets or sensitive
-private-repository content.
+without extra instructions. It is released under the [MIT License](LICENSE). For the
+first independent test, comment on [Issue #1](https://github.com/jaabster-dev/u-gas/issues/1)
+with where you got stuck, what was unclear, what the agent failed to do, unexpected
+friction, and whether the workflow resumed or worked as described. Do not post secrets
+or sensitive private-repository content.
 
 The distribution self-check verifies U-GAS's own files and routes. The optional `--project <path>` check verifies only readable, non-empty PICA files, the canonical upstream anchor in `AGENTS.md`, and the minimum `CURRENT_STATE.md` resume contract. These checks do not prove product correctness, current-state truth, runtime/model compliance, GitHub access, branch correctness, repository safety, or independent validation.

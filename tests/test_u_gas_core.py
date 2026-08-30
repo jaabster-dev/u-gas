@@ -155,12 +155,13 @@ class CoreContractTests(unittest.TestCase):
             self.assertIn("one complete", text)
             self.assertIn("Codex", text)
         self.assertIn("not mandatory", governance)
-        self.assertIn("ordinary ChatGPT and Codex on", readme)
+        self.assertIn("Ordinary ChatGPT and Codex on", readme)
         self.assertIn("credits, plans, entitlements", readme)
         self.assertIn("routine\nTerminal/Git/file-transfer work", readme)
         self.assertIn("provider/session storage", governance)
-        self.assertIn("immediately show one prominent `NEXT ACTION`", readme)
-        self.assertIn("should not ask you to choose routine execution mechanics", readme)
+        normalized = " ".join(readme.split())
+        self.assertIn("immediately show one prominent `NEXT ACTION`", normalized)
+        self.assertIn("you should not choose routine execution mechanics", normalized)
 
     def test_public_starter_promotes_only_tested_local_route(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
@@ -200,8 +201,8 @@ class CoreContractTests(unittest.TestCase):
         self.assertNotIn("[Project Starter](starter/)", readme)
         self.assertIn('target="_blank"', readme)
         self.assertIn('rel="noopener noreferrer"', readme)
-        self.assertLess(readme.index("Use U-GAS first"), readme.index("## How U-GAS works"))
-        self.assertIn("## NEXT ACTION", readme)
+        self.assertLess(readme.index("### How to use it"), readme.index("## How U-GAS works"))
+        self.assertIn("one complete copyable handoff", readme)
         self.assertIn("exact file, project path, or verified browser URL", readme)
 
     def test_resume_and_executor_return_contract(self):
@@ -217,18 +218,18 @@ class CoreContractTests(unittest.TestCase):
 
     def test_action_first_onboarding_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("### Use U-GAS first: the action-first path", readme)
+        self.assertIn("### How to use it", readme)
         actions = (
             "Describe what you want to make.",
-            "Choose where the project should live.",
-            "Copy the generated prompt.",
-            "Paste it into your coordinating AI chat.",
-            "Copy the executor's complete result back into the coordinating AI chat.",
-            "Continue talking to the AI about the project.",
+            "Copy the generated prompt into",
+            "If local execution is genuinely needed",
+            "Copy the executor's complete result back into the coordinating AI chat",
         )
         for action in actions:
             self.assertIn(action, readme)
-        self.assertLess(readme.index("### Use U-GAS first: the action-first path"), readme.index("## How U-GAS works"))
+        self.assertLess(readme.index("### How to use it"), readme.index("## How U-GAS works"))
+        self.assertEqual(readme.count("https://github.com/jaabster-dev/u-gas/issues/1"), 1)
+        self.assertEqual(readme.count("GIVE THIS TO YOUR NEXT AI CHAT.txt"), 2)
         current = (ROOT / "CURRENT_STATE.md").read_text(encoding="utf-8")
         self.assertIn("PICA, governance, capability discovery", current)
         self.assertIn("BMAD and GitHub Spec Kit", current)
