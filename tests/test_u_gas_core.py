@@ -104,7 +104,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("MIT License", readme)
         self.assertIn("Experimental", readme)
         self.assertIn("Tested with ChatGPT", readme)
-        self.assertIn("> *The conversation can be temporary; the project state is not.*", readme)
+        self.assertIn("> **Keep your AI project from losing the plot.**", readme)
         self.assertNotIn("```mermaid", readme)
         self.assertIn("Plan → Persist → Execute → Verify → Resume", readme)
         self.assertLess(readme.index("## Quick Start"), readme.index("### A typical workflow"))
@@ -160,8 +160,8 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("routine\nTerminal/Git/file-transfer work", readme)
         self.assertIn("provider/session storage", governance)
         normalized = " ".join(readme.split())
-        self.assertIn("immediately show one prominent `NEXT ACTION`", normalized)
-        self.assertIn("you should not choose routine execution mechanics", normalized)
+        self.assertIn("one clear `NEXT ACTION`", normalized)
+        self.assertIn("you do not need to choose routine execution mechanics", normalized)
 
     def test_public_starter_promotes_only_tested_local_route(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
@@ -174,13 +174,13 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("https://github.com/jaabster-dev/u-gas", starter)
         self.assertIn("Made with U-GAS by ĀBŌ", starter)
         self.assertIn("Copy this complete result and paste it back into the AI chat that sent you here.", starter)
-        self.assertIn("Codex is a tested example, not mandatory", starter)
-        self.assertIn("immediately expose one prominent NEXT ACTION naming that executor", starter)
-        self.assertIn("Do not present routine execution choices or ask the owner how to proceed", starter)
+        self.assertIn("one prominent NEXT ACTION", starter)
+        self.assertIn("one complete copyable handoff", starter)
 
     def test_public_starter_first_contact_destination_contract(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
-        self.assertIn("U-GAS helps your AI build and continue a project without losing its place", starter)
+        self.assertIn("Keep your AI project from", starter)
+        self.assertIn("carry its important state into the next chat or coding agent", starter)
         self.assertIn('id="nextStep"', starter)
         self.assertIn("NEXT STEP", starter)
         self.assertIn("Your prompt is copied.", starter)
@@ -202,7 +202,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn('target="_blank"', readme)
         self.assertIn('rel="noopener noreferrer"', readme)
         self.assertLess(readme.index("### How to use it"), readme.index("## How U-GAS works"))
-        self.assertIn("one complete copyable handoff", readme)
+        self.assertIn("one complete copyable", readme)
         self.assertIn("exact file, project path, or verified browser URL", readme)
 
     def test_resume_and_executor_return_contract(self):
@@ -220,10 +220,11 @@ class CoreContractTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("### How to use it", readme)
         actions = (
-            "starting a new project or continuing one you already have",
-            "Describe the project and the outcome you want",
-            "If local execution is genuinely needed",
-            "Copy the executor's complete result back into the coordinating AI chat",
+            "Open the Starter and choose whether you are starting a new project or continuing one",
+            "Describe the project and what you want to happen next",
+            "one clear `NEXT ACTION`",
+            "one complete copyable",
+            "give the complete result back to the AI chat",
         )
         for action in actions:
             self.assertIn(action, readme)
@@ -257,8 +258,8 @@ class CoreContractTests(unittest.TestCase):
             "existingPreserve",
         ):
             self.assertIn(f'id="{field_id}"', starter)
-        self.assertIn("If this project is already open in Codex", starter)
-        self.assertIn("follow the single NEXT ACTION", starter)
+        self.assertIn("If this project is already open in a coding agent", starter)
+        self.assertIn("your AI chat", starter)
         self.assertIn("You do not need to supply Git commands", readme)
 
         template_match = re.search(
@@ -279,28 +280,23 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("EXISTING PROJECT", rendered)
         self.assertIn(values["currentGoal"], rendered)
         for semantic_marker in (
-            "Inspect the actual existing project",
-            "Do not create a duplicate project",
-            "Preserve existing code, history, uncommitted changes, untracked files, unpushed work",
-            "add only the minimum missing PICA controls",
-            "Do not restart, rewrite, redesign, migrate, broadly clean up, or simplify",
-            "Distinguish required safeguards from redundant or risk-disproportionate ceremony",
-            "smallest safe next action",
-            "Do not remove protections without project-specific evidence",
-            "PICA/bootstrap completion is not completion of the project request",
-            "Verify the actual repository/workspace state",
+            "Establish actual authority",
+            "Never create a duplicate",
+            "Preserve code, history, dirty/untracked/unpushed work",
+            "Add only missing minimum PICA controls",
+            "Do not reset, overwrite, clean, restart, rewrite, or migrate",
+            "Treat procedural complexity as evidence",
+            "smallest safe action",
+            "PICA/bootstrap is not completion",
+            "Verify actual state and relevant tests",
         ):
             self.assertIn(semantic_marker, rendered)
-        for owner_question in (
-            "branch names",
-            "commit identifiers",
-            "status output",
-            "PICA terminology",
-            "test commands",
-            "architecture",
-            "merge mechanics",
-        ):
-            self.assertIn(owner_question, rendered)
+        self.assertIn("newer compatible owner intent", rendered)
+        self.assertIn("PURPOSE UNKNOWN", rendered)
+        self.assertIn("capabilities before asking for help", rendered)
+        self.assertIn("one prominent NEXT ACTION", rendered)
+        self.assertIn("one complete copyable handoff", rendered)
+        self.assertIn("Never ask for secrets or routine mechanics", rendered)
 
     def test_public_starter_privacy_first_usage_analytics_contract(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
@@ -347,6 +343,78 @@ class CoreContractTests(unittest.TestCase):
             "GitHub and My server / cloud remain visible but disabled",
             " ".join(starter_readme.split()),
         )
+
+    def test_starter_generated_prompts_are_compact_and_semantic(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+
+        def render(template_id, values):
+            match = re.search(rf'<template id="{template_id}">(.*?)</template>', starter, re.S)
+            self.assertIsNotNone(match, template_id)
+            return re.sub(
+                r"\{\{(\w+)\}\}",
+                lambda item: values[item.group(1)],
+                match.group(1),
+            ).strip()
+
+        new_prompt = render(
+            "newPromptTemplate",
+            {
+                "projectName": "Garden planner",
+                "projectDescription": "Plan beds, plants, tasks, and notes.",
+                "projectRoute": "MY COMPUTER",
+                "projectLocation": "~/Documents/U-GAS Projects/garden-planner",
+            },
+        )
+        existing_prompt = render(
+            "existingPromptTemplate",
+            {
+                "projectName": "Flashcard Generator",
+                "projectLocation": "https://github.com/example/flashcards",
+                "projectPurpose": "Turn pasted notes into study flashcards.",
+                "currentGoal": "Import the next deck without breaking existing behavior.",
+                "currentObstacle": "Routine safeguards became slow.",
+                "mustPreserve": "Saved decks, tests, history, and working changes.",
+            },
+        )
+
+        self.assertLess(len(new_prompt.split()), 360)
+        self.assertLess(len(existing_prompt.split()), 360)
+        self.assertLess(len(new_prompt), 2400)
+        self.assertLess(len(existing_prompt), 2800)
+        self.assertNotIn("Requirements:\n1. Before changing project files", starter)
+        self.assertNotIn("EXECUTION-CAPABILITY ESCALATION", starter)
+
+        for prompt in (new_prompt, existing_prompt):
+            normalized_prompt = prompt.casefold()
+            for marker in (
+                "current public U-GAS README.md and AGENTS.md",
+                "safe read-only method",
+                "PICA",
+                "PURPOSE UNKNOWN",
+                "preserve",
+                "capabilities",
+                "one prominent NEXT ACTION",
+                "one complete copyable handoff",
+                "Never ask for secrets",
+                "READY or PASS only from evidence",
+                "BLOCKED boundary",
+                "durable PICA",
+                "Copy this complete result",
+            ):
+                self.assertIn(marker.casefold(), normalized_prompt, marker)
+
+        self.assertIn("provider/session storage", new_prompt)
+        self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", new_prompt)
+        self.assertIn("current remote/canonical clone", existing_prompt)
+        self.assertIn("newer compatible owner intent", existing_prompt)
+        self.assertIn("temporary/provider-hosted storage", existing_prompt)
+        self.assertIn("If the stable GIVE THIS TO YOUR NEXT AI CHAT.txt ticket is missing", existing_prompt)
+        self.assertIn("Garden planner", new_prompt)
+        self.assertIn("Plan beds, plants, tasks, and notes.", new_prompt)
+        self.assertIn("~/Documents/U-GAS Projects/garden-planner", new_prompt)
+        self.assertIn("Flashcard Generator", existing_prompt)
+        self.assertIn("https://github.com/example/flashcards", existing_prompt)
+        self.assertIn("Import the next deck without breaking existing behavior.", existing_prompt)
 
     def test_pica_agents_have_identity_haiku(self):
         haiku = "> Clear paths guide the work<br>\n> State remains where agents meet<br>\n> Truth survives each handoff"

@@ -128,12 +128,12 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 <main class="wrap">
 <a class="back" href="https://github.com/jaabster-dev/u-gas">← Back to the U-GAS repository</a>
 <div class="badge">PUBLIC STARTER · MY COMPUTER ROUTE TESTED</div>
-<section class="hero"><div class="hero-copy"><h1>Start or continue a project without editing <span class="hero-accent">a prompt.</span></h1><p>U-GAS helps your AI build and continue a project without losing its place between chats and tools.</p><ol class="hero-steps"><li>Choose whether this is a new or existing project.</li><li>Describe the outcome in ordinary language.</li><li>Copy the prompt into the AI already working with the project, or your coordinating AI.</li></ol></div></section>
+<section class="hero"><div class="hero-copy"><h1>Keep your AI project from <span class="hero-accent">losing the plot.</span></h1><p>U-GAS helps your project carry its important state into the next chat or coding agent, instead of making you retell everything.</p><ol class="hero-steps"><li>Start a project or continue one you already have.</li><li>Describe what you want to happen next.</li><li>Copy the prompt and send it to your AI.</li></ol></div></section>
 
 <section class="card">
 <div class="field"><label>What would you like to do?</label><div class="routes project-modes">
-<label class="route"><strong class="route-head"><input type="radio" name="projectMode" value="new" checked><span class="route-title">Start a new project</span></strong><span>Create a durable project workspace from your idea.</span></label>
-<label class="route"><strong class="route-head"><input type="radio" name="projectMode" value="existing"><span class="route-title">Continue an existing project</span></strong><span>Inspect what already exists and continue without restarting.</span></label>
+<label class="route"><strong class="route-head"><input type="radio" name="projectMode" value="new" checked><span class="route-title">Start a new project</span></strong><span>Turn an idea into a project you can keep.</span></label>
+<label class="route"><strong class="route-head"><input type="radio" name="projectMode" value="existing"><span class="route-title">Continue an existing project</span></strong><span>Pick up where your project left off.</span></label>
 </div></div>
 <div class="field"><label for="name">Project name</label><input id="name" placeholder="Garden planner"></div>
 <div id="newProjectFields">
@@ -149,7 +149,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 <details class="advanced"><summary>I want to use a different folder</summary><div style="margin-top:10px"><label for="customLocation">Custom folder</label><input id="customLocation" placeholder="Optional: enter another persistent folder"><div class="hint">Only change this if you already know where you want the project to live.</div></div></details>
 </div>
 <div id="externalLocation" class="field hidden"><label id="locationLabel" for="location">GitHub repository</label><input id="location"><div id="locationHint" class="hint"></div></div>
-<div class="note">Only My computer is active in this tested release. GitHub and My server / cloud remain visible but disabled until dedicated end-to-end tests pass. After copying, paste the prompt into ChatGPT or your coordinating AI. Do not paste passwords, tokens, private keys, or other secrets here.</div>
+<div class="note">For this first public test, use My computer. Your project stays in a folder you control; the receiving AI still checks that it can access it. Do not paste passwords, tokens, private keys, or other secrets here.</div>
 </div>
 <div id="existingProjectFields" class="existing-fields hidden">
 <h2 class="mode-heading">Continue what you already have</h2>
@@ -159,17 +159,39 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 <div class="field"><label for="existingGoal">What do you want to achieve now?</label><textarea id="existingGoal" placeholder="Describe the current outcome you want."></textarea></div>
 <div class="field"><label for="existingObstacle">What is getting in the way? <span class="optional">(optional)</span></label><textarea id="existingObstacle" placeholder="For example: routine agent work has become slow or confusing."></textarea></div>
 <div class="field"><label for="existingPreserve">What must not be lost or broken? <span class="optional">(optional)</span></label><textarea id="existingPreserve" placeholder="Important behavior, work, files, history, or instructions to preserve."></textarea></div>
-<div class="note">Use ordinary language. The receiving agent must inspect the real project, discover technical state itself, and ask you only about a genuine decision or access boundary.</div>
+<div class="note">Describe it in your own words. The AI will inspect the project and ask only when you need to decide something.</div>
 </div>
 </section>
 
 <section class="card">
-<h2>Your prompt is ready</h2><p>It updates automatically from the fields above. You should not need to edit anything inside it.</p><div id="usageGuidance" class="destination"></div>
+<h2>Send this to your AI</h2><p>Your prompt updates from the fields above. You do not need to rewrite it.</p><div id="usageGuidance" class="destination"></div>
 <div class="actions"><button id="copy" disabled>Copy complete prompt</button><button id="example" class="secondary">Fill example</button><span id="status" class="status"></span></div>
 <div id="nextStep" class="destination next-step hidden" aria-live="polite"><h3>NEXT STEP</h3><p><strong>Your prompt is copied.</strong> Open your AI chat, paste it, and send it.</p><p>Your AI will take it from here. If local coding or execution is needed, it should give you one ready-to-copy instruction for Codex, Claude Code, or another suitable executor.</p><div class="destinations"><a id="chatgpt" class="button" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span class="provider-logo chatgpt" aria-hidden="true"><img src="assets/chatgpt-logo.png" alt=""></span>Open ChatGPT</a><a id="claude" class="button" href="https://claude.ai/" target="_blank" rel="noopener noreferrer"><span class="provider-logo claude" aria-hidden="true"><img src="assets/claude-logo.svg" alt=""></span>Open Claude</a><button id="otherAi" class="secondary" type="button"><svg class="destination-mark other" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 6 5.5 6L5 18M13 18h6"/></svg>Other AI</button></div><p id="otherAiHint" class="hint hidden">Open the AI you use, then paste the copied prompt and send it. U-GAS does not automatically paste or send your prompt.</p></div>
 <details class="preview"><summary>Preview prompt</summary><div id="prompt" class="prompt"></div></details>
 </section>
-<template id="existingPromptTemplate">Continue this EXISTING PROJECT using U-GAS. Do not restart it as a new project.
+<template id="newPromptTemplate">Start this NEW PROJECT with U-GAS.
+
+PROJECT
+Name: {{projectName}}
+Idea: {{projectDescription}}
+Durable route: {{projectRoute}}
+Durable location: {{projectLocation}}
+
+CURRENT U-GAS AUTHORITY
+Before changing files, read the current public U-GAS README.md and AGENTS.md at https://github.com/jaabster-dev/u-gas using a safe read-only method. Use only the relevant current procedure; this prompt is not a policy snapshot.
+
+OWNER'S GOAL
+Move from this idea to the next useful project result.
+
+WORK SAFELY
+1. Verify the durable location is accessible and establish the real project authority. Do not use provider/session storage, temporary folders, downloads, or a duplicate project as the project of record.
+2. Inspect before editing. Create or reconcile only missing PICA files (PROGRESS.md, IDEAS.md, CURRENT_STATE.md, AGENTS.md). Preserve substantive content and current U-GAS identity, haiku, attribution, and continuity requirements. If purpose or authority is unclear, say PURPOSE UNKNOWN and ask only the smallest owner question.
+3. Preserve existing work, history, tests, instructions, and behavior. Do not reset, overwrite, clean, or claim persistence or completion without evidence.
+4. Do the next safe project action yourself when possible. Discover capabilities before asking for help. If another executor is needed, show one prominent NEXT ACTION, name one suitable executor, and give one complete copyable handoff with the exact target, location, objective, constraints, and return. Never ask for secrets or routine technical mechanics. The return must say: Copy this complete result and paste it back into the AI chat that sent you here.
+5. Verify actual state and relevant tests after material changes. Report READY or PASS only from evidence; otherwise state the exact BLOCKED boundary. Return material executor or human/device results to durable PICA.
+6. After durable workspace setup, create or reconcile the stable human resume file GIVE THIS TO YOUR NEXT AI CHAT.txt when applicable. It is not a fifth authority. Then continue the project beyond bootstrap.</template>
+
+<template id="existingPromptTemplate">Continue this EXISTING PROJECT with U-GAS. Do not restart it as a new project.
 
 PROJECT NAME
 {{projectName}}
@@ -183,25 +205,22 @@ PROJECT PURPOSE AND CONTEXT
 CURRENT DESIRED OUTCOME
 {{currentGoal}}
 
-CURRENT OBSTACLE OR CONTEXT
+CONTEXT
 {{currentObstacle}}
 
-IMPORTANT BEHAVIOR OR WORK NOT TO LOSE
+PRESERVE
 {{mustPreserve}}
 
-CANONICAL U-GAS SOURCE
-https://github.com/jaabster-dev/u-gas
+CURRENT U-GAS AUTHORITY
+Before changing files, read the current public U-GAS README.md and AGENTS.md at https://github.com/jaabster-dev/u-gas using a safe read-only method. Use only the relevant current procedure; this prompt is not a policy snapshot.
 
-Requirements:
-1. Inspect the actual existing project before proposing or making changes. Establish its real authority: the current remote and canonical clone when one exists, or its persistent local repository/workspace when it is intentionally local-only. If the location above is unknown, discover it safely from the current environment or state the smallest real access boundary. Do not create a duplicate project or substitute a temporary/provider-hosted workspace.
-2. Preserve existing code, history, uncommitted changes, untracked files, unpushed work, project instructions, tests, behavior, and documentation. Do not overwrite substantive controls or docs with templates or placeholders.
-3. Before integrating U-GAS, read the current U-GAS README.md and AGENTS.md from the canonical public source using an available safe read-only method. Reconcile the project truthfully and add only the minimum missing PICA controls required by current U-GAS. Existing substantive project rules remain authoritative unless a genuine conflict is identified.
-4. Do not restart, rewrite, redesign, migrate, broadly clean up, or simplify the project merely because U-GAS is being added. Do not assume a fresh repository, new architecture, or new workflow.
-5. Inspect the current procedural complexity as evidence, not as permission for broad simplification. Distinguish required safeguards from redundant or risk-disproportionate ceremony, then choose the smallest safe next action that advances the current desired outcome. Do not remove protections without project-specific evidence.
-6. Continue toward the current desired outcome after the bounded U-GAS reconciliation. PICA/bootstrap completion is not completion of the project request.
-7. Own routine repository, file, test, branch, and verification mechanics through authorized tools. Do not ask me for technical state I can reasonably expect the agent to inspect, including branch names, commit identifiers, status output, PICA terminology, test commands, architecture, or merge mechanics.
-8. Ask me only for a genuine product decision, authentication/access I must provide through the proper UI, destructive or irreversible action, cost, private-data boundary, or physical-device action.
-9. Verify the actual repository/workspace state and required behavior before reporting READY or PASS. Distinguish code inspection, tests, runtime evidence, remote state, and human/device evidence truthfully. If blocked, name the exact boundary and the smallest useful next action.
+SAFE CONTINUATION
+1. Establish actual authority: the current remote/canonical clone or persistent local project. If the location is unknown, discover it safely or state the smallest real boundary. Never create a duplicate or use temporary/provider-hosted storage.
+2. Inspect first. Preserve code, history, dirty/untracked/unpushed work, instructions, tests, behavior, and docs. Do not reset, overwrite, clean, restart, rewrite, or migrate merely because U-GAS is being added.
+3. Reconcile actual state with my goal and newer compatible owner intent, even if not yet persisted. Add only missing minimum PICA controls. If purpose or authority is unclear, say PURPOSE UNKNOWN and ask one smallest owner question.
+4. Take the smallest safe action toward the current outcome. Treat procedural complexity as evidence: keep safeguards, and simplify only when current project evidence justifies it. PICA/bootstrap is not completion.
+5. Discover capabilities before asking for help. If another executor is needed, show one prominent NEXT ACTION, name one suitable executor, and provide one complete copyable handoff with exact target, location, objective, constraints, and return. Never ask for secrets or routine mechanics. The return must say: Copy this complete result and paste it back into the AI chat that sent you here.
+6. Verify actual state and relevant tests after material changes. Report READY or PASS only from evidence; otherwise state the exact BLOCKED boundary. Return material executor or human/device results to durable PICA. If the stable GIVE THIS TO YOUR NEXT AI CHAT.txt ticket is missing, reconcile it according to current U-GAS without treating it as authority.
 
 Begin by inspecting the existing project and identifying the smallest safe action toward the current desired outcome.</template>
 <div class="credit">Made with U-GAS by ĀBŌ</div>
@@ -217,34 +236,38 @@ function durableLocation(){return route()==='computer'?(customLocation.value.tri
 function value(v,fallback){return v.trim()||fallback}
 function existingProjectLocation(){return existingLocationUnknown.checked?'I do not know the repository or local project location. Discover it safely from the current environment.':value(existingLocation.value,'<REPOSITORY URL OR LOCAL PROJECT FOLDER>')}
 function fillPromptTemplate(templateId,values){return $(templateId).content.textContent.trim().replace(/\{\{(\w+)\}\}/g,(_,key)=>values[key]??'')}
+function newProjectPrompt(){return fillPromptTemplate('newPromptTemplate',{projectName:value(name.value,'<PROJECT NAME>'),projectDescription:value(description.value,'<PROJECT DESCRIPTION>'),projectRoute:routeMeta[route()].title,projectLocation:durableLocation()||'<PROJECT LOCATION>'})}
 function existingProjectPrompt(){return fillPromptTemplate('existingPromptTemplate',{projectName:value(name.value,'<PROJECT NAME>'),projectLocation:existingProjectLocation(),projectPurpose:value(existingPurpose.value,'<PROJECT PURPOSE AND CONTEXT>'),currentGoal:value(existingGoal.value,'<CURRENT DESIRED OUTCOME>'),currentObstacle:value(existingObstacle.value,'Not provided.'),mustPreserve:value(existingPreserve.value,'Not provided; inspect and preserve all existing work by default.')})}
 function autoSizeTextarea(el){el.style.height='auto';el.style.height=`${Math.max(el.scrollHeight,64)}px`}
-function render(){const existing=projectMode()==='existing',r=route(),m=routeMeta[r];$('newProjectFields').classList.toggle('hidden',existing);$('existingProjectFields').classList.toggle('hidden',!existing);$('computerLocation').classList.toggle('hidden',existing||r!=='computer');$('externalLocation').classList.toggle('hidden',existing||r==='computer');existingLocation.disabled=existingLocationUnknown.checked;if(r!=='computer'){$('locationLabel').textContent=m.label;locationInput.placeholder=m.placeholder;$('locationHint').textContent=m.hint}$('suggestedLocation').textContent=suggestedPath();name.placeholder=existing?'Flashcard Generator':'Garden planner';if(existing){$('copy').disabled=!(name.value.trim()&&existingPurpose.value.trim()&&existingGoal.value.trim()&&(existingLocation.value.trim()||existingLocationUnknown.checked));$('usageGuidance').innerHTML='<strong>Where to paste it</strong>If this project is already open in Codex or another capable coding agent, paste the prompt there. Otherwise paste it into ChatGPT or your coordinating AI and follow the single NEXT ACTION it gives you.';promptBox.textContent=existingProjectPrompt();return}const loc=durableLocation();$('copy').disabled=!(name.value.trim()&&description.value.trim()&&loc);$('usageGuidance').innerHTML='<strong>Where to paste it</strong>Paste the prompt into ChatGPT or your coordinating AI. It should use an authorized executor when persistent/local work is needed.';const n=value(name.value,'<PROJECT NAME>'),d=value(description.value,'<PROJECT DESCRIPTION>'),shownLoc=loc||'<PROJECT LOCATION>';promptBox.textContent=`Start or continue this project using U-GAS.\n\nPROJECT NAME\n${n}\n\nPROJECT DESCRIPTION\n${d}\n\nDURABLE WORKSPACE ROUTE\n${m.title}\n\nDURABLE LOCATION\n${shownLoc}\n\nCANONICAL U-GAS SOURCE\nhttps://github.com/jaabster-dev/u-gas\n\nRequirements:\n1. Before changing project files, read the current public U-GAS README.md and AGENTS.md from the canonical source above using an available safe read-only method. A missing authenticated GitHub connector is not proof that the public source cannot be read.\n2. The durable editable project must live in storage I control and can independently access later: my computer, my GitHub repository, or my own server/cloud as specified above.\n3. Do NOT treat ChatGPT/OpenAI/Claude/provider-hosted session filesystems, sandboxes, /mnt/data, temporary workspaces, or downloadable artifacts as my durable project authority. They may be temporary execution/export space only.\n4. Do not ask me to paste passwords, access tokens, private keys, recovery codes, or other secrets into chat. Use the host's authorized tools/authentication flow when needed.\n5. Verify that the selected durable location is actually accessible before claiming the project is persistent. If it is not accessible from this environment, do not silently substitute a hosted sandbox. Discover and use an available authorized persistent/local execution capability when safe; otherwise state the smallest real capability/authentication gate. Do not make Codex or any particular tool mandatory when another safe authorized route exists.\n6. In the durable workspace, initialize or reconcile the four visible project controls: PROGRESS.md, IDEAS.md, CURRENT_STATE.md, and AGENTS.md. Preserve substantive existing content; do not overwrite it with placeholders.\n7. Make the generated project durably recognizable as U-GAS-managed. AGENTS.md must contain a small U-GAS bootstrap/identity section that points future agents to the canonical source above and tells them to read the current U-GAS entry instructions before project work. Keep this marker small; do not paste a large snapshot of U-GAS rules that can go stale. Include the visible attribution exactly: Made with U-GAS by ĀBŌ.\n8. Preserve the current U-GAS PICA personality/identity requirements, including the haiku marker defined by the current U-GAS templates/instructions. Do not invent a replacement if the canonical source specifies the form.\n9. PICA/bootstrap completion is NOT completion of my project request. After the workspace is verified, continue into the actual project described above. Identify the next concrete useful project action and perform it when the current environment safely allows it.\n10. Material human/device results reported later in chat (for example a browser/device verification PASS, failure, blocker, or product decision) must not remain only in conversation when they change project state. Recognize that as a durable-state event and route the smallest safe authorized update back into the project's PICA before treating that checkpoint as complete.\n11. Report READY only when the durable workspace is established/reconciled and the next concrete project action is identified. If the actual next action cannot be executed here, report BLOCKED with the exact boundary instead of pretending the project task is complete.\n12. Keep routine Git, branch, file, and workflow mechanics away from me when an authorized tool can handle them safely. Ask me only for a genuine product decision, authentication/access I must provide through the proper UI, destructive/irreversible action, cost, or physical-device boundary.\n\nBegin now. Do not stop merely because the four PICA files exist.`;}
+function render(){
+  const existing=projectMode()==='existing',r=route(),m=routeMeta[r];
+  $('newProjectFields').classList.toggle('hidden',existing);
+  $('existingProjectFields').classList.toggle('hidden',!existing);
+  $('computerLocation').classList.toggle('hidden',existing||r!=='computer');
+  $('externalLocation').classList.toggle('hidden',existing||r==='computer');
+  existingLocation.disabled=existingLocationUnknown.checked;
+  if(r!=='computer'){
+    $('locationLabel').textContent=m.label;
+    locationInput.placeholder=m.placeholder;
+    $('locationHint').textContent=m.hint;
+  }
+  $('suggestedLocation').textContent=suggestedPath();
+  name.placeholder=existing?'Flashcard Generator':'Garden planner';
+  if(existing){
+    $('copy').disabled=!(name.value.trim()&&existingPurpose.value.trim()&&existingGoal.value.trim()&&(existingLocation.value.trim()||existingLocationUnknown.checked));
+    $('usageGuidance').innerHTML='<strong>Where to paste it</strong>If this project is already open in a coding agent, paste the prompt there. Otherwise paste it into your AI chat.';
+    promptBox.textContent=existingProjectPrompt();
+    return;
+  }
+  const loc=durableLocation();
+  $('copy').disabled=!(name.value.trim()&&description.value.trim()&&loc);
+  $('usageGuidance').innerHTML='<strong>Where to paste it</strong>Paste this into the AI you want to continue the project. If you need one, use ChatGPT, Claude, or another AI you trust.';
+  promptBox.textContent=newProjectPrompt();
+}
 document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>{status.textContent='';$('nextStep').classList.add('hidden');if(el.tagName==='TEXTAREA')autoSizeTextarea(el);render()}));document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(el=>el.addEventListener('change',()=>{status.textContent='';$('nextStep').classList.add('hidden');render()}));
 $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(promptBox.textContent);recordStarterAttempt();status.textContent='Copied.';$('nextStep').classList.remove('hidden')}catch(e){status.textContent='Copy was blocked by this browser. Open Preview prompt and copy it manually.'}});
 $('otherAi').addEventListener('click',()=>{$('otherAiHint').classList.remove('hidden');status.textContent='Use the AI chat you prefer, then paste and send the copied prompt.'});
 $('example').addEventListener('click',()=>{if(projectMode()==='existing'){name.value='Flashcard Generator';existingLocation.value='~/Documents/Flashcard Generator';existingLocationUnknown.checked=false;existingPurpose.value='A small tool that turns pasted notes into study flashcards.';existingGoal.value='Import the next deck without breaking existing behavior.';existingObstacle.value='Routine agent tasks have become slow after accumulated rules, checks, backups, and preflights.';existingPreserve.value='Existing import behavior, saved decks, tests, project history, and current working changes.'}else{name.value='Garden planner';description.value='A simple private project for planning a small garden: beds, plants, tasks, and notes. I want the AI to help me shape the idea and build the project step by step.';document.querySelector('input[value="computer"]').checked=true;locationInput.value='';customLocation.value=''}status.textContent='Example filled.';document.querySelectorAll('textarea').forEach(autoSizeTextarea);render()});document.querySelectorAll('textarea').forEach(autoSizeTextarea);render();
-</script>
-<script>
-const starterRender=window.render;
-// The coordinating AI must act on a known execution boundary immediately: one prominent
-// NEXT ACTION, one named executor, and one complete handoff, without a routine-choice prompt.
-window.render=function(){
-  starterRender();
-  const existing=projectMode()==='existing';
-  promptBox.textContent += `\n\nEXECUTION-CAPABILITY ESCALATION\nIf this coordinating chat cannot perform persistent/local execution, first perform safe capability discovery. Use an available authorized persistent/local executor when one exists. If none exists, report the smallest real capability boundary and provide exactly one complete ready-to-copy handoff for a suitable executor. Codex is a tested example, not mandatory. Do not simulate completion, substitute provider/session storage, or ask the user to invent a handoff or perform routine Terminal/Git/file-transfer work.\n\nONE COMPLETE HANDOFF\nBEGIN EXECUTION HANDOFF\nTarget: a suitable authorized persistent/local executor\nProject: ${value(name.value,'<PROJECT NAME>')}\nDescription: ${existing?value(existingPurpose.value,'<PROJECT PURPOSE AND CONTEXT>'):value(description.value,'<PROJECT DESCRIPTION>')}\nDurable location: ${existing?existingProjectLocation():(durableLocation()||'<PROJECT LOCATION>')}\nObjective: ${existing?value(existingGoal.value,'continue the existing project toward its current desired outcome'):'establish or reconcile the durable U-GAS workspace, then continue the actual project task'}\nConstraints: read current U-GAS; preserve existing work and PICA; no provider/session sandbox substitution; no secrets; verify before claiming completion\nReturn: give one concise execution result back to this coordinating AI conversation for reconciliation\nEND EXECUTION HANDOFF\nThis is one complete payload; do not split it or make the user reconstruct it.`;
-  promptBox.textContent += `\n\nHANDOFF RULE\nOnce the next useful action and a suitable executor are known, immediately expose one prominent NEXT ACTION naming that executor and provide this one complete handoff. Do not present routine execution choices or ask the owner how to proceed merely to select mechanics.`;
-};
-window.render();
-</script>
-<script>
-const escalationRender=window.render;
-window.render=function(){
-  escalationRender();
-  if(projectMode()==='new')promptBox.textContent += `\n\nSTABLE NEW-CHAT RESUME ARTIFACT\nIn the durable My computer project, create or reconcile this separate human-facing file:\nGIVE THIS TO YOUR NEXT AI CHAT.txt\nIt is not a fifth PICA file or state authority. Begin it with: Copy the complete text below and paste it into a new AI chat to continue this project. Include one complete stable resume prompt that points the next AI to this project's durable AGENTS.md, requires reading current canonical U-GAS, treats durable project state as authority, reconciles CURRENT/ACTIVE/NEXT/WAITING/BLOCKED from actual files, preserves existing work, continues from the next useful action instead of restarting, and uses normal capability discovery/escalation when execution is required. Ask the owner only for genuine product, human/device, authentication, destructive, or cost boundaries. Use generic AI chat wording; do not hard-code one provider. Normally keep this file stable without special end-of-session regeneration.`;
-  promptBox.textContent += `\n\nEXECUTOR RETURN REQUIREMENT\nIf execution is handed off, require the executor's final response to contain one complete concise return payload and this exact human instruction:\nCopy this complete result and paste it back into the AI chat that sent you here.\nThe coordinating AI must reconcile material returned executor or human/device results into durable PICA.`;
-};
-window.render();
 </script>
 <script>
 const starterAttemptSessionKey='u-gas-starter-attempt-recorded';let starterAttemptRecorded=false;

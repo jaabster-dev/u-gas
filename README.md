@@ -2,9 +2,9 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) [![Experimental](https://img.shields.io/badge/status-experimental-orange.svg)](#status-and-feedback) [![Tested with ChatGPT · Codex](https://img.shields.io/badge/tested%20with-ChatGPT%20%C2%B7%20Codex-blueviolet.svg)](#status-and-feedback)
 
-> *The conversation can be temporary; the project state is not.*
+> **Keep your AI project from losing the plot.**
 
-U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project from losing its place between chats and tools. It stores important project state in ordinary files so another capable agent can continue without asking you to rebuild the whole story by hand.
+U-GAS (Universal Grabbers Agent System) helps an AI project carry its important state into the next chat or coding agent, instead of making you retell everything. It stores that state in ordinary files so another capable agent can continue the work.
 
 > **EXPERIMENTAL / EARLY TESTING:** Practical testing has mainly used ChatGPT and Codex; other tools are not independently validated, and there is **NO INDEPENDENT USER VALIDATION YET**.
 
@@ -21,21 +21,18 @@ U-GAS (Universal Grabbers Agent System) helps keep a long-running AI project fro
 <a href="https://jaabster-dev.github.io/u-gas/starter/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
 
 Start with the runnable Starter. Choose **Start a new project** (the default) or
-**Continue an existing project**, answer a few ordinary-language questions, and copy the
-generated prompt into the AI that should continue the work.
+**Continue an existing project**, describe what you want next, and send the generated
+prompt to your AI.
 
 ### How to use it
 
-1. Choose whether you are starting a new project or continuing one you already have.
-2. Describe the project and the outcome you want in ordinary language.
-3. For an existing project already open in Codex or another capable coding agent, paste
-   the generated prompt there. Otherwise paste it into your coordinating AI chat.
-4. If local execution is genuinely needed, let the coordinating AI use its safe available
-   capabilities first. If it needs an executor, it should immediately show one prominent
-   `NEXT ACTION`, name that executor, and give you one complete copyable handoff. Use that
-   handoff to create, change, and verify the real durable project; you should not choose
-   routine execution mechanics.
-5. Copy the executor's complete result back into the coordinating AI chat and continue.
+1. Open the Starter and choose whether you are starting a new project or continuing one.
+2. Describe the project and what you want to happen next in ordinary language.
+3. Copy the generated prompt into the AI that should continue the work. If it needs
+   another executor, it should give you one clear `NEXT ACTION` and one complete copyable
+   handoff; you do not need to choose routine execution mechanics.
+4. When the work returns a material result, give the complete result back to the AI chat
+   so it can keep the project state current.
 
 Ordinary ChatGPT and Codex on macOS are the currently tested examples. Other compatible tools may
 work, but are not independently validated. **My computer** is the only active Starter

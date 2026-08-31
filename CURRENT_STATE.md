@@ -32,11 +32,11 @@ The public Starter now also offers a bounded `Continue an existing project` mode
 
 ## NEXT
 
-Leave public U-GAS discoverable and wait for a fresh non-technical external tester. Fix only evidence-backed first-contact friction from that feedback. Later, test GitHub and My server / cloud separately before activating those routes. Do not begin new feature development or policy-quality expansion without new evidence.
+Actively seek a small bounded set of real target users who have current AI-project context loss. Capture first-use evidence: Starter opened, prompt generated and copied, prompt sent to an AI, a useful next action without unnecessary extra prompting, and repeat value. Do not make further first-contact or product changes without external evidence or a genuine blocker. Later, test GitHub and My server / cloud separately before activating those routes.
 
 ## WAITING / PAUSED
 
-Waiting for independent external tester feedback. GitHub and My server / cloud Starter routes remain visible-disabled pending dedicated route E2Es.
+Seeking independent external tester feedback from a small bounded target-user set. GitHub and My server / cloud Starter routes remain visible-disabled pending dedicated route E2Es.
 
 ## BLOCKERS / BOUNDARIES
 
