@@ -55,6 +55,7 @@ Use the smallest relevant route. The normal sequence remains:
 - Durable continuity complements the current conversation; it does not erase it.
 - A newer compatible owner decision must not be discarded merely because it is not yet persisted.
 - Bootstrap is required when current repository truth, mutation, resume, handoff, or evidence is needed, not for every trivial follow-up.
+- Prefer the least expensive currently authorized capability that can safely complete and verify the task. Use direct repository/file/tool access before escalation, and escalate only for a material missing capability.
 
 ## Authority and owner abstraction
 

@@ -18,6 +18,8 @@ Before a materially costly or dependency-heavy path, pause briefly to test its k
 
 Use the lightest mode that fits: `audit`, `proposal`, `edit`, `maintenance`, or `review`. A proposal or parked idea is not accepted scope.
 
+For bounded implementation, keep a compact task contract: objective, accepted scope, non-goals, required verification, and known boundaries. Re-check it when the diff or task shape grows materially. Before completion, account for every changed file against that contract; revert or split unrelated accidental change. A useful out-of-scope discovery may be parked in the repository's existing idea/continuity surface, but discovery alone never expands implementation scope.
+
 ## Human boundaries
 
 Pause for product judgment, credentials or secrets, device access, destructive/irreversible actions, and material cost, security, legal, or account effects. Routine reversible Git and file work remains agent-owned when authority is clear.
