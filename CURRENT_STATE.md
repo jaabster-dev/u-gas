@@ -32,11 +32,13 @@ The public Starter now also offers a bounded `Continue an existing project` mode
 
 ## NEXT
 
-Actively seek a small bounded set of real target users who have current AI-project context loss. Capture first-use evidence: Starter opened, prompt generated and copied, prompt sent to an AI, a useful next action without unnecessary extra prompting, and repeat value. Do not make further first-contact or product changes without external evidence or a genuine blocker. Later, test GitHub and My server / cloud separately before activating those routes.
+Recruit 1–3 independent non-technical users who already experience AI-project context loss and ask them to try the Starter without owner assistance. Capture first-use evidence for the first 5–10 minutes: Starter opened, prompt generated/copied, destination understood, prompt sent, useful next action reached without unnecessary prompting, handoff friction, and whether the workflow feels worth repeating.
+
+Use that evidence to decide whether the first-use and handoff text should be shortened further. The current audit hypothesis is that the highest-friction surface is the first kilometre plus AI-to-executor handoff: post-Copy destination/action may still need to be more obvious, handoffs may be too long, and the stable resume ticket may be longer than necessary. Treat these as hypotheses, not accepted feature scope. Do not add policy files, skills, or new product machinery before independent evidence or a genuine blocker. Later, test GitHub and My server / cloud separately before activating those routes.
 
 ## WAITING / PAUSED
 
-Seeking independent external tester feedback from a small bounded target-user set. GitHub and My server / cloud Starter routes remain visible-disabled pending dedicated route E2Es.
+Seeking independent external tester feedback from 1–3 non-technical target users. GitHub and My server / cloud Starter routes remain visible-disabled pending dedicated route E2Es. Feature expansion remains paused; first-use friction reduction is evidence-led.
 
 ## BLOCKERS / BOUNDARIES
 
