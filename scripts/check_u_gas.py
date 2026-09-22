@@ -154,11 +154,19 @@ def check_distribution(root=ROOT):
     return errors
 
 
+def current_state_review(root=ROOT):
+    """Return a conservative read-only lifecycle signal; never mutate or fail compliance."""
+    text = read(root, "CURRENT_STATE.md") or ""
+    return "REVIEW" if len(text) > 12000 else "PASS"
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--project", type=Path, help="Read-only check of another project directory")
     args = parser.parse_args(argv)
     errors = check_project(args.project) if args.project else check_distribution()
+    if not args.project:
+        print(f"CURRENT_STATE_REVIEW: {current_state_review()}")
     if errors:
         print("U-GAS SELF-CHECK: FAIL")
         for error in errors:
