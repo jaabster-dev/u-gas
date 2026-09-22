@@ -6,11 +6,17 @@ A live obligation is not safely captured for resume merely because it appears in
 
 Follow `RESUME ACTION -> RECONCILE -> VERIFY -> PROJECT NEXT`.
 
+Cold/successor/resume work must reconcile durable authority before continuation. Ordinary active-session follow-ups do not mechanically cold-bootstrap when the current conversation already supplies the needed context and no repository fact, mutation, handoff, or evidence depends on a fresh read.
+
 ## Resume and reconciliation
 
 On resume, read current repository authority and reconstruct `ACTIVE`, `WAITING/PAUSED`, concrete `PROJECT NEXT`, material `AFTER` ordering, `OPEN HANDOFFS`, `BLOCKER/BOUNDARY`, and any interrupt/return target. `RESUME ACTION` is the immediate safe recovery work; `PROJECT NEXT` is the action after reconciliation and verification. The newest `PROGRESS.md` entry does not silently override intentional current state, and waiting must not manufacture work.
 
 When relative dates could affect reconciliation, establish the actual current local date/time on a cold or successor resume before interpreting today, yesterday, tomorrow, tonight, or next week. Repository/filesystem facts win for repository facts. Newer compatible explicit owner intent remains live until contradicted or durably persisted. If a side task interrupts active work, preserve its return target and unwind nested interruptions when the side task is complete or waiting unless invalidated or reprioritized.
+
+## Current-state lifecycle hygiene
+
+Keep `CURRENT_STATE.md` small enough to be a reliable live resume surface. When resolved material becomes history rather than a live constraint, preserve its evidence in `PROGRESS.md` or an existing archive and remove only the stale resume detail from current state. Cleanup is evidence-triggered, not periodic ceremony: preserve provenance, paused/deferred return conditions, open handoffs, blockers, and accepted constraints. Never reconstruct current state from a partial or truncated history read; use targeted reads/searches and the large-file safety route when history is large.
 
 ## Durable checkpoint and degraded-session contract
 
