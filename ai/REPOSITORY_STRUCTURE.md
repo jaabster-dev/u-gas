@@ -11,6 +11,8 @@ Every active U-GAS-managed project visibly exposes these root controls:
 
 `README.md` is human navigation, not duplicate authority. Missing controls may use truthful templates; substantive existing content must be preserved. Additional documents are optional and responsibility-driven, and referenced optional documents must exist. Do not create a backlog framework, installer, orchestration layer, or new document hierarchy merely to make a project appear complete.
 
+`CURRENT_STATE.md` stays a compact live resume surface, not an accumulating history log. Resolve or transition live items before removing them; keep paused/deferred return conditions and unresolved boundaries visible. Move durable historical evidence to `PROGRESS.md` or an existing archive when it no longer changes safe resumption. Lifecycle cleanup is evidence-triggered and must preserve provenance; never rebuild state from a partial history read.
+
 `IDEAS.md` is not accepted scope, a requirement, roadmap, backlog, or authorization. The explicit lifecycle remains `IDEA -> PARKED -> RESEARCHED -> ACCEPTED -> BACKLOG/SCOPE`. During migration, preserve provenance and migrate PICA additively and conservatively; do not concatenate overlapping documents blindly.
 
 Repository name or presence does not establish product purpose. If purpose is unknown, allow only neutral maintenance, ask the smallest owner question, and record a minimal durable purpose after clarification.
