@@ -7,7 +7,7 @@
 3. Fetch before treating local state as current.
 4. Read relevant PICA and repository rules; determine whether the work already exists.
 5. Make the smallest safe mutation.
-6. Inspect the bounded diff and run required checks.
+6. Inspect the bounded diff, account for every changed file against the accepted task contract, and run required checks.
 7. Commit and push only when authorized.
 8. Fetch again and verify the actual remote commit and content.
 9. Record a continuity checkpoint when a material milestone, blocker, pause, or handoff changes what a successor must know.
@@ -29,6 +29,8 @@ Public-source reading is separate from authenticated GitHub connector/API access
 If the current agent cannot execute a known safe operation, discover capability, use an existing repository workflow, then use an authorized persistent coding environment if available. A compact handoff may remain one complete copyable payload when it is short and reliable to transfer directly. When the complete handoff is long or materially structured, exact-payload loss is credible, the material already exists durably, or a direct clipboard/attachment attempt failed, use the repository-backed pending handoff surface described below so the owner does not shuttle routine Git or file contents manually.
 
 Do not use a stale clone as authority. Do not probe permissions with a mutation. If remote authority cannot be established, report the blocker and do not claim a remote-current PASS.
+
+During implementation, perform a scope reset when the diff grows beyond the expected bounded change, a new dependency appears, or a useful discovery tempts adjacent work. Restate the objective, accepted scope, non-goals, verification, and boundaries; then continue only the smallest necessary path. Before completion, every changed file must be relevant to the accepted scope. Preserve useful discoveries as parked ideas or explicit follow-ups without silently implementing them.
 
 ## Procedure discovery and lifecycle detail
 
