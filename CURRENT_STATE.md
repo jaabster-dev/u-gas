@@ -20,7 +20,7 @@ The third owner-led Household Inventory E2E reconciled the generated-project ide
 
 The earlier repository-only promotion was incomplete because GitHub rendered `starter/` as source rather than running the HTML. GitHub Pages is now enabled with a workflow that publishes only the Starter under `https://jaabster-dev.github.io/u-gas/starter/`. HTTP and browser verification confirmed the hosted page and main form flow; browser clipboard readback was unavailable, so copy evidence is limited to the rendered prompt and the page's truthful browser fallback behavior.
 
-Owner decision: pause new U-GAS feature development. The next session is limited to visual / first-contact cleanup for a non-technical tester; it must not redesign or extend the supported My computer workflow unless a genuine blocker is found.
+Owner decision: U-GAS is not a self-directed feature project. Product expansion remains paused, but bounded friction reduction, simplification, hardening, and portable adaptation from real GAS/Grabbers use are active. U-GAS should mature alongside real work when a generally useful improvement is found; independent-user feedback is valuable evidence, not a prerequisite for every improvement. Do not redesign or extend the supported workflow without evidence of need.
 
 Today's visual / first-contact cleanup is complete. The README now leads with the direct Starter CTA and concise action path; the long manual prompt is progressive disclosure; the Starter wording makes the first actions and destination clearer; the haiku canary and temporal-grounding semantics are documented. GitHub rendered the CTA without `target="_blank"`, so the new-tab requirement is platform-limited rather than claimed as a PASS; the Starter has a clear repository return link.
 
@@ -34,11 +34,11 @@ The public Starter now also offers a bounded `Continue an existing project` mode
 
 Recruit 1–3 independent non-technical users who already experience AI-project context loss and ask them to try the Starter without owner assistance. Capture first-use evidence for the first 5–10 minutes: Starter opened, prompt generated/copied, destination understood, prompt sent, useful next action reached without unnecessary prompting, handoff friction, and whether the workflow feels worth repeating.
 
-Use that evidence to decide whether the first-use and handoff text should be shortened further. The current audit hypothesis is that the highest-friction surface is the first kilometre plus AI-to-executor handoff: post-Copy destination/action may still need to be more obvious, handoffs may be too long, and the stable resume ticket may be longer than necessary. Treat these as hypotheses, not accepted feature scope. Do not add policy files, skills, or new product machinery before independent evidence or a genuine blocker. Later, test GitHub and My server / cloud separately before activating those routes.
+In parallel with seeking testers, continue only bounded friction-reduction work justified by real GAS/Grabbers use, owner-led evidence, or a clearly reviewable simplification hypothesis. The current highest-value review surface is the first kilometre plus AI-to-executor handoff: post-Copy destination/action, handoff length, stable resume-ticket length, and the observed Git-identity bootstrap failure. Evaluate before changing; preserve safety/authority contracts; prefer removing owner burden over adding machinery. Do not add policy files, skills, routes, or product architecture merely to advance U-GAS. Later, test GitHub and My server / cloud separately before activating those routes.
 
 ## WAITING / PAUSED
 
-Seeking independent external tester feedback from 1–3 non-technical target users. GitHub and My server / cloud Starter routes remain visible-disabled pending dedicated route E2Es. Feature expansion remains paused; first-use friction reduction is evidence-led.
+Seeking independent external tester feedback from 1–3 non-technical target users. GitHub and My server / cloud Starter routes remain visible-disabled pending dedicated route E2Es. Feature expansion remains paused; bounded first-use friction reduction, simplification, hardening, and portable adaptation from real use may continue without waiting for external validation.
 
 ## BLOCKERS / BOUNDARIES
 
