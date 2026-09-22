@@ -10,7 +10,8 @@ This is a portable, local, read-only self-check contract. It protects the public
 - Referenced local canonical documents and route targets exist.
 - `IDEAS.md` has one canonical responsibility and is not casually duplicated.
 - README is navigation, not a second state/progress/spec authority.
-- U-GAS source self-tests protect this distribution contract.
+- U-GAS source self-tests protect this distribution contract, including direct-first capability routing, scope reset/changed-file relevance, selective bootstrap, and compact current-state lifecycle semantics.
+- `CURRENT_STATE_REVIEW` is a conservative read-only diagnostic signal for unusually large current-state surfaces; it never rewrites files and is not itself a compliance failure.
 - Diagnostics are read-only unless an actual authorized repair is separately requested.
 
 There are two bounded check modes:
