@@ -127,7 +127,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 <body>
 <main class="wrap">
 <a class="back" href="https://github.com/jaabster-dev/u-gas">← Back to the U-GAS repository</a>
-<div class="badge">PUBLIC STARTER · MY COMPUTER ROUTE TESTED</div>
+<div class="badge">U-GAS PROJECT STARTER</div>
 <section class="hero"><div class="hero-copy"><h1>Keep your AI project from <span class="hero-accent">losing the plot.</span></h1><p>U-GAS helps your project carry its important state into the next chat or coding agent, instead of making you retell everything.</p><ol class="hero-steps"><li>Start a project or continue one you already have.</li><li>Describe what you want to happen next.</li><li>Copy the prompt and send it to your AI.</li></ol></div></section>
 
 <section class="card">
@@ -135,28 +135,28 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 <label class="route"><strong class="route-head"><input type="radio" name="projectMode" value="new" checked><span class="route-title">Start a new project</span></strong><span>Turn an idea into a project you can keep.</span></label>
 <label class="route"><strong class="route-head"><input type="radio" name="projectMode" value="existing"><span class="route-title">Continue an existing project</span></strong><span>Pick up where your project left off.</span></label>
 </div></div>
-<div class="field"><label for="name">Project name</label><input id="name" placeholder="Garden planner"></div>
+<div class="field"><label for="name">Project name <span class="optional">(optional)</span></label><input id="name" placeholder="Leave blank and your AI can suggest one"></div>
 <div id="newProjectFields">
 <div class="field"><label for="description">What do you want to make?</label><textarea id="description" placeholder="Describe the project in ordinary language. You do not need technical terms."></textarea></div>
-<div class="field"><label>Where should the project live?</label><div class="routes">
-<label class="route"><strong class="route-head"><input type="radio" name="route" value="computer" checked><svg class="route-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.8"/><path d="M8 20h8M10 16v4m4-4v4"/></svg><span class="route-title">My computer</span></strong><span>A folder you control on your own computer.</span></label>
-<label class="route disabled" title="Not validated for this public Starter release"><strong class="route-head"><input type="radio" name="route" value="github" disabled><svg class="route-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.93c.46.08.63-.2.63-.45v-1.77c-2.57.56-3.11-1.1-3.11-1.1-.42-1.07-1.03-1.36-1.03-1.36-.84-.57.06-.56.06-.56.93.06 1.42.95 1.42.95.83 1.42 2.17 1.01 2.7.77.08-.6.32-1.01.59-1.24-2.05-.23-4.2-1.03-4.2-4.56 0-1.01.36-1.84.95-2.49-.1-.23-.41-1.17.09-2.44 0 0 .77-.25 2.53.95a8.8 8.8 0 0 1 4.61 0c1.76-1.2 2.53-.95 2.53-.95.5 1.27.19 2.21.09 2.44.59.65.95 1.48.95 2.49 0 3.54-2.15 4.33-4.2 4.56.33.29.62.86.62 1.73v2.57c0 .25.17.54.64.45A9.2 9.2 0 0 0 12 2.8Z"/></svg><span class="route-title">GitHub</span></strong><span>Planned route — unavailable until its end-to-end test passes.</span></label>
-<label class="route disabled" title="Not validated for this public Starter release"><strong class="route-head"><input type="radio" name="route" value="cloud" disabled><svg class="route-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7.2 18.5h10.1a4.2 4.2 0 0 0 .45-8.38A6.1 6.1 0 0 0 6.2 8.4 5.05 5.05 0 0 0 7.2 18.5Z"/></svg><span class="route-title">My server / cloud</span></strong><span>Planned route — unavailable until its end-to-end test passes.</span></label>
-</div></div>
+<details class="advanced"><summary>Project storage options</summary><div style="margin-top:10px"><div class="hint">You can ignore this. U-GAS will use a project folder on your computer by default.</div><div class="routes" style="margin-top:8px">
+<label class="route"><strong class="route-head"><input type="radio" name="route" value="computer" checked><span class="route-title">My computer</span></strong><span>Recommended default.</span></label>
+<label class="route disabled"><strong class="route-head"><input type="radio" name="route" value="github" disabled><span class="route-title">GitHub</span></strong><span>Not available in this Starter yet.</span></label>
+<label class="route disabled"><strong class="route-head"><input type="radio" name="route" value="cloud" disabled><span class="route-title">Server / cloud</span></strong><span>Not available in this Starter yet.</span></label>
+</div></div></details>
 <div id="computerLocation" class="field">
 <label>Project folder</label>
 <div class="destination"><strong>We'll use a U-GAS project folder for you.</strong><code id="suggestedLocation">~/Documents/U-GAS Projects/project</code><div class="hint">You do not need to type or understand this path. The receiving agent must still verify that it can actually access your computer.</div></div>
 <details class="advanced"><summary>I want to use a different folder</summary><div style="margin-top:10px"><label for="customLocation">Custom folder</label><input id="customLocation" placeholder="Optional: enter another persistent folder"><div class="hint">Only change this if you already know where you want the project to live.</div></div></details>
 </div>
 <div id="externalLocation" class="field hidden"><label id="locationLabel" for="location">GitHub repository</label><input id="location"><div id="locationHint" class="hint"></div></div>
-<div class="note">For this first public test, use My computer. Your project stays in a folder you control; the receiving AI still checks that it can access it. Do not paste passwords, tokens, private keys, or other secrets here.</div>
+<div class="note">You do not need to understand folders, Git, or repositories to start. U-GAS will ask only if a real choice needs you.</div>
 </div>
 <div id="existingProjectFields" class="existing-fields hidden">
 <h2 class="mode-heading">Continue what you already have</h2>
-<div class="field"><label for="existingLocation">Repository URL or local project folder</label><input id="existingLocation" placeholder="https://github.com/example/project or /Users/me/Documents/project"><div class="hint">Give whichever location you know. Do not paste credentials or secrets.</div></div>
-<div class="field"><label class="checkbox" for="existingLocationUnknown"><input id="existingLocationUnknown" type="checkbox">I do not know where the project is stored.</label></div>
-<div class="field"><label for="existingPurpose">What is this project for?</label><textarea id="existingPurpose" placeholder="Describe its purpose and useful context in ordinary language."></textarea></div>
-<div class="field"><label for="existingGoal">What do you want to achieve now?</label><textarea id="existingGoal" placeholder="Describe the current outcome you want."></textarea></div>
+<div class="field"><label for="existingPurpose">What are you working on?</label><textarea id="existingPurpose" placeholder="Describe the project in your own words."></textarea></div>
+<div class="field"><label for="existingGoal">What do you want to do next?</label><textarea id="existingGoal" placeholder="Tell your AI what you want to achieve now."></textarea></div>
+<details class="advanced"><summary>I know where the project is stored</summary><div style="margin-top:10px"><label for="existingLocation">Project location <span class="optional">(optional)</span></label><input id="existingLocation" placeholder="A folder or repository address, if you know it"><div class="hint">Leave this blank if you do not know. Your AI should try to discover the real project safely.</div></div></details>
+<input id="existingLocationUnknown" type="checkbox" class="hidden" checked>
 <div class="field"><label for="existingObstacle">What is getting in the way? <span class="optional">(optional)</span></label><textarea id="existingObstacle" placeholder="For example: routine agent work has become slow or confusing."></textarea></div>
 <div class="field"><label for="existingPreserve">What must not be lost or broken? <span class="optional">(optional)</span></label><textarea id="existingPreserve" placeholder="Important behavior, work, files, history, or instructions to preserve."></textarea></div>
 <div class="note">Describe it in your own words. The AI will inspect the project and ask only when you need to decide something.</div>
@@ -166,7 +166,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 <section class="card">
 <h2>Send this to your AI</h2><p>Your prompt updates from the fields above. You do not need to rewrite it.</p><div id="usageGuidance" class="destination"></div>
 <div class="actions"><button id="copy" disabled>Copy complete prompt</button><button id="example" class="secondary">Fill example</button><span id="status" class="status"></span></div>
-<div id="nextStep" class="destination next-step hidden" aria-live="polite"><h3>NEXT STEP</h3><p><strong>Your prompt is copied.</strong> Open your AI chat, paste it, and send it.</p><p>Your AI will take it from here. If local coding or execution is needed, it should give you one ready-to-copy instruction for Codex, Claude Code, or another suitable executor.</p><div class="destinations"><a id="chatgpt" class="button" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span class="provider-logo chatgpt" aria-hidden="true"><img src="assets/chatgpt-logo.png" alt=""></span>Open ChatGPT</a><a id="claude" class="button" href="https://claude.ai/" target="_blank" rel="noopener noreferrer"><span class="provider-logo claude" aria-hidden="true"><img src="assets/claude-logo.svg" alt=""></span>Open Claude</a><button id="otherAi" class="secondary" type="button"><svg class="destination-mark other" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 6 5.5 6L5 18M13 18h6"/></svg>Other AI</button></div><p id="otherAiHint" class="hint hidden">Open the AI you use, then paste the copied prompt and send it. U-GAS does not automatically paste or send your prompt.</p></div>
+<div id="nextStep" class="destination next-step hidden" aria-live="polite"><h3>NEXT STEP</h3><p><strong>Your prompt is copied.</strong> Open your AI chat, paste it, and send it.</p><p>Your AI will take it from here and tell you clearly if you need to do anything else.</p><div class="destinations"><a id="chatgpt" class="button" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span class="provider-logo chatgpt" aria-hidden="true"><img src="assets/chatgpt-logo.png" alt=""></span>Open ChatGPT</a><a id="claude" class="button" href="https://claude.ai/" target="_blank" rel="noopener noreferrer"><span class="provider-logo claude" aria-hidden="true"><img src="assets/claude-logo.svg" alt=""></span>Open Claude</a><button id="otherAi" class="secondary" type="button"><svg class="destination-mark other" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 6 5.5 6L5 18M13 18h6"/></svg>Other AI</button></div><p id="otherAiHint" class="hint hidden">Open the AI you use, then paste the copied prompt and send it. U-GAS does not automatically paste or send your prompt.</p></div>
 <details class="preview"><summary>Preview prompt</summary><div id="prompt" class="prompt"></div></details>
 </section>
 <template id="newPromptTemplate">Start this NEW PROJECT with U-GAS.
@@ -234,10 +234,10 @@ function slugify(text){return text.trim().toLowerCase().normalize('NFKD').replac
 function suggestedPath(){return `~/Documents/U-GAS Projects/${slugify(name.value)}`}
 function durableLocation(){return route()==='computer'?(customLocation.value.trim()||suggestedPath()):locationInput.value.trim()}
 function value(v,fallback){return v.trim()||fallback}
-function existingProjectLocation(){return existingLocationUnknown.checked?'I do not know the repository or local project location. Discover it safely from the current environment.':value(existingLocation.value,'<REPOSITORY URL OR LOCAL PROJECT FOLDER>')}
+function existingProjectLocation(){return existingLocation.value.trim()?existingLocation.value.trim():'I do not know the repository or local project location. Discover it safely from the current environment before asking me for technical details.'}
 function fillPromptTemplate(templateId,values){return $(templateId).content.textContent.trim().replace(/\{\{(\w+)\}\}/g,(_,key)=>values[key]??'')}
-function newProjectPrompt(){return fillPromptTemplate('newPromptTemplate',{projectName:value(name.value,'<PROJECT NAME>'),projectDescription:value(description.value,'<PROJECT DESCRIPTION>'),projectRoute:routeMeta[route()].title,projectLocation:durableLocation()||'<PROJECT LOCATION>'})}
-function existingProjectPrompt(){return fillPromptTemplate('existingPromptTemplate',{projectName:value(name.value,'<PROJECT NAME>'),projectLocation:existingProjectLocation(),projectPurpose:value(existingPurpose.value,'<PROJECT PURPOSE AND CONTEXT>'),currentGoal:value(existingGoal.value,'<CURRENT DESIRED OUTCOME>'),currentObstacle:value(existingObstacle.value,'Not provided.'),mustPreserve:value(existingPreserve.value,'Not provided; inspect and preserve all existing work by default.')})}
+function newProjectPrompt(){return fillPromptTemplate('newPromptTemplate',{projectName:value(name.value,'Let the owner-facing AI suggest a concise project name if useful.'),projectDescription:value(description.value,'<PROJECT DESCRIPTION>'),projectRoute:routeMeta[route()].title,projectLocation:durableLocation()||'<PROJECT LOCATION>'})}
+function existingProjectPrompt(){return fillPromptTemplate('existingPromptTemplate',{projectName:value(name.value,'Name not provided; infer only if clear, otherwise continue without requiring one.'),projectLocation:existingProjectLocation(),projectPurpose:value(existingPurpose.value,'<PROJECT PURPOSE AND CONTEXT>'),currentGoal:value(existingGoal.value,'<CURRENT DESIRED OUTCOME>'),currentObstacle:value(existingObstacle.value,'Not provided.'),mustPreserve:value(existingPreserve.value,'Not provided; inspect and preserve all existing work by default.')})}
 function autoSizeTextarea(el){el.style.height='auto';el.style.height=`${Math.max(el.scrollHeight,64)}px`}
 function render(){
   const existing=projectMode()==='existing',r=route(),m=routeMeta[r];
@@ -252,15 +252,15 @@ function render(){
     $('locationHint').textContent=m.hint;
   }
   $('suggestedLocation').textContent=suggestedPath();
-  name.placeholder=existing?'Flashcard Generator':'Garden planner';
+  name.placeholder=existing?'Optional project name':'Leave blank and your AI can suggest one';
   if(existing){
-    $('copy').disabled=!(name.value.trim()&&existingPurpose.value.trim()&&existingGoal.value.trim()&&(existingLocation.value.trim()||existingLocationUnknown.checked));
+    $('copy').disabled=!(existingPurpose.value.trim()&&existingGoal.value.trim());
     $('usageGuidance').innerHTML='<strong>Where to paste it</strong>If this project is already open in a coding agent, paste the prompt there. Otherwise paste it into your AI chat.';
     promptBox.textContent=existingProjectPrompt();
     return;
   }
   const loc=durableLocation();
-  $('copy').disabled=!(name.value.trim()&&description.value.trim()&&loc);
+  $('copy').disabled=!(description.value.trim()&&loc);
   $('usageGuidance').innerHTML='<strong>Where to paste it</strong>Paste this into the AI you want to continue the project. If you need one, use ChatGPT, Claude, or another AI you trust.';
   promptBox.textContent=newProjectPrompt();
 }
