@@ -156,7 +156,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 <div class="field"><label for="existingPurpose">What are you working on?</label><textarea id="existingPurpose" placeholder="Describe the project in your own words."></textarea></div>
 <div class="field"><label for="existingGoal">What do you want to do next?</label><textarea id="existingGoal" placeholder="Tell your AI what you want to achieve now."></textarea></div>
 <details class="advanced"><summary>I know where the project is stored</summary><div style="margin-top:10px"><label for="existingLocation">Project location <span class="optional">(optional)</span></label><input id="existingLocation" placeholder="A folder or repository address, if you know it"><div class="hint">Leave this blank if you do not know. Your AI should try to discover the real project safely.</div></div></details>
-<input id="existingLocationUnknown" type="checkbox" class="hidden" checked>
+
 <div class="field"><label for="existingObstacle">What is getting in the way? <span class="optional">(optional)</span></label><textarea id="existingObstacle" placeholder="For example: routine agent work has become slow or confusing."></textarea></div>
 <div class="field"><label for="existingPreserve">What must not be lost or broken? <span class="optional">(optional)</span></label><textarea id="existingPreserve" placeholder="Important behavior, work, files, history, or instructions to preserve."></textarea></div>
 <div class="note">Describe it in your own words. The AI will inspect the project and ask only when you need to decide something.</div>
@@ -226,12 +226,12 @@ Begin by inspecting the existing project and identifying the smallest safe actio
 <div class="credit">Made with U-GAS by ĀBŌ</div>
 </main>
 <script>
-const $=id=>document.getElementById(id);const name=$('name'),description=$('description'),locationInput=$('location'),customLocation=$('customLocation'),existingLocation=$('existingLocation'),existingLocationUnknown=$('existingLocationUnknown'),existingPurpose=$('existingPurpose'),existingGoal=$('existingGoal'),existingObstacle=$('existingObstacle'),existingPreserve=$('existingPreserve'),promptBox=$('prompt'),status=$('status');
+const $=id=>document.getElementById(id);const name=$('name'),description=$('description'),locationInput=$('location'),customLocation=$('customLocation'),existingLocation=$('existingLocation'),existingPurpose=$('existingPurpose'),existingGoal=$('existingGoal'),existingObstacle=$('existingObstacle'),existingPreserve=$('existingPreserve'),promptBox=$('prompt'),status=$('status');
 const projectMode=()=>document.querySelector('input[name="projectMode"]:checked').value;
 const route=()=>document.querySelector('input[name="route"]:checked').value;
 const routeMeta={computer:{title:'MY COMPUTER'},github:{label:'GitHub repository',placeholder:'https://github.com/example/garden-planner',hint:'Use a repository URL or owner/repo. Do not paste credentials.',title:'GITHUB'},cloud:{label:'Server / cloud location',placeholder:'My Hetzner server, project workspace /garden-planner',hint:'Describe the user-controlled location without secrets or credentials.',title:'MY SERVER / CLOUD'}};
 function slugify(text){return text.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60)||'project'}
-function suggestedPath(){return `~/Documents/U-GAS Projects/${slugify(name.value)}`}
+function suggestedPath(){return `~/Documents/U-GAS Projects/${slugify(name.value||description.value.slice(0,48))}`}
 function durableLocation(){return route()==='computer'?(customLocation.value.trim()||suggestedPath()):locationInput.value.trim()}
 function value(v,fallback){return v.trim()||fallback}
 function existingProjectLocation(){return existingLocation.value.trim()?existingLocation.value.trim():'I do not know the repository or local project location. Discover it safely from the current environment before asking me for technical details.'}
@@ -245,7 +245,6 @@ function render(){
   $('existingProjectFields').classList.toggle('hidden',!existing);
   $('computerLocation').classList.toggle('hidden',existing||r!=='computer');
   $('externalLocation').classList.toggle('hidden',existing||r==='computer');
-  existingLocation.disabled=existingLocationUnknown.checked;
   if(r!=='computer'){
     $('locationLabel').textContent=m.label;
     locationInput.placeholder=m.placeholder;
@@ -255,7 +254,7 @@ function render(){
   name.placeholder=existing?'Optional project name':'Leave blank and your AI can suggest one';
   if(existing){
     $('copy').disabled=!(existingPurpose.value.trim()&&existingGoal.value.trim());
-    $('usageGuidance').innerHTML='<strong>Where to paste it</strong>If this project is already open in a coding agent, paste the prompt there. Otherwise paste it into your AI chat.';
+    $('usageGuidance').innerHTML='<strong>Where to paste it</strong>Paste this into the AI chat you want to use for this project.';
     promptBox.textContent=existingProjectPrompt();
     return;
   }
@@ -264,10 +263,10 @@ function render(){
   $('usageGuidance').innerHTML='<strong>Where to paste it</strong>Paste this into the AI you want to continue the project. If you need one, use ChatGPT, Claude, or another AI you trust.';
   promptBox.textContent=newProjectPrompt();
 }
-document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>{status.textContent='';$('nextStep').classList.add('hidden');if(el.tagName==='TEXTAREA')autoSizeTextarea(el);render()}));document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(el=>el.addEventListener('change',()=>{status.textContent='';$('nextStep').classList.add('hidden');render()}));
+document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>{status.textContent='';$('nextStep').classList.add('hidden');if(el.tagName==='TEXTAREA')autoSizeTextarea(el);render()}));document.querySelectorAll('input[type="radio"]').forEach(el=>el.addEventListener('change',()=>{status.textContent='';$('nextStep').classList.add('hidden');render()}));
 $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(promptBox.textContent);recordStarterAttempt();status.textContent='Copied.';$('nextStep').classList.remove('hidden')}catch(e){status.textContent='Copy was blocked by this browser. Open Preview prompt and copy it manually.'}});
 $('otherAi').addEventListener('click',()=>{$('otherAiHint').classList.remove('hidden');status.textContent='Use the AI chat you prefer, then paste and send the copied prompt.'});
-$('example').addEventListener('click',()=>{if(projectMode()==='existing'){name.value='Flashcard Generator';existingLocation.value='~/Documents/Flashcard Generator';existingLocationUnknown.checked=false;existingPurpose.value='A small tool that turns pasted notes into study flashcards.';existingGoal.value='Import the next deck without breaking existing behavior.';existingObstacle.value='Routine agent tasks have become slow after accumulated rules, checks, backups, and preflights.';existingPreserve.value='Existing import behavior, saved decks, tests, project history, and current working changes.'}else{name.value='Garden planner';description.value='A simple private project for planning a small garden: beds, plants, tasks, and notes. I want the AI to help me shape the idea and build the project step by step.';document.querySelector('input[value="computer"]').checked=true;locationInput.value='';customLocation.value=''}status.textContent='Example filled.';document.querySelectorAll('textarea').forEach(autoSizeTextarea);render()});document.querySelectorAll('textarea').forEach(autoSizeTextarea);render();
+$('example').addEventListener('click',()=>{if(projectMode()==='existing'){name.value='Flashcard Generator';existingLocation.value='~/Documents/Flashcard Generator';existingPurpose.value='A small tool that turns pasted notes into study flashcards.';existingGoal.value='Import the next deck without breaking existing behavior.';existingObstacle.value='Routine agent tasks have become slow after accumulated rules, checks, backups, and preflights.';existingPreserve.value='Existing import behavior, saved decks, tests, project history, and current working changes.'}else{name.value='Garden planner';description.value='A simple private project for planning a small garden: beds, plants, tasks, and notes. I want the AI to help me shape the idea and build the project step by step.';document.querySelector('input[value="computer"]').checked=true;locationInput.value='';customLocation.value=''}status.textContent='Example filled.';document.querySelectorAll('textarea').forEach(autoSizeTextarea);render()});document.querySelectorAll('textarea').forEach(autoSizeTextarea);render();
 </script>
 <script>
 const starterAttemptSessionKey='u-gas-starter-attempt-recorded';let starterAttemptRecorded=false;
