@@ -101,3 +101,20 @@ The consultant's main product concern was maturity for an independent non-techni
 Reviewed current OpenAI product behavior against U-GAS first-use friction. ChatGPT Projects can group chats, files, project instructions, saved responses, and supported app sources; Plus/Pro project chats can prioritize project chats/files. The current desktop experience can start Chat or Work from a Project using project context, while Codex remains a separate workflow/history surface. A relevant current constraint is that Work is not available in projects configured with project-only memory.
 
 Conclusion: platform-native project/workspace context can complement U-GAS but should not replace repository/PICA authority. No new ChatGPT-specific Starter route is justified yet. The bounded next review is subtractive: inspect the existing generated prompt and post-Copy flow for instructions that are redundant when the coordinating AI already has workspace context, while preserving a fully portable fallback for users without it.
+
+
+## 2026-09-23 — Non-technical Starter audit
+
+Audited the current public Starter specifically for a first-time user who knows little or nothing about coding, Git, repositories, agents, or execution environments. The core first screen is directionally human-first, but the flow still leaks implementation choices and vocabulary that U-GAS should own.
+
+Highest-friction findings:
+- New-project onboarding asks where the project should live even though only My computer is usable; the two disabled GitHub/server choices add a technical decision without enabling action.
+- Existing-project onboarding leads with “Repository URL or local project folder”. The honest “I do not know” fallback is good, but the default framing still assumes knowledge a target user may not have.
+- Post-Copy guidance reintroduces “local coding or execution”, Codex, Claude Code, and “executor” immediately after a simple human flow. This explains machinery before the user needs it.
+- The generated prompts correctly carry safety contracts, but they are long and infrastructure-heavy. That is acceptable only if they remain machine-facing and the human is not expected to understand or edit them.
+- The Starter exposes route/testing language such as “PUBLIC STARTER · MY COMPUTER ROUTE TESTED” and “Planned route — unavailable until its end-to-end test passes”; this is product-development status, not a first-use task.
+- The new-project flow already chooses a default U-GAS folder and says the user need not understand the path. That is the stronger interaction model: U-GAS should make routine technical choices and expose them only when needed.
+
+Audit direction, not yet implementation scope: reduce the default Starter to owner-level choices and ordinary language. For a new project, the likely minimum is what the user wants to make plus a single start action; project naming can be optional/inferred and storage can remain an advanced choice. For an existing project, lead with what the user wants to continue and what they want now; ask for location only if the AI cannot discover it. After Copy, say only where to paste/send and what the user should expect next. Keep Git/repository/PICA/executor terminology behind progressive disclosure or entirely inside the machine-facing prompt.
+
+No workflow or safety contract was changed by this audit.
