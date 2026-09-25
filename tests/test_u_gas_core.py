@@ -90,6 +90,31 @@ class CoreContractTests(unittest.TestCase):
         ):
             self.assertIn(marker, policy)
 
+    def test_operational_learning_reuses_known_procedure(self):
+        governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
+        continuity = (ROOT / "ai/SESSION_CONTINUITY.md").read_text(encoding="utf-8")
+        for marker in ("Learn once, reuse until invalidated", "re-test condition", "known procedure"):
+            self.assertIn(marker, governance)
+        for marker in ("Reusable operational knowledge", "re-test trigger", "dead path"):
+            self.assertIn(marker, continuity)
+
+    def test_machine_handoff_requires_execution_dependencies(self):
+        governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
+        continuity = (ROOT / "ai/SESSION_CONTINUITY.md").read_text(encoding="utf-8")
+        workflow = (ROOT / "ai/GITHUB_WORKFLOW.md").read_text(encoding="utf-8")
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        for marker in ("LOCAL-ONLY / IMMUTABLE", "MACHINE HANDOFF: PASS", "exact bytes", "cryptographic identity"):
+            self.assertIn(marker, governance)
+        for marker in ("CURRENT NEXT ACTION -> required execution dependencies -> target-environment accessibility/authority", "blind disk inventory", "destination hash", "repo/cloud-backed"):
+            self.assertIn(marker, continuity)
+        self.assertIn("qualified immutable artifact", workflow)
+        self.assertIn("switch to another physical computer", agents)
+
+    def test_machine_handoff_repo_only_case_stays_low_ceremony(self):
+        continuity = (ROOT / "ai/SESSION_CONTINUITY.md").read_text(encoding="utf-8")
+        self.assertIn("keep the audit short", continuity)
+        self.assertIn("do not create a manifest/checklist ritual", continuity)
+
     def test_readme_and_anchor_contract(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("U-GAS (Universal Grabbers Agent System)", readme)

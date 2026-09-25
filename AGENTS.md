@@ -36,6 +36,7 @@ Treat the current repository and its authoritative remote branch as the source o
 |---|---|
 | Repository inspection, edit, or GitHub write | `ai/GOVERNANCE.md` + `ai/GITHUB_WORKFLOW.md` |
 | Resume, continue, handoff, or where we stopped | `ai/SESSION_CONTINUITY.md` + `skills/u-gas-resume/SKILL.md` |
+| Explicit switch to another physical computer / prepare work for another machine | `ai/SESSION_CONTINUITY.md` + `ai/GITHUB_WORKFLOW.md` |
 | Large, truncated, append-only, or structured file | `ai/LARGE_FILE_PATCHING.md` + `skills/u-gas-safe-patch/SKILL.md` |
 | Verify a completed change or PASS claim | `skills/u-gas-verify-change/SKILL.md` |
 | External repository or web research | `skills/u-gas-external-research/SKILL.md` |
