@@ -30,6 +30,12 @@ The 2026-08-29 operational-quality audit found the product broadly operational. 
 
 The public Starter now also offers a bounded `Continue an existing project` mode in the same page. It collects only owner-level project context, accepts a known repository URL, local path, or honest unknown location, and generates preservation-first instructions to inspect real authority, add only missing minimum PICA controls, assess procedural complexity proportionally, and continue the current desired outcome. The new-project mode remains the default. This route is an onboarding candidate for the first external tester, not independent validation or evidence that procedural overhead has been solved.
 
+## GAS PORTABILITY ADAPTATION — 2026-09-25
+
+Portable adaptation from current private GAS dogfooding now includes two generally useful continuity improvements. First, operational learning preserves a recurring capability limit, disproven route, or verified workaround in the smallest existing project authority surface so later agents reuse it until a concrete environment change justifies re-test. Second, explicit physical-machine switches use a bounded next-action execution-continuity gate: repo continuity is not enough; required non-repo artifacts, execution environment, device state, and external-service state must be accounted for, with exact-byte/hash preservation for qualified immutable artifacts and no unsafe generic-cloud handling of secrets. Repo/cloud-backed-only handoffs remain deliberately low ceremony.
+
+This is a portable adaptation of proven GAS behavior, not a new U-GAS product route or Starter feature. Independent-user validation remains outstanding.
+
 ## NEXT
 
 Recruit 1–3 independent non-technical users who already experience AI-project context loss and ask them to try the Starter without owner assistance. Capture first-use evidence for the first 5–10 minutes: Starter opened, prompt generated/copied, destination understood, prompt sent, useful next action reached without unnecessary prompting, handoff friction, and whether the workflow feels worth repeating.
