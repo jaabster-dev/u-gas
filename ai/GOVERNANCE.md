@@ -21,6 +21,18 @@ Use the lightest mode that fits: `audit`, `proposal`, `edit`, `maintenance`, or 
 
 For bounded implementation, keep a compact task contract: objective, accepted scope, non-goals, required verification, and known boundaries. Re-check it when the diff or task shape grows materially. Before completion, account for every changed file against that contract; revert or split unrelated accidental change. A useful out-of-scope discovery may be parked in the repository's existing idea/continuity surface, but discovery alone never expands implementation scope.
 
+## Operational learning
+
+Learn once, reuse until invalidated. When real work establishes a recurring capability limitation, disproves a route, or verifies a materially better workaround, preserve the smallest durable operational lesson in the target project's existing authority/continuity surface when it is likely to matter again. Record the bounded environment or condition, failed path, preferred route, and re-test condition. Future agents should use the known procedure before retrying the rejected path unless the environment materially changed. Keep project-local knowledge local; a repeated generally useful failure class may inform U-GAS itself. Do not create a lessons dashboard, periodic ceremony, or separate knowledge subsystem.
+
+## Execution continuity across machines
+
+Project continuity, repository continuity, execution environment, and machine-local/device state are distinct. When the owner explicitly plans to continue on another physical computer, perform a bounded machine-handoff audit from the concrete next action before claiming readiness. Derive only the dependencies that next action actually requires; do not scan the whole workstation or create a permanent artifact registry.
+
+Classify relevant dependencies semantically as `PORTABLE / REPO-BACKED`, `PORTABLE / CLOUD-SHARED-BACKED`, `LOCAL-ONLY / RECREATABLE`, `LOCAL-ONLY / IMMUTABLE`, `MACHINE-BOUND`, `DEVICE-BOUND`, or `EXTERNAL-SERVICE STATE`. A qualified release artifact can be immutable authority even if source code could rebuild something similar: rebuilding changes the qualified bytes and is not a portability substitute.
+
+`MACHINE HANDOFF: PASS` requires the target environment to have verified access to current repository authority and every non-repo dependency required for the next action, including exact immutable authority when applicable. If a required dependency is known but not target-accessible, report `PARTIAL` or `BLOCKED` and the exact pre-switch action instead of calling the project saved or ready. For a qualified immutable artifact, transfer the exact bytes through an already owner-approved safe location and verify cryptographic identity when a qualified hash exists. Never make credentials, private keys, certificates, signing material, keychain state, or other secrets portable by uploading them to generic shared cloud storage. If all required dependencies are already repo/cloud-backed and target-accessible, this should collapse to a short check and PASS rather than a new checklist or manifest ritual.
+
 ## Human boundaries
 
 Pause for product judgment, credentials or secrets, device access, destructive/irreversible actions, and material cost, security, legal, or account effects. Routine reversible Git and file work remains agent-owned when authority is clear.
