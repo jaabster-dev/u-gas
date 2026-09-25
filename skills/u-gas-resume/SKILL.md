@@ -27,8 +27,9 @@ Do not use for a genuinely brand-new project with no durable continuity, or a tr
 5. Reconstruct `ACTIVE`, `WAITING/PAUSED`, the concrete `PROJECT NEXT`, material `AFTER` ordering, blockers/boundaries, open handoffs, and interrupt/return target.
 6. Reconcile current durable facts, fresh compatible owner intent, returned executor or human evidence, and only relevant history. Repository/filesystem facts win for current repository facts; newer compatible explicit owner decisions remain live until contradicted or durably persisted.
 7. Verify only the facts and evidence required for the next safe action.
-8. Preserve waiting or paused state instead of inventing work.
-9. Continue to `PROJECT NEXT` only after reconciliation and verification.
+8. If the session follows a physical-machine handoff, reconcile any live machine-handoff dependency before `PROJECT NEXT`; a successful clone/fetch alone does not prove target readiness. Verify exact immutable artifact identity when such authority is required, and compact stale transient handoff records after they no longer affect future work.
+9. Preserve waiting or paused state instead of inventing work.
+10. Continue to `PROJECT NEXT` only after reconciliation and verification.
 
 ## Stale/degraded session boundary
 
