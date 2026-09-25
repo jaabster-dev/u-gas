@@ -118,3 +118,7 @@ Highest-friction findings:
 Audit direction, not yet implementation scope: reduce the default Starter to owner-level choices and ordinary language. For a new project, the likely minimum is what the user wants to make plus a single start action; project naming can be optional/inferred and storage can remain an advanced choice. For an existing project, lead with what the user wants to continue and what they want now; ask for location only if the AI cannot discover it. After Copy, say only where to paste/send and what the user should expect next. Keep Git/repository/PICA/executor terminology behind progressive disclosure or entirely inside the machine-facing prompt.
 
 No workflow or safety contract was changed by this audit.
+
+## 2026-09-25 — Operational learning and machine-handoff portability
+
+Adapted proven GAS v3.10/v3.11 continuity semantics into U-GAS: reusable operational lessons are preserved in existing project authority with re-test conditions, and explicit physical-machine switches now require bounded next-action dependency proof across repository, non-repo artifact, execution, device, and external-service state. Qualified immutable artifacts require exact-byte preservation and identity verification; sensitive credentials/signing state is not made portable through generic cloud upload. Repo/cloud-backed-only handoffs remain a short check rather than a manifest ritual. This is bounded portable hardening, not a new product route; independent validation remains outstanding.
