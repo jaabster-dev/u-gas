@@ -32,6 +32,10 @@ Do not use a stale clone as authority. Do not probe permissions with a mutation.
 
 During implementation, perform a scope reset when the diff grows beyond the expected bounded change, a new dependency appears, or a useful discovery tempts adjacent work. Restate the objective, accepted scope, non-goals, verification, and boundaries; then continue only the smallest necessary path. Before completion, every changed file must be relevant to the accepted scope. Preserve useful discoveries as parked ideas or explicit follow-ups without silently implementing them.
 
+## Machine-handoff execution
+
+`ai/SESSION_CONTINUITY.md` owns the handoff semantics; this workflow owns safe repository and artifact mechanics. For an explicit physical-machine switch, start from the concrete next action and verify its required repository, artifact, execution, device, and external-service dependencies on the target environment. Routine reversible Git work and non-sensitive artifact copy/checksum work to an already owner-approved destination may be agent-owned when authorized. Do not invent a shared destination, upload sensitive signing/credential material to generic cloud storage, or rebuild a qualified immutable artifact merely to make it portable. When no safe transfer/access path exists, report `MACHINE HANDOFF: PARTIAL` or `BLOCKED` with the exact remaining dependency.
+
 ## Procedure discovery and lifecycle detail
 
 Read the target `AGENTS.md`, matching `ai/` policy, and relevant skill before inventing a procedure. Capability checks are non-mutating: never create dummy files, branches, commits, PRs, or permission probes.
