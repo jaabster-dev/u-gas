@@ -18,6 +18,24 @@ When relative dates could affect reconciliation, establish the actual current lo
 
 Keep `CURRENT_STATE.md` small enough to be a reliable live resume surface. When resolved material becomes history rather than a live constraint, preserve its evidence in `PROGRESS.md` or an existing archive and remove only the stale resume detail from current state. Cleanup is evidence-triggered, not periodic ceremony: preserve provenance, paused/deferred return conditions, open handoffs, blockers, and accepted constraints. Never reconstruct current state from a partial or truncated history read; use targeted reads/searches and the large-file safety route when history is large.
 
+## Reusable operational knowledge
+
+When a stable capability limitation, disproven route, or verified workaround is likely to recur and is not obvious from current code/configuration, preserve it in the smallest existing target authority/continuity surface with its environment/condition and re-test trigger. A later agent should reuse the known procedure before rediscovering the same dead path. Do not create a separate lessons store when an existing surface owns the fact.
+
+## Machine handoff / execution-continuity gate
+
+Explicit intent to stop on one physical computer and continue on another triggers a stricter check than an ordinary session checkpoint. Repository state alone is not proof that the target machine can perform the next action.
+
+Use four layers when reasoning about readiness: project state, repository state, execution environment, and machine-local/device state. Start from the concrete next action and inspect only known relevant sources such as `CURRENT_STATE.md`, release/checkpoint/manifests, executor output, known candidate paths or hashes, intentional Git exclusions, and required tool/service/device state. Do not perform a blind disk inventory.
+
+Classify each relevant non-conversational dependency as `PORTABLE / REPO-BACKED`, `PORTABLE / CLOUD-SHARED-BACKED`, `LOCAL-ONLY / RECREATABLE`, `LOCAL-ONLY / IMMUTABLE`, `MACHINE-BOUND`, `DEVICE-BOUND`, or `EXTERNAL-SERVICE STATE`. Classification is semantic, not extension-based. Qualified exact release bytes are `LOCAL-ONLY / IMMUTABLE` when rebuilding would create a different candidate.
+
+Keep a minimal live dependency record in the project's existing current-state/continuity surface only while it matters: purpose or stable identifier, authority/hash when known, source location/environment, portability class, action requiring it, target-accessibility verification, and expiry/re-test condition. Do not create a permanent artifact catalog merely for handoff.
+
+Prove readiness as `CURRENT NEXT ACTION -> required execution dependencies -> target-environment accessibility/authority`. `MACHINE HANDOFF: PASS` requires current repository authority to be target-accessible; every relevant non-repo dependency to be accounted for; required immutable authority to be target-accessible with destination identity verified when available; required execution, machine, device, and external-service dependencies to be available or irrelevant; and no known blocker hidden behind words such as saved, checkpointed, or pushed. A known required dependency that is not target-accessible means `PARTIAL` or `BLOCKED`, with the exact pre-switch action stated.
+
+For `LOCAL-ONLY / IMMUTABLE`, copy exact bytes rather than rebuilding and verify the destination hash when a qualified hash exists. Routine non-sensitive copy/checksum work to an already approved target/shared location may be agent-owned. Never invent a shared destination or upload secrets, credentials, private keys, certificates, signing material, or keychain contents to generic cloud storage. If only verified repo/cloud-backed dependencies are required, keep the audit short and do not create a manifest/checklist ritual.
+
 ## Durable checkpoint and degraded-session contract
 
 When asked to save where work stopped, conversational summary is not enough. A checkpoint is saved only after the canonical continuity file is actually written and fresh authoritative read-back verifies it. If persistence is unavailable, use safe capability discovery and an authorized execution-capable persistence fallback; do not simulate a save or ask the owner to reconstruct branch/SHA mechanics.
