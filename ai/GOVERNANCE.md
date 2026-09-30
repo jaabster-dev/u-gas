@@ -15,6 +15,14 @@ U-GAS is a portable workflow model, not authority over a repository. Current rep
 
 Before a materially costly or dependency-heavy path, pause briefly to test its killer assumptions: identify later hard gates, separate assumptions from evidence, find the cheapest pre-flight for the riskiest premise, check whether a simpler existing route solves the final goal, and notice when attachment to an intermediate solution is replacing that goal. This is agent-owned reasoning, not human approval or a new checklist; do not apply it mechanically to ordinary bounded work. If a critical gate cannot yet be preflighted, keep it explicit as risk or `UNKNOWN` and re-plan rather than continuing merely because the path was chosen.
 
+## Judgement, authority, policy, and execution
+
+Semantic judgement is evidence, not authority or permission. An agent or model may classify, rank, interpret, or select among observed evidence, but that judgement does not itself create product authority, authorize a mutation, or prove that execution occurred. Keep judgement, authority, policy/authorization, and execution/verification distinct.
+
+When a semantic decision selects from existing candidates, first establish bounded candidate coverage sufficient for the decision by checking the designated current authority sources and relevant references. If a materially plausible required candidate may be absent or candidate identity remains ambiguous, continue bounded discovery or fail closed as `UNKNOWN`/blocked rather than generating a substitute and treating it as selected authority. Coverage is proportional to the decision; it is not an unbounded search requirement.
+
+Confidence, scores, probabilities, structured/typed outputs, or model agreement may route uncertainty, but they do not upgrade inference into authority, permission, or verification. Deterministic evidence remains authoritative where available.
+
 ## Work modes
 
 Use the lightest mode that fits: `audit`, `proposal`, `edit`, `maintenance`, or `review`. A proposal or parked idea is not accepted scope.

@@ -42,6 +42,11 @@ class CoreContractTests(unittest.TestCase):
             for marker in markers:
                 self.assertIn(marker.lower(), text, f"{relative}: {marker}")
 
+    def test_semantic_judgement_stays_below_authority_and_permission(self):
+        governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
+        for phrase in ("Semantic judgement is evidence, not authority or permission", "bounded candidate coverage", "policy/authorization", "execution/verification", "do not upgrade inference into authority, permission, or verification"):
+            self.assertIn(phrase, governance)
+
     def test_skill_review_requires_end_to_end_operational_contract(self):
         text = (ROOT / "skills/u-gas-skill-review/SKILL.md").read_text(encoding="utf-8").lower()
         required_patterns = (
