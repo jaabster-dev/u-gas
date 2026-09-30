@@ -2,6 +2,8 @@
 
 This is a portable, local, read-only self-check contract. It protects the public U-GAS distribution surface; it is not organization-wide fleet compliance and does not synchronize consumers.
 
+The optional repository-health preflight is a read-only local Git sensor, not fleet monitoring or repair. It may compare an already-established authority branch with an optional release branch; ordinary authority-ahead state is healthy, release-unique history is action-worthy, and unresolved refs/errors remain visible. It never determines branch authority, fetches, mutates, merges, resets, or repairs repositories.
+
 ## Invariants
 
 - The four root PICA controls exist.
