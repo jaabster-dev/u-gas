@@ -12,6 +12,10 @@
 8. Fetch again and verify the actual remote commit and content.
 9. Record a continuity checkpoint when a material milestone, blocker, pause, or handoff changes what a successor must know.
 
+## Optional repository-health preflight
+
+For a repository with a distinct authoritative working branch and release branch, `scripts/check_repository_health.py` provides a small read-only local preflight. Run it only when branch-role health matters; it is not a mandatory ceremony for every task. Supply the already-established authority branch and optional release branch. `GREEN` allows the ordinary case where the authority branch is ahead; `RED` means the release branch contains unique commits outside authority; missing refs or Git failures are visible as `ERROR`. The sensor reports evidence only: it never fetches, repairs, resets, merges, or rewrites repository state. Establish branch roles from current repository authority first; do not let the checker invent them.
+
 ## Canonical clone identity
 
 Use the configurable identity `<workspace-root>/<repository-owner>/<repository-name>`. The workspace root is a container, not a repository. Verify identity from the remote URL or GitHub metadata, not from a folder name. Reuse an existing canonical clone. Before creating, moving, or deleting a duplicate, inspect unique work, untracked files, stashes, worktrees, and local-only commits.
