@@ -66,6 +66,10 @@ Use a hybrid route: an existing remote project uses its verified canonical clone
 
 Do not add infrastructure without evidence of a recurring problem and a simpler-path failure. Completion means the intended write occurred, the actual state and required evidence were verified, and any human/device/manual boundary is explicit; write success alone is not completion.
 
+## Cross-tool prompt delivery
+
+When the owner needs to paste a prompt, command set, handoff, or other payload into another tool, chat, or form, provide the complete payload as one standalone fenced code block so the interface exposes a reliable Copy action. Keep explanation outside the block; do not scatter the pasteable payload across prose, bullets, or multiple blocks.
+
 ## PICA contract
 
 Every U-GAS-managed project exposes root `PROGRESS.md`, `IDEAS.md`, `CURRENT_STATE.md`, and `AGENTS.md` in P-I-C-A order. Missing controls may be created as truthful minimal placeholders. Do not overwrite substantive controls or invent product scope, progress, state, ideas, credentials, or validation claims.
