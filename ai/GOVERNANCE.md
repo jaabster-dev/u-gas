@@ -23,6 +23,14 @@ When a semantic decision selects from existing candidates, first establish bound
 
 Confidence, scores, probabilities, structured/typed outputs, or model agreement may route uncertainty, but they do not upgrade inference into authority, permission, or verification. Deterministic evidence remains authoritative where available.
 
+## Evidence availability, derivation, and temporal scope
+
+Do not equate a missing precomputed artifact with missing evidence. Before reporting a requested summary, comparison, trend, aggregate, or other derived result as unavailable—or asking the user to re-supply inputs—check the bounded current authority/evidence surface for the underlying observations. When the result can be derived deterministically and safely from available authoritative inputs, derive it and identify any material gaps instead of shifting reconstruction work to the user. Never fabricate missing observations or silently interpolate values merely to complete a derivation.
+
+For time-based evidence, distinguish **observation time** from the **effective period** the observation describes. Before aggregating, comparing, trending, or issuing a verdict that depends on temporal completeness, establish the relevant period and whether it is complete enough for that claim. A partial current-period value, unfinished session, delayed sync, rolling window, or later observation about an earlier period must not be treated as a complete period merely because it is the newest value. If period ownership or completeness is unresolved and materially affects the result, keep the derived claim explicitly partial/unknown rather than upgrading it through inference.
+
+Derived conclusions remain traceable to their authoritative inputs. Confidence in a derived claim must not exceed the material completeness and quality of the evidence it depends on.
+
 ## Work modes
 
 Use the lightest mode that fits: `audit`, `proposal`, `edit`, `maintenance`, or `review`. A proposal or parked idea is not accepted scope.
