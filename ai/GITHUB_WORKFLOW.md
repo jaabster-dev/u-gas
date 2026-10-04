@@ -16,6 +16,12 @@
 
 For a repository with a distinct authoritative working branch and release branch, `scripts/check_repository_health.py` provides a small read-only local preflight. Run it only when branch-role health matters; it is not a mandatory ceremony for every task. Supply the already-established authority branch and optional release branch. `GREEN` allows the ordinary case where the authority branch is ahead; `RED` means the release branch contains unique commits outside authority; missing refs or Git failures are visible as `ERROR`. The sensor reports evidence only: it never fetches, repairs, resets, merges, or rewrites repository state. Establish branch roles from current repository authority first; do not let the checker invent them.
 
+## Mutation side effects and atomic publication
+
+The scope of a remote mutation includes known automatic consequences of publishing it, not only the files in the diff. Before a commit/push/ref update that is known to trigger CI, builds, deployments, notifications, quota/cost consumption, release automation, or other external work, account for those consequences when selecting the mutation mechanism. Do not make the user absorb avoidable failure notifications or automation churn as an implementation detail.
+
+When several interdependent file/state changes form one validity unit and publishing them sequentially would create a **known invalid intermediate remote state**, prefer an available atomic repository mutation: prepare the complete tree/commit first, then publish the ref once and verify the resulting automation. Do not weaken validators, skip required CI, or batch unrelated changes merely to keep runs green. Sequential publication remains correct when intermediate states are independently valid, atomic publication is unavailable/unsafe, or a genuine diagnostic run is required.
+
 ## Canonical clone identity
 
 Use the configurable identity `<workspace-root>/<repository-owner>/<repository-name>`. The workspace root is a container, not a repository. Verify identity from the remote URL or GitHub metadata, not from a folder name. Reuse an existing canonical clone. Before creating, moving, or deleting a duplicate, inspect unique work, untracked files, stashes, worktrees, and local-only commits.
