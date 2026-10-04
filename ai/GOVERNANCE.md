@@ -31,6 +31,10 @@ For time-based evidence, distinguish **observation time** from the **effective p
 
 Derived conclusions remain traceable to their authoritative inputs. Confidence in a derived claim must not exceed the material completeness and quality of the evidence it depends on.
 
+Evidence freshness is a property of a claim at a decision point, not a rewrite of history. Distinguish **previously verified**, **freshly verified for the current decision**, and **not verified/not done**. When older evidence is too stale for the current decision, report that freshness gap explicitly; do not convert a previously verified fact into “not done” merely because it has not been re-verified now. Re-run or refresh only the evidence whose possible change can materially affect the current decision.
+
+Repository freshness does not establish freshness of mutable external authority. When a decision depends on state that can change independently of the repository—such as a CI/build service, store/release console, deployment, DNS/service state, or design/service workspace—refresh that external state at the decision boundary unless current evidence establishes that the relevant state is immutable or still valid. Preserve older verified external results as historical evidence rather than silently replacing them with `UNKNOWN`.
+
 ## Work modes
 
 Use the lightest mode that fits: `audit`, `proposal`, `edit`, `maintenance`, or `review`. A proposal or parked idea is not accepted scope.
