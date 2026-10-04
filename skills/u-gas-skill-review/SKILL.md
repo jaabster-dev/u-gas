@@ -22,6 +22,14 @@ Do not use for a one-off ordinary procedure already covered by U-GAS policy or a
 6. Return one verdict: `ADAPT PRINCIPLE`, `ADOPT`, `BUILD INTERNAL`, or `REJECT`.
 7. Record the evidence supporting the verdict and the smallest safe next action; do not treat a complete-looking heading set as evidence of operational safety.
 
+## Repeated-instruction promotion signal
+
+Treat repeated user/agent instructions across independent work as a **review signal**, not automatic justification for a new skill. When the same process instruction, quality requirement, failure guard, or coordination rule must be re-explained more than once, check whether the durable knowledge belongs in existing authority so future agents do not require the user to remember and repeat it.
+
+Prefer the smallest correct existing authority surface. Strengthen an existing project rule when project-specific; strengthen an existing shared policy or skill when already within its responsibility; create a new skill/capability only when the repeated behavior has a distinct durable purpose, precise trigger/non-trigger, executable procedure, and verifiable outcome that existing authority cannot own cleanly.
+
+Repetition alone is not evidence that a new skill is needed. Do not duplicate an existing rule merely for visibility, and do not promote a one-off preference, transient workaround, or project-specific detail into shared authority. The intended result is **less user repetition and coordination without authority proliferation**.
+
 ## Operational completeness review
 
 Perform an explicit end-to-end capability test: **Can a competent agent, using this skill plus its declared references/tools, execute the capability through to a verified result?** Check the trigger and non-trigger, required inputs/preconditions, an ordered executable procedure, declared references/tools/authority sources and their sufficiency, decision/failure/fail-closed boundaries, and a concrete verifiable completion outcome. Documentation shape, headings, file presence, popularity, successful reading, fingerprints, or a short contract alone are not evidence of operational completeness.
