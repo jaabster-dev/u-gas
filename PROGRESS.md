@@ -131,3 +131,7 @@ Adapted the portable part of GAS v3.13 dogfood friction sensing and instruction 
 ## 2026-10-05 — Public discovery and first-use hardening
 
 Published the Project Starter at the GitHub Pages root and updated README discovery/first-use copy and its Quick Start link. This improves discoverability and onboarding only; it is not adoption or independent-user validation evidence.
+
+## 2026-10-05 — Superseded tracked-work closeout dogfood
+
+Closed stale PR #20 after confirming its Starter simplification work had already been absorbed and further refined on current `main`. The incident exposed a continuity hygiene gap: a tracked work item can remain falsely open after its obligation is no longer live. U-GAS now requires known superseded, absorbed, rejected, or otherwise non-actionable tracked work to be explicitly transitioned/closed when authorized during reconciliation or closeout, without turning this into a global tracker-scan ritual. Regression coverage protects the bounded semantic.
