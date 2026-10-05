@@ -6,7 +6,7 @@ A live obligation is not safely captured for resume merely because it appears in
 
 Follow `RESUME ACTION -> RECONCILE -> VERIFY -> PROJECT NEXT`.
 
-Cold/successor/resume work must reconcile durable authority before continuation. Ordinary active-session follow-ups do not mechanically cold-bootstrap when the current conversation already supplies the needed context and no repository fact, mutation, handoff, or evidence depends on a fresh read.
+Cold/successor/resume work must reconcile durable authority before continuation. Before any repository mutation in that flow, establish that the actual mutation target/ref is the authoritative working branch; a default branch or available write capability alone is insufficient. Ordinary active-session follow-ups do not mechanically cold-bootstrap when the current conversation already supplies the needed context and no repository fact, mutation, handoff, or evidence depends on a fresh read.
 
 ## Resume and reconciliation
 

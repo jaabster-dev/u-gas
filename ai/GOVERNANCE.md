@@ -43,6 +43,10 @@ For bounded implementation, keep a compact task contract: objective, accepted sc
 
 ## Operational learning
 
+Treat recurring or materially costly owner friction as operational evidence before it becomes intolerable: unnecessary approval/human-action requests, avoidable stops or handoffs, asking the owner to repeat recoverable context, rediscovering known procedure, disproportionate bootstrap/read/test work, or policy/skill behavior that materially diverts from accepted intent. Do not log every minor annoyance or create a dogfood dashboard. Correlate recurrence from existing project state/history when available, and promote only recurring, materially burdensome, delayed/costly, or consequential signals into the existing continuity/evidence path.
+
+When a U-GAS/project instruction, skill, or policy is the material reason an agent must stop, request owner action/approval, hand off work, or materially deviate from accepted scope, name the smallest identifiable governing source and rule/section and briefly state why it applies. Do not expose hidden chain-of-thought or fabricate attribution. If the exact rule cannot be identified, say so; identify platform/tool-enforced gates separately. Attribution is diagnostic evidence, never permission to bypass a valid safety, security, product, or destructive-action boundary.
+
 Learn once, reuse until invalidated. When real work establishes a recurring capability limitation, disproves a route, or verifies a materially better workaround, preserve the smallest durable operational lesson in the target project's existing authority/continuity surface when it is likely to matter again. Record the bounded environment or condition, failed path, preferred route, and re-test condition. Future agents should use the known procedure before retrying the rejected path unless the environment materially changed. Keep project-local knowledge local; a repeated generally useful failure class may inform U-GAS itself. Do not create a lessons dashboard, periodic ceremony, or separate knowledge subsystem.
 
 ## Execution continuity across machines

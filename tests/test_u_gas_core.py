@@ -480,6 +480,16 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("actual current local date/time", continuity)
         self.assertIn("today, yesterday, tomorrow", continuity)
 
+    def test_dogfood_friction_and_mutation_target_are_portable(self):
+        governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
+        agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        continuity = (ROOT / "ai/SESSION_CONTINUITY.md").read_text(encoding="utf-8")
+        for phrase in ("owner friction", "smallest identifiable governing source", "platform/tool-enforced gates", "diagnostic evidence"):
+            self.assertIn(phrase, governance)
+        self.assertIn("actual mutation target/ref", agents)
+        self.assertIn("actual mutation target/ref", continuity)
+        self.assertIn("available write capability alone is insufficient", continuity)
+
     def test_live_obligations_cannot_exist_only_in_progress_history(self):
         continuity = " ".join(
             (ROOT / "ai/SESSION_CONTINUITY.md").read_text(encoding="utf-8").lower().split()
