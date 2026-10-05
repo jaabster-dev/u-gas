@@ -291,8 +291,8 @@ class CoreContractTests(unittest.TestCase):
             "existingPreserve",
         ):
             self.assertIn(f'id="{field_id}"', starter)
-        self.assertIn("If this project is already open in a coding agent", starter)
-        self.assertIn("your AI chat", starter)
+        self.assertIn("Copy this prompt, then paste it into the AI already working on this project, or into ChatGPT, Claude, or another AI.", starter)
+        self.assertIn("your AI", starter)
         self.assertIn("You do not need to supply Git commands", readme)
 
         template_match = re.search(
