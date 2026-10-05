@@ -19,7 +19,8 @@ AI_FILES = (
 SKILL_FILES = (
     "skills/u-gas-resume/SKILL.md", "skills/u-gas-safe-patch/SKILL.md",
     "skills/u-gas-verify-change/SKILL.md", "skills/u-gas-external-research/SKILL.md",
-    "skills/u-gas-skill-review/SKILL.md",
+    "skills/u-gas-skill-review/SKILL.md", "skills/u-gas-figma-iteration/SKILL.md",
+    "skills/u-gas-figma-to-production/SKILL.md",
 )
 REQUIRED_SKILL_SECTIONS = ("Purpose", "When to use", "When not to use", "Procedure", "Required outcome")
 ROUTE_TARGETS = (
@@ -28,7 +29,8 @@ ROUTE_TARGETS = (
     "ai/REPOSITORY_STRUCTURE.md", "ai/COMPLIANCE.md",
     "skills/u-gas-resume/SKILL.md", "skills/u-gas-safe-patch/SKILL.md",
     "skills/u-gas-verify-change/SKILL.md", "skills/u-gas-external-research/SKILL.md",
-    "skills/u-gas-skill-review/SKILL.md", "scripts/check_u_gas.py",
+    "skills/u-gas-skill-review/SKILL.md", "skills/u-gas-figma-iteration/SKILL.md",
+    "skills/u-gas-figma-to-production/SKILL.md", "scripts/check_u_gas.py",
 )
 PRIVATE_PATH = "/" + "Users/"
 WORKSPACE_PATH = "~/" + "Documents/GitHub"

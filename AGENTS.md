@@ -44,6 +44,8 @@ Treat the current repository and its authoritative remote branch as the source o
 | Non-trivial accepted behavior change | `ai/REPOSITORY_STRUCTURE.md` change-spec guidance |
 | U-GAS self-check, PICA, route, or public-contract compliance | `ai/COMPLIANCE.md` + `scripts/check_u_gas.py` |
 | Reviewing a new/external skill or durable capability | `skills/u-gas-skill-review/SKILL.md` |
+| Iterating on an existing Figma design candidate with owner review | `skills/u-gas-figma-iteration/SKILL.md` |
+| Implementing/reconciling an owner-approved Figma design against production UI | `skills/u-gas-figma-to-production/SKILL.md` |
 
 Use the smallest relevant route. The normal sequence remains:
 
