@@ -263,7 +263,7 @@ function render(){
     $('locationHint').textContent=m.hint;
   }
   $('suggestedLocation').textContent=suggestedPath();
-  name.placeholder=existing?'Flashcard Generator':'Garden planner';
+  name.placeholder=existing?'Project name':'Give your project a name';
   if(existing){
     $('copy').disabled=!(name.value.trim()&&existingPurpose.value.trim()&&existingGoal.value.trim()&&(existingLocation.value.trim()||existingLocationUnknown.checked));
     $('usageGuidance').textContent='Copy this prompt, then paste it into the AI already working on this project, or into ChatGPT, Claude, or another AI.';
