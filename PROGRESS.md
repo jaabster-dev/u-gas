@@ -127,3 +127,7 @@ Adapted proven GAS v3.10/v3.11 continuity semantics into U-GAS: reusable operati
 ## 2026-10-05 — GAS v3.13 portability adaptation
 
 Adapted the portable part of GAS v3.13 dogfood friction sensing and instruction attribution into existing U-GAS governance, and tightened cold/successor repository mutation so the actual mutation target/ref must be established as authoritative before writing. No new dogfood subsystem, approval ceremony, or checklist was added. Regression coverage protects both semantics; independent-user validation remains outstanding.
+
+## 2026-10-05 — Public discovery and first-use hardening
+
+Published the Project Starter at the GitHub Pages root and updated README discovery/first-use copy and its Quick Start link. This improves discoverability and onboarding only; it is not adoption or independent-user validation evidence.

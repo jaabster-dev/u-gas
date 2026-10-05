@@ -134,7 +134,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("MIT License", readme)
         self.assertIn("Experimental", readme)
         self.assertIn("Tested with ChatGPT", readme)
-        self.assertIn("> **Keep your AI project from losing the plot.**", readme)
+        self.assertIn("> **Keep your AI project from losing the plot between chats and coding agents.**", readme)
         self.assertNotIn("```mermaid", readme)
         self.assertIn("Plan → Persist → Execute → Verify → Resume", readme)
         self.assertLess(readme.index("## Quick Start"), readme.index("### A typical workflow"))
@@ -210,7 +210,7 @@ class CoreContractTests(unittest.TestCase):
     def test_public_starter_first_contact_destination_contract(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
         self.assertIn("Keep your AI project from", starter)
-        self.assertIn("carry its important state into the next chat or coding agent", starter)
+        self.assertIn("the next chat or coding agent can continue without making you retell everything", starter)
         self.assertIn('id="nextStep"', starter)
         self.assertIn("NEXT STEP", starter)
         self.assertIn("Your prompt is copied.", starter)
@@ -227,7 +227,10 @@ class CoreContractTests(unittest.TestCase):
 
     def test_public_starter_is_linked_from_action_first_readme(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("https://jaabster-dev.github.io/u-gas/starter/", readme)
+        self.assertIn('<a href="https://jaabster-dev.github.io/u-gas/"', readme)
+        quick_start = readme[readme.index("## Quick Start"):readme.index("## Why U-GAS?")]
+        self.assertIn("https://jaabster-dev.github.io/u-gas/", quick_start)
+        self.assertNotIn("https://jaabster-dev.github.io/u-gas/starter/", quick_start)
         self.assertNotIn("[Project Starter](starter/)", readme)
         self.assertIn('target="_blank"', readme)
         self.assertIn('rel="noopener noreferrer"', readme)
@@ -269,7 +272,7 @@ class CoreContractTests(unittest.TestCase):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
         starter_readme = (ROOT / "starter/README.md").read_text(encoding="utf-8")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("https://jaabster-dev.github.io/u-gas/starter/", readme)
+        self.assertIn("https://jaabster-dev.github.io/u-gas/", readme)
         self.assertIn('value="computer" checked', starter)
         self.assertIn('value="github" disabled', starter)
         self.assertIn('value="cloud" disabled', starter)

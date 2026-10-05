@@ -1,10 +1,12 @@
-# U-GAS
+# U-GAS — continuity for AI coding projects
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) [![Experimental](https://img.shields.io/badge/status-experimental-orange.svg)](#status-and-feedback) [![Tested with ChatGPT · Codex](https://img.shields.io/badge/tested%20with-ChatGPT%20%C2%B7%20Codex-blueviolet.svg)](#status-and-feedback)
 
-> **Keep your AI project from losing the plot.**
+> **Keep your AI project from losing the plot between chats and coding agents.**
 
-U-GAS (Universal Grabbers Agent System) helps an AI project carry its important state into the next chat or coding agent, instead of making you retell everything. It stores that state in ordinary files so another capable agent can continue the work.
+U-GAS (Universal Grabbers Agent System) is a Git-native continuity workflow for AI-assisted projects. It keeps important decisions, current state, next actions, and agent instructions in ordinary files so a capable AI can resume from the project instead of making you reconstruct the conversation.
+
+**Try it first:** open the public [Project Starter](https://jaabster-dev.github.io/u-gas/). It requires no U-GAS account or install, and the tested local-project route does not require you to create a GitHub repository.
 
 > **EXPERIMENTAL / EARLY TESTING:** Practical testing has mainly used ChatGPT and Codex; other tools are not independently validated, and there is **NO INDEPENDENT USER VALIDATION YET**.
 
@@ -18,7 +20,7 @@ U-GAS (Universal Grabbers Agent System) helps an AI project carry its important 
 
 ## Quick Start
 
-<a href="https://jaabster-dev.github.io/u-gas/starter/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
+<a href="https://jaabster-dev.github.io/u-gas/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
 
 Start with the runnable Starter. Choose **Start a new project** (the default) or
 **Continue an existing project**, describe what you want next, and send the generated
