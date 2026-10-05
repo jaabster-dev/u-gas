@@ -42,6 +42,30 @@ class CoreContractTests(unittest.TestCase):
             for marker in markers:
                 self.assertIn(marker.lower(), text, f"{relative}: {marker}")
 
+    def test_portable_figma_skills_preserve_evidence_and_owner_boundaries(self):
+        iteration = (ROOT / "skills/u-gas-figma-iteration/SKILL.md").read_text(encoding="utf-8")
+        production = (ROOT / "skills/u-gas-figma-to-production/SKILL.md").read_text(encoding="utf-8")
+        for phrase in (
+            "authority-discovery pass",
+            "common coordinate space",
+            "WRITE ≠ STRUCTURE ≠ VISUAL",
+            "actual post-write screenshot/render",
+            "owner visual approval",
+            "partial/unverified",
+        ):
+            self.assertIn(phrase, iteration)
+        for phrase in (
+            "owner-approved Figma",
+            "existing production structure",
+            "Runtime computed styles/layout",
+            "cascade/style-resolution audit",
+            "physical device",
+            "owner visual acceptance",
+            "VISUAL APPROVED ≠ IMPLEMENTATION READY",
+            "solution must not become larger than the problem",
+        ):
+            self.assertIn(phrase, production)
+
     def test_semantic_judgement_stays_below_authority_and_permission(self):
         governance = (ROOT / "ai/GOVERNANCE.md").read_text(encoding="utf-8")
         for phrase in ("Semantic judgement is evidence, not authority or permission", "bounded candidate coverage", "policy/authorization", "execution/verification", "do not upgrade inference into authority, permission, or verification"):
