@@ -56,6 +56,15 @@ class PortableSemanticsTests(unittest.TestCase):
         self.assertIn("paused/deferred return conditions", structure)
         self.assertIn("partial history read", structure)
 
+    def test_superseded_tracked_work_is_closed_not_left_live(self):
+        continuity = self.read("ai/SESSION_CONTINUITY.md")
+        normalized = " ".join(continuity.split())
+        self.assertIn("pull request", normalized)
+        self.assertIn("superseded, absorbed, rejected", normalized)
+        self.assertIn("close or explicitly transition it", normalized)
+        self.assertIn("rather than leaving it falsely open as live work", normalized)
+        self.assertIn("Do not scan every tracker on every turn", normalized)
+
     def test_current_state_review_is_read_only_signal(self):
         before = (ROOT / "CURRENT_STATE.md").read_bytes()
         self.assertIn(current_state_review(ROOT), ("PASS", "REVIEW"))
