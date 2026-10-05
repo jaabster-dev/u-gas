@@ -6,6 +6,8 @@
 
 U-GAS (Universal Grabbers Agent System) is a Git-native continuity workflow for AI-assisted projects. It keeps important decisions, current state, next actions, and agent instructions in ordinary files so a capable AI can resume from the project instead of making you reconstruct the conversation.
 
+**U-GAS is not an AI coding agent, IDE, model, or agent runtime.** It works with capable tools such as ChatGPT or Codex; it does not replace them. Its job is to keep durable project authority and continuity around the work those tools perform.
+
 **Try it first:** open the public [Project Starter](https://jaabster-dev.github.io/u-gas/). It requires no U-GAS account or install, and the tested local-project route does not require you to create a GitHub repository.
 
 > **EXPERIMENTAL / EARLY TESTING:** Practical testing has mainly used ChatGPT and Codex; other tools are not independently validated, and there is **NO INDEPENDENT USER VALIDATION YET**.
@@ -61,8 +63,7 @@ You need:
 - an AI coding agent that can create and keep files on your computer;
 - permission for the agent to create a project folder and edit its files.
 
-You do not need to create a GitHub repository. The agent will check the local tools it
-needs and tell you if something is missing. A plain chat with no persistent file access
+You do not need to create a GitHub repository, project folder, or run Git/Terminal setup yourself. Give the Starter-generated prompt to your AI: if it has the required computer access, it creates or reconciles the durable project workspace and local Git itself. If it cannot, U-GAS requires a truthful capability boundary and the next supported route rather than simulated setup. The agent will check the local tools it needs and tell you if something is missing. A plain chat with no persistent file access
 cannot perform this workflow; a session sandbox, temporary directory, or download
 location is not durable project storage.
 
@@ -218,7 +219,9 @@ Every U-GAS-managed project exposes four visible files, in P-I-C-A order:
 | `CURRENT_STATE.md` | C | Where is the project now, and what comes next? |
 | `AGENTS.md` | A | How should an AI agent work here? |
 
-PICA is deliberately Markdown-first. It is not a database, installer, orchestration platform, or replacement for source control and CI. A repository-capable agent still reads current repository authority, preserves existing work, makes a bounded change, and verifies the result.
+These root PICA files are the U-GAS project-state surface; U-GAS does not use a hidden `.ugas/state.md` or `.ugas/system.md` as its canonical project model.
+
+PICA is deliberately Markdown-first. It is not a database, installer, orchestration platform, AI coding agent, IDE, model, agent runtime, or replacement for source control and CI. A repository-capable agent still reads current repository authority, preserves existing work, makes a bounded change, and verifies the result.
 
 ### Pause, resume, handoff, verify
 
