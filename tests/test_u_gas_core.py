@@ -155,7 +155,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("- [How U-GAS works](#how-u-gas-works)", readme)
         self.assertIn("- [Limitations and safety](#limitations-and-safety)", readme)
         self.assertIn("- [Status and feedback](#status-and-feedback)", readme)
-        self.assertIn("You do not need to create a GitHub repository.", readme)
+        self.assertIn("does not require you to create a GitHub repository", readme)
         self.assertIn("### Start a new local project — recommended first test", readme)
         self.assertIn("<summary>Manual fallback: continue an existing project</summary>", readme)
         self.assertLess(readme.index("### Start a new local project — recommended first test"), readme.index("<summary>Manual fallback: continue an existing project</summary>"))

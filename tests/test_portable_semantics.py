@@ -32,6 +32,21 @@ class PortableSemanticsTests(unittest.TestCase):
         self.assertIn("Cold/successor/resume work", continuity)
         self.assertIn("Ordinary active-session follow-ups do not mechanically cold-bootstrap", continuity)
 
+    def test_known_repository_discovery_is_bounded_and_identity_checked(self):
+        workflow = self.read("ai/GITHUB_WORKFLOW.md")
+        for marker in (
+            "The current working directory alone does not establish that a known repository is unavailable",
+            "authoritative branch from current repository authority",
+            "already-known canonical checkout locations",
+            "configured remote identifies the target",
+            "same-named path or mismatched/ambiguous remote fails closed",
+            "preserving dirty, divergent, or unexpected state",
+            "report its path briefly and continue",
+            "Do not add a path registry",
+        ):
+            self.assertIn(marker, workflow)
+        self.assertIn("automatically clone solely for discovery", workflow)
+
     def test_current_state_lifecycle_hygiene_is_explicit(self):
         continuity = self.read("ai/SESSION_CONTINUITY.md")
         structure = self.read("ai/REPOSITORY_STRUCTURE.md")
