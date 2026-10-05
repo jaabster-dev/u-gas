@@ -122,3 +122,8 @@ No workflow or safety contract was changed by this audit.
 ## 2026-09-25 — Operational learning and machine-handoff portability
 
 Adapted proven GAS v3.10/v3.11 continuity semantics into U-GAS: reusable operational lessons are preserved in existing project authority with re-test conditions, and explicit physical-machine switches now require bounded next-action dependency proof across repository, non-repo artifact, execution, device, and external-service state. Qualified immutable artifacts require exact-byte preservation and identity verification; sensitive credentials/signing state is not made portable through generic cloud upload. Repo/cloud-backed-only handoffs remain a short check rather than a manifest ritual. This is bounded portable hardening, not a new product route; independent validation remains outstanding.
+
+
+## 2026-10-05 — GAS v3.13 portability adaptation
+
+Adapted the portable part of GAS v3.13 dogfood friction sensing and instruction attribution into existing U-GAS governance, and tightened cold/successor repository mutation so the actual mutation target/ref must be established as authoritative before writing. No new dogfood subsystem, approval ceremony, or checklist was added. Regression coverage protects both semantics; independent-user validation remains outstanding.
