@@ -30,8 +30,6 @@ Current GAS v3.13 portability review adds two bounded portable corrections witho
 
 Run a real novice first-use E2E without owner coaching: Starter opened → project described → prompt copied → destination understood → prompt sent → useful next action reached. Capture only material friction.
 
-Audit the two legacy preview surfaces (`starter-preview/` and `starter/preview/`) against canonical `starter/index.html`; remove or explicitly define them rather than letting three Starter variants silently diverge.
-
 After novice evidence, run a dedicated GitHub-route E2E before enabling that route. Keep My server / cloud later. Do not continue wording/cosmetic churn without external evidence or a genuine blocker.
 
 ## WAITING / PAUSED
