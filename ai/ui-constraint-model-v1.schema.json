@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grabbers.app/schemas/ui-constraint-model-v1.schema.json",
+  "title": "GAS UI Constraint Grammar v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "surface", "authority", "environment", "nodes", "layout", "observations", "assertions"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "state"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "state": {"type": "string", "minLength": 1}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "figmaFileKey"],
+      "properties": {
+        "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+        "figmaFileKey": {"type": "string", "minLength": 22},
+        "note": {"type": "string"}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs"],
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": ["availableWidth", "availableHeight", "safeInsets", "densityOrScale", "textScale", "locale", "layoutDirection", "platform", "inputModality", "windowPosture", "accessibilityPreferences"]
+          }
+        }
+      }
+    },
+    "nodes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/node"}},
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rowTracks": {"type": "array", "items": {"$ref": "#/$defs/rowTracks"}},
+        "constants": {"type": "array", "items": {"$ref": "#/$defs/constant"}},
+        "anchors": {"type": "array", "items": {"$ref": "#/$defs/anchor"}},
+        "transforms": {"type": "array", "items": {"$ref": "#/$defs/transform"}}
+      }
+    },
+    "observations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/observation"}},
+    "assertions": {"type": "array", "items": {"$ref": "#/$defs/anchor"}}
+  },
+  "$defs": {
+    "strength": {"enum": ["REQUIRED", "STRONG", "PREFERRED", "FALLBACK"]},
+    "geometryRef": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+\\.(leading|trailing|top|bottom|width|height|centerX|centerY)$"
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "boxes"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+$"},
+        "role": {"type": "string", "minLength": 1},
+        "semanticParent": {"type": ["string", "null"]},
+        "layoutParent": {"type": ["string", "null"]},
+        "focusParent": {"type": ["string", "null"]},
+        "boxes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["visual", "layout", "text-flow", "clip", "interaction", "focus", "safe-content"]}
+        },
+        "inlineSize": {"enum": ["fixed", "intrinsic", "fill", "elastic", "clamped", "wrap", "scroll", "aspect-ratio", "transform-switched"]},
+        "blockSize": {"enum": ["fixed", "intrinsic", "fill", "elastic", "clamped", "wrap", "scroll", "aspect-ratio", "transform-switched"]}
+      }
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node", "weight"],
+      "properties": {
+        "node": {"type": "string"},
+        "weight": {"type": "number", "exclusiveMinimum": 0},
+        "min": {"type": "number", "minimum": 0},
+        "max": {"type": "number", "minimum": 0}
+      }
+    },
+    "rowTracks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["container", "paddingLeading", "paddingTrailing", "gap", "tracks", "strength"],
+      "properties": {
+        "container": {"type": "string"},
+        "paddingLeading": {"type": "number", "minimum": 0},
+        "paddingTrailing": {"type": "number", "minimum": 0},
+        "gap": {"type": "number", "minimum": 0},
+        "tracks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/track"}},
+        "strength": {"$ref": "#/$defs/strength"}
+      }
+    },
+    "constant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "value", "strength"],
+      "properties": {
+        "target": {"$ref": "#/$defs/geometryRef"},
+        "value": {"type": "number"},
+        "strength": {"$ref": "#/$defs/strength"}
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "source", "strength"],
+      "properties": {
+        "target": {"$ref": "#/$defs/geometryRef"},
+        "source": {"$ref": "#/$defs/geometryRef"},
+        "offset": {"type": "number", "default": 0},
+        "strength": {"$ref": "#/$defs/strength"}
+      }
+    },
+    "transform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node", "type", "cause"],
+      "properties": {
+        "node": {"type": "string"},
+        "type": {"enum": ["PRESERVE", "RESIZE", "REFLOW", "REPOSITION", "REVEAL", "HIDE", "REPLACE", "STACK", "SPLIT", "SCROLL", "PRESENTATION_CHANGE"]},
+        "cause": {"type": "string", "minLength": 1}
+      }
+    },
+    "geometryAttributes": {
+      "type": "object",
+      "additionalProperties": {"type": "number"}
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "figmaNode", "environment", "expectedGeometry"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "figmaNode": {"type": "string", "pattern": "^\\d+:\\d+$"},
+        "environment": {
+          "type": "object",
+          "required": ["availableWidth", "availableHeight"],
+          "properties": {
+            "availableWidth": {"type": "number", "exclusiveMinimum": 0},
+            "availableHeight": {"type": "number", "exclusiveMinimum": 0}
+          },
+          "additionalProperties": true
+        },
+        "expectedGeometry": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/geometryAttributes"}
+        }
+      }
+    }
+  }
+}

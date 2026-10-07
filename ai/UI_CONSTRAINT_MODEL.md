@@ -244,6 +244,32 @@ states:
 
 The implementation may use CSS Grid/Flexbox, SwiftUI, Auto Layout, Compose, or another renderer. Renderer choice must preserve the same semantic constraints rather than becoming a second design authority.
 
+## Executable grammar v1
+
+The prose semantics above remain the conceptual authority. For ambiguity-prone responsive work that needs machine execution, U-GAS also carries a deliberately bounded executable subset:
+
+- schema: `ai/ui-constraint-model-v1.schema.json`;
+- validator/solver: `scripts/check_ui_constraints.py`;
+- portable regression coverage: `tests/test_ui_constraint_model.py`.
+
+V1 exists to prove that one small relational model can solve multiple approved observations. It is not a general-purpose UI language.
+
+### Accepted v1 semantics
+
+The executable subset accepts stable identity/role, separate semantic/layout/focus parents, box semantics, per-axis size behavior, explicit environment inputs, weighted inline row tracks with optional min/max clamps, numeric constants, equality anchors, constraint strengths, declared adaptive transforms, solved observations, and relational assertions.
+
+Constraint resolution is deterministic: the highest-strength solvable assignment wins; contradictory assignments at the same strength are invalid; unresolved references or dependencies fail closed. Lower-strength rules cannot silently change stronger solved targets.
+
+### Intentionally rejected or deferred from v1
+
+V1 does not add arbitrary string formulas, an embedded programming language, a general linear/non-linear solver, device-name layout inputs, renderer-specific syntax as design authority, per-breakpoint coordinate tables, screenshot-to-rules inference, or automatic conflict repair.
+
+Add a new primitive only when a real approved surface cannot be expressed safely with the current subset and simpler existing mechanisms have failed. Unknown semantics remain a specification `GAP`.
+
+### Standards boundary rechecked 2026-10-07
+
+The portable grammar models platform requirements as inputs/constraints rather than importing a platform house style. Current official Apple layout/Larger Text guidance, Android adaptive-window/insets/font-scaling guidance, Figma Auto Layout/Constraints guidance, and WCAG 2.2 Reflow/Text Spacing/Meaningful Sequence/Focus Order were rechecked before freezing v1. These sources reinforce available-window geometry, safe/system insets, text scale/reflow, logical reading/focus order, and content-driven adaptation as first-class concerns; they do not justify copying another design system's visual language.
+
 ## Solver obligations
 
 Given a supported environment/state, an implementation must be able to answer:
