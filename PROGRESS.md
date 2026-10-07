@@ -139,3 +139,7 @@ Closed stale PR #20 after confirming its Starter simplification work had already
 ## 2026-10-07 — Privacy-preserving adoption signal
 
 Extended the existing privacy-first Starter analytics with an explicit opt-in success signal for verified U-GAS bootstrap/resume. The public success page may be offered only after verified success and stays outside the compact generated Starter prompts; no agent may open or fetch it automatically. The signal is aggregate only: U-GAS adds no project text, repository/account name, device identifier, per-user token, cookie, or fingerprint. This creates a bounded evidence ladder from GitHub clone/discovery traffic to Starter copy attempts to voluntary successful-use signals without treating machine clone traffic as human adoption. Independent-user validation remains outstanding until an actual external user is evidenced.
+
+## 2026-10-07 — Self-test notification-noise reduction
+
+Owner friction: repository work was producing redundant GitHub Actions email noise. The self-test workflow previously ran both on pull requests to `main` and again on pushes to `main`, duplicating the same validation around normal PR merges. The workflow now keeps the pull-request gate and removes the redundant post-merge push trigger. Real PR failures remain visible and actionable; successful merges no longer launch a second equivalent self-test run. This is a bounded workflow correction, not a reduction in the pre-merge test contract.
