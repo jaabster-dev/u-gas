@@ -164,11 +164,27 @@ Only include an input in a product specification when it can affect that product
 
 Safe/system insets distinguish edge-to-edge visual canvas from safe critical content. Backgrounds may extend beyond safe-content bounds while important content/controls remain inset.
 
-### State inputs
+### State, event, and transition semantics
 
 Layout can depend on real product state: loading, empty, no-result, partial, error, offline, busy, disabled, selected, expanded, focus, validation, permission, or domain-specific state.
 
-State-driven geometry change must be attributable to a declared state/variant, not accidental CSS/runtime drift.
+For interactive behavior whose meaning is not already unambiguous in existing production semantics, declare the smallest state-transition contract:
+
+```text
+STATE + EVENT -> NEXT_STATE + EFFECT + FEEDBACK
+```
+
+Examples of events include tap/activate, submit, cancel, back, retry, focus, blur, keyboard action, drag, timeout, external result, and permission result. Effects include local mutation, navigation, copy/export/share, network request, persistence, or no-op. Feedback includes visible state, focus movement, announcement, haptic/audio feedback where applicable, and motion.
+
+Do not encode business logic twice when production behavior is already authoritative. The transition contract exists to close design ambiguity, not to replace the product domain model.
+
+State-driven geometry change must be attributable to a declared state/variant, not accidental CSS/runtime drift. Preserve user work and context across environment/configuration changes when the platform can recreate or resize the surface.
+
+### Motion semantics
+
+Motion is part of state communication, not merely decoration. When motion materially communicates hierarchy, causality, progress, spatial continuity, or completion, declare its semantic purpose and fallback. Respect platform accessibility preferences such as reduced motion. Decorative or depth-simulating motion may be removed/reduced; meaning-bearing motion must retain equivalent understandable feedback through a safer transition, highlight, fade, state change, or other suitable mechanism.
+
+Do not standardize universal durations/easing as product truth without design authority.
 
 ## Canonical reasoning order
 
@@ -242,6 +258,8 @@ Given a supported environment/state, an implementation must be able to answer:
 8. Which safe/system insets affect visual versus critical content?
 9. Which adaptive transform is active?
 10. Which reading/focus order remains valid after reflow?
+11. Which state/event transition owns the interaction and feedback?
+12. Which motion is semantic, decorative, or replaced under accessibility preferences?
 
 If the answer depends on inventing a coordinate not derivable from authority, report a specification `GAP`.
 
