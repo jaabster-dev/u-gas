@@ -135,3 +135,7 @@ Published the Project Starter at the GitHub Pages root and updated README discov
 ## 2026-10-05 — Superseded tracked-work closeout dogfood
 
 Closed stale PR #20 after confirming its Starter simplification work had already been absorbed and further refined on current `main`. The incident exposed a continuity hygiene gap: a tracked work item can remain falsely open after its obligation is no longer live. U-GAS now requires known superseded, absorbed, rejected, or otherwise non-actionable tracked work to be explicitly transitioned/closed when authorized during reconciliation or closeout, without turning this into a global tracker-scan ritual. Regression coverage protects the bounded semantic.
+
+## 2026-10-07 — Privacy-preserving adoption signal
+
+Extended the existing privacy-first Starter analytics with an explicit opt-in success signal for verified U-GAS bootstrap/resume. The generated Starter prompts may offer the public success page only after verified success and must never open or fetch it automatically. The signal is aggregate only: U-GAS adds no project text, repository/account name, device identifier, per-user token, cookie, or fingerprint. This creates a bounded evidence ladder from GitHub clone/discovery traffic to Starter copy attempts to voluntary successful-use signals without treating machine clone traffic as human adoption. Independent-user validation remains outstanding until an actual external user is evidenced.
