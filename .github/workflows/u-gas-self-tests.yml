@@ -1,19 +1,6 @@
 name: U-GAS self-tests
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'AGENTS.md'
-      - 'README.md'
-      - 'starter/**'
-      - 'ai/**'
-      - 'skills/**'
-      - 'scripts/**'
-      - 'tests/**'
-      - 'templates/**'
-      - 'examples/**'
-      - '.github/workflows/u-gas-self-tests.yml'
   pull_request:
     branches: [main]
     paths:
