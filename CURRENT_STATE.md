@@ -40,6 +40,8 @@ Seeking independent external tester feedback from 1–3 non-technical target use
 
 U-GAS remains experimental. Creating a tester issue or completing an owner-led test does not constitute independent validation, prove reliability, or establish an industry standard. Clean ChatGPT Free/Codex entitlement and account-isolation behavior remains unverified.
 
+Adoption evidence now has a privacy-preserving ladder: GitHub clone traffic remains machine-discovery evidence; the existing aggregate Starter `starter-attempt` event measures successful prompt copy; and, after verified bootstrap/resume, the Starter prompt may offer a voluntary anonymous success-signal page. Agents must never open/fetch that signal automatically, and U-GAS adds no project/user/device identifiers, cookies, or fingerprinting. These signals do not by themselves establish independent-user validation.
+
 The preferred human-facing local-project root is `~/Documents/U-GAS Projects/<project-name>`, but its exact spelling/path behavior remains a sandbox validation item and is not yet a public implementation commitment. Future generated projects need a small durable U-GAS identity/bootstrap marker that points agents to the current canonical public entry point; a one-time copied prompt or large stale embedded rule copy is insufficient. Material human/device verification reported back to ChatGPT must have an explicit route into durable project PICA.
 
 The stable `GIVE THIS TO YOUR NEXT AI CHAT.txt` resume entry ticket and explicit executor return payload are public contracts. GitHub and server/cloud route validation remains waiting.
