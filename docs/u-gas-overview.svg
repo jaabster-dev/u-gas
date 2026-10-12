@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc"><title id="title">U-GAS · Universal Grabbers Agent System</title><desc id="desc">U-GAS: user starts or resumes a local or existing project using a capable AI; persistent PICA and Git hold authority; execution is verified and resumed across sessions. No AI runtime or automatic cloud storage.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#71b7fa"/></marker></defs>
+<rect x="0" y="0" width="1200" height="700" rx="0" fill="#0b1220" stroke="#0b1220" stroke-width="1.5"/>
+<text x="44" y="62" fill="#f6fbff" font-size="35" font-weight="750">U-GAS · Universal Grabbers Agent System</text>
+<text x="44" y="94" fill="#9db0c9" font-size="17" font-weight="400">Pārnesama projekta nepārtrauktība · eksperimentāls produkts</text>
+<rect x="42" y="133" width="535" height="105" rx="16" fill="#173043" stroke="#4b88a5" stroke-width="1.5"/>
+<text x="63" y="171" fill="#98dbff" font-size="19" font-weight="700">1 · SĀC VAI TURPINI</text>
+<text x="63" y="202" fill="#eaf2ff" font-size="17" font-weight="500">Project Starter → viens kopējams uzdevums</text>
+<rect x="625" y="133" width="533" height="105" rx="16" fill="#173043" stroke="#4b88a5" stroke-width="1.5"/>
+<text x="646" y="171" fill="#98dbff" font-size="19" font-weight="700">2 · SPĒJĪGS AI / IZPILDĪTĀJS</text>
+<text x="646" y="202" fill="#eaf2ff" font-size="17" font-weight="500">ChatGPT / Codex / cits, ja ir īsta piekļuve</text>
+<path d="M582 186 L619 186" stroke="#71b7fa" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="42" y="299" width="535" height="155" rx="16" fill="#142d35" stroke="#448b87" stroke-width="1.5"/>
+<text x="63" y="337" fill="#a5f4dd" font-size="19" font-weight="700">3 · NOTURĪGA PROJEKTA VIETA</text>
+<text x="63" y="373" fill="#eaf2ff" font-size="17" font-weight="500">Lokāla mape + Git  VAI  esošs repo</text>
+<text x="63" y="408" fill="#9db0c9" font-size="16" font-weight="500">Ne čata atmiņa · ne pagaidu sandbox</text>
+<text x="63" y="436" fill="#9db0c9" font-size="15" font-weight="500">Attālināts GitHub jaunam projektam nav obligāts</text>
+<rect x="625" y="299" width="533" height="155" rx="16" fill="#142d35" stroke="#448b87" stroke-width="1.5"/>
+<text x="646" y="337" fill="#a5f4dd" font-size="19" font-weight="700">4 · PICA: ČETRI PAMATFAILI</text>
+<text x="646" y="374" fill="#eaf2ff" font-size="17" font-weight="500">AGENTS.md     CURRENT_STATE.md</text>
+<text x="646" y="405" fill="#eaf2ff" font-size="17" font-weight="500">PROGRESS.md   IDEAS.md</text>
+<text x="646" y="436" fill="#9db0c9" font-size="15" font-weight="500">Instrukcijas · stāvoklis · vēsture · idejas</text>
+<path d="M885 239 L885 291" stroke="#71b7fa" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M579 379 L617 379" stroke="#71b7fa" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<rect x="42" y="507" width="1116" height="124" rx="16" fill="#28243b" stroke="#9172b8" stroke-width="1.5"/>
+<text x="63" y="545" fill="#ddcaff" font-size="20" font-weight="700">5 · IZPILDE → REĀLA PĀRBAUDE → NĀKAMĀ SESIJA</text>
+<text x="63" y="580" fill="#eaf2ff" font-size="17" font-weight="500">Saglabā faktisko rezultātu, pārbaudi failus / Git, fiksē nākamo darbību; vajadzības gadījumā izmanto resume ticket.</text>
+<text x="63" y="608" fill="#9db0c9" font-size="15" font-weight="500">Ja nav piekļuves noturīgai videi: BLOCKED + konkrēts nākamais solis. Nekādu izdomātu PASS.</text>
+<path d="M309 454 L309 499" stroke="#71b7fa" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<text x="42" y="675" fill="#9db0c9" font-size="14" font-weight="500">U-GAS nav AI aģents, mākoņpakalpojums vai automātiska izpildes platforma. Produkts vēl nav neatkarīgi validēts.</text>
+</svg>
