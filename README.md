@@ -8,6 +8,10 @@ U-GAS (Universal Grabbers Agent System) is a Git-native continuity workflow for 
 
 **U-GAS is not an AI coding agent, IDE, model, or agent runtime.** It works with capable tools such as ChatGPT or Codex; it does not replace them. Its job is to keep durable project authority and continuity around the work those tools perform.
 
+![U-GAS project continuity workflow](docs/u-gas-overview.svg)
+
+The diagram shows the supported **local-first or existing-project** route: a capable AI works in a genuinely persistent workspace, uses the four PICA files as durable project controls, verifies real changes, and leaves a usable resume path. U-GAS is **not** an agent runtime or hosted storage service. The diagram does not imply that the Starter's disabled GitHub or cloud creation routes are available, or that independent validation is complete.
+
 **Try it first:** open the public [Project Starter](https://jaabster-dev.github.io/u-gas/). It requires no U-GAS account or install, and the tested local-project route does not require you to create a GitHub repository.
 
 > **EXPERIMENTAL / EARLY TESTING:** Practical testing has mainly used ChatGPT and Codex; other tools are not independently validated, and there is **NO INDEPENDENT USER VALIDATION YET**.
