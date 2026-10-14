@@ -35,6 +35,10 @@ Evidence freshness is a property of a claim at a decision point, not a rewrite o
 
 Repository freshness does not establish freshness of mutable external authority. When a decision depends on state that can change independently of the repository—such as a CI/build service, store/release console, deployment, DNS/service state, or design/service workspace—refresh that external state at the decision boundary unless current evidence establishes that the relevant state is immutable or still valid. Preserve older verified external results as historical evidence rather than silently replacing them with `UNKNOWN`.
 
+## Repetition and owner-cost stop gate
+
+Before proposing a repeat of a material diagnostic, UI navigation, configuration check, or command, consult the available current-session evidence and durable incident/continuity record. State what was already tried, its observed result, and **what materially changed** to make a retry informative. If no changed premise or new observable discriminator exists, do not repeat it; choose a genuinely different bounded route or stop as `BLOCKED` / `NOT WORTH CONTINUING`. An instruction to "continue" does not waive this gate. Do not ask the owner to reconstruct evidence the agent can read. Track owner time, tool consumption, and repeated handoffs as real costs; recommend ending an experiment when repeated attempts are not increasing evidence or expected value. Keep this a short agent-owned judgement, not a new checklist or subsystem.
+
 ## Work modes
 
 Use the lightest mode that fits: `audit`, `proposal`, `edit`, `maintenance`, or `review`. A proposal or parked idea is not accepted scope.
