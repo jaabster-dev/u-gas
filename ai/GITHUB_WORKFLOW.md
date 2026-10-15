@@ -76,6 +76,10 @@ The executor's final report should distinguish completed work and commit/remote 
 
 ## Bidirectional Issue execution ledger (portable contract)
 
+**Ownership/privacy prerequisite:** The Issue and execution reports belong exclusively in the **user's own target-project GitHub repository**, with its existing visibility and access policy; never create user task Issues in `jaabster-dev/u-gas` or any GAS maintainer repository. A public target repository makes its Issues public: check visibility and sensitive content before writing, and fail closed or use private/local versioned handoff when inappropriate. A local-only project or user without GitHub stays local-first; never require GitHub signup, publishing, or a paid tier. Do not create a remote or change repository visibility to enable this transport.
+
+
+
 **Purpose:** keep long executor prompts and return reports out of chat without losing a resumable, auditable task record. Use the existing task Issue when it already exists and GitHub read/write access is verified. For substantial new multi-session work, create one Issue only when the repository already uses Issues and the owner authorized tracking; otherwise use the existing versioned repository handoff or one-copy return. This is an optional transport, not a new PICA authority, GitHub dependency, service, or background worker.
 
 ### Names and ownership
