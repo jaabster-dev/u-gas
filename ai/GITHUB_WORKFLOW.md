@@ -1,5 +1,19 @@
 # U-GAS GitHub Workflow
 
+## Task-scoped execution capability and continuation
+
+At task entry, identify the acceptance condition and discover **only** the tools needed to implement and verify it. Prefer authorized direct repository operations when they suffice; use the existing terminal, CI, or capable executor when actual test execution is needed. A tool name alone is not evidence of successful access. If the preferred route fails, try one materially different authorized route and continue independent work. Do not require a local checkout when a verified remote read/write route suffices.
+
+**Acceptance conditions, not commits, determine completion.** After **every** successful edit, commit, remote verification, or test checkpoint:
+
+1. Re-read authoritative branch/HEAD and reconcile concurrent work; verify exact-commit test/CI results as PASS, FAIL, PENDING, SKIPPED, or NOT RUN.
+2. Compare all remaining acceptance conditions with evidence. A green subtest or one successful commit is a checkpoint, not a final result while other conditions remain.
+3. If any safe, authorized, concrete next step remains, **execute it** without routine owner reauthorization. Prefer independent work while CI runs; commit and verify justified changes, then repeat.
+4. Stop only when acceptance is met, a genuine owner decision/permission is needed, an evidenced technical capability blocker remains after a meaningful fallback, or an actual execution/time limit prevents further calls. `PARTIAL`, pending CI, and a successful commit are **not** themselves stop conditions.
+5. Bound CI polling; never wait indefinitely. If execution must end, use the existing live-state/handoff authority to record branch, HEAD, CI run ID/URL, unresolved acceptance conditions, attempted alternatives, and the **next executable action**. Do not promise automatic resumption without a real scheduler.
+
+**Regression example:** four CI failures are in scope; after fixing one and committing, three remain and CI is pending. Continue resolving independently actionable failures rather than returning a terminal `PARTIAL`. Do not weaken tests or invent evidence just to claim PASS.
+
 ## Standard sequence
 
 1. Identify the exact repository and authoritative branch.

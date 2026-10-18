@@ -529,5 +529,25 @@ class CoreContractTests(unittest.TestCase):
         self.assertRegex(continuity, r"progress\.md.*must not be the sole location.*unresolved")
 
 
+
+class ExecutionContinuationContractTests(unittest.TestCase):
+    def test_partial_commit_is_not_terminal_acceptance(self):
+        workflow = (ROOT / "ai/GITHUB_WORKFLOW.md").read_text(encoding="utf-8")
+        section = workflow.split("## Task-scoped execution capability and continuation", 1)[1].split("\n## ", 1)[0]
+        for requirement in (
+            "Acceptance conditions, not commits, determine completion",
+            "After **every** successful edit",
+            "reconcile concurrent work",
+            "execute it",
+            "not** themselves stop conditions",
+            "next executable action",
+            "four CI failures",
+            "Do not weaken tests",
+        ):
+            self.assertIn(requirement, section)
+        self.assertIn("a genuine owner decision/permission", section)
+        self.assertIn("actual execution/time limit", section)
+
+
 if __name__ == "__main__":
     unittest.main()
