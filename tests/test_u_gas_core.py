@@ -10,6 +10,18 @@ from check_u_gas import AI_FILES, SKILL_FILES, REQUIRED_SKILL_SECTIONS, check_di
 
 
 class CoreContractTests(unittest.TestCase):
+    def test_starter_explains_local_executor_boundary(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+        for marker in (
+            "the actual persistent folder",
+            "a plain chat without that access",
+            "not claim setup is complete",
+            "GitHub and server/cloud creation routes are not enabled",
+            'value="github" disabled',
+            'value="cloud" disabled',
+        ):
+            self.assertIn(marker, starter)
+
     def test_entry_bootstrap_loads_pica_selectively(self):
         entry = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn("read only the PICA surfaces needed for the task", entry)
