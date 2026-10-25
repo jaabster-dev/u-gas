@@ -23,7 +23,7 @@ Treat the current repository and its authoritative remote branch as the source o
 ## Bootstrap and routing
 
 1. Identify the exact repository and authoritative working branch from current repository metadata and local rules. Before any repository mutation, establish that the actual mutation target/ref is that authoritative branch; a repository default or available write tool does not prove the mutation target.
-2. Read this repository's root PICA files and inspect the target's current status before changing anything.
+2. Inspect the target's current status and read only the PICA surfaces needed for the task: root `AGENTS.md` for rules, `CURRENT_STATE.md` for cold resume/current work or when a live obligation matters, `PROGRESS.md` for referenced evidence/history, and `IDEAS.md` only for idea/scope work. Do not read all four mechanically for every bounded repository edit; still establish authoritative target/ref and preserve unique work before mutation.
 3. For repository work, use the relevant guidance in `ai/GOVERNANCE.md`, `ai/GITHUB_WORKFLOW.md`, and `ai/REPOSITORY_STRUCTURE.md`.
 4. For resume or handoff work, read `ai/SESSION_CONTINUITY.md` and the target's `CURRENT_STATE.md` completely.
 5. For large, truncated, append-only, or structured files, use `ai/LARGE_FILE_PATCHING.md`.
