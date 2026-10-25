@@ -1,3 +1,11 @@
+## 2026-10-25 — Owner-led PVN Kalkulators Starter → ChatGPT → Codex → resume dogfood
+
+Owner used the public U-GAS Starter to create a local-first project prompt for a Latvian VAT calculator at `~/Documents/U-GAS Projects/pvn-kalkulators`. Ordinary ChatGPT reported that it could not access that Mac folder and handed off a complete local execution instruction to Codex instead of simulating a persistent workspace. Codex reported creating four PICA files, a stable `GIVE THIS TO YOUR NEXT AI CHAT.txt` resume ticket, HTML/CSS/JavaScript calculator, 14 Node assertions, and clean local `main` commit `5c5f9f3`. The owner supplied a project archive and a Safari screenshot showing a correctly displayed €1,000 gross / 21% calculation (€826.45 net + €173.55 VAT). The owner subsequently supplied an executor return reporting Safari checks of €100 net → €121 gross and €121 gross → €100 gross (net €82.64, VAT €17.36), 14/14 Node assertions, and clean local commit `2923a1f`, plus the updated project `CURRENT_STATE.md` and `PROGRESS.md`. Those PICA files were read and confirm that the browser blocker is cleared, no accepted next task is queued, and the earlier browser limitation remains preserved as history.
+
+**Evidence limits:** This is **owner-led dogfood**, not independent-user validation. The later Safari interactions, local Git commit and clean worktree are executor-reported; the submitted screenshot supports only the displayed €1,000 case. The updated PICA files independently establish the recorded state, not that an entirely fresh agent recovered it without extra context. Do not claim full cold-resume autonomy or general reliability from this one run.
+
+**Observed friction / action:** The local-only Starter route did not initially make the plain-chat versus Mac-filesystem capability boundary obvious. Starter guidance was clarified to say that My computer requires actual persistent-folder access, a plain chat should hand off to a local executor if necessary, and GitHub/server/cloud creation routes remain disabled; regression coverage was added (commits `6cbd363d`, `a3a55666`). No new orchestration or additional PICA authority is warranted from this case.
+
 # Progress
 
 > Footprints wait in snow<br>
