@@ -1,5 +1,11 @@
 # U-GAS GitHub Workflow
 
+## Pending acceptance evidence — durable handoff before final report
+
+When an accepted task has a material `UNKNOWN`, `FAIL`, `SKIPPED`, or `BLOCKED` acceptance condition that a successor must resolve, **do not present partial test success as complete acceptance**. Complete the independent safe checks still available; before the final report, save the exact target branch/commit, observed evidence, missing proof, and next capable executor/action in the **existing** issue/PR or canonical project continuity surface. Verify the saved checkpoint by remote read-back when available. If persistence fails, report `HANDOFF NOT SAVED / PARTIAL`; do not claim durable handoff. Avoid a new tracker or noisy checkpoint for a transient issue that does not affect future work.
+
+For a local checkout collision or `.git` metadata write denial, use the on-demand ownership check in `ai/MULTI_AGENT_COLLABORATION.md` before any cleanup or forced synchronization. Continue independent authorized work; do not equate clean status with no unpublished commits.
+
 ## Task-scoped execution capability and continuation
 
 At task entry, identify the acceptance condition and discover **only** the tools needed to implement and verify it. Prefer authorized direct repository operations when they suffice; use the existing terminal, CI, or capable executor when actual test execution is needed. A tool name alone is not evidence of successful access. If the preferred route fails, try one materially different authorized route and continue independent work. Do not require a local checkout when a verified remote read/write route suffices.
