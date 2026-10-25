@@ -10,6 +10,13 @@ from check_u_gas import AI_FILES, SKILL_FILES, REQUIRED_SKILL_SECTIONS, check_di
 
 
 class CoreContractTests(unittest.TestCase):
+    def test_self_tests_cover_main_push_and_pr(self):
+        workflow = (ROOT / ".github/workflows/u-gas-self-tests.yml").read_text(encoding="utf-8")
+        self.assertIn("  push:\n    branches: [main]", workflow)
+        self.assertIn("  pull_request:\n    branches: [main]", workflow)
+        for command in ("python scripts/check_u_gas.py", "python -m unittest -v", "python scripts/check_handoff.py"):
+            self.assertIn(command, workflow)
+
     def test_workspace_interruption_guardrails(self):
         text = (ROOT / "ai/MULTI_AGENT_COLLABORATION.md").read_text(encoding="utf-8")
         for marker in (
