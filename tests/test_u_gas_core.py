@@ -17,6 +17,12 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("preserve unique work before mutation", entry)
         self.assertIn("For resume or handoff work, read", entry)
 
+    def test_self_tests_cancel_superseded_runs(self):
+        workflow = (ROOT / ".github/workflows/u-gas-self-tests.yml").read_text(encoding="utf-8")
+        self.assertIn("concurrency:", workflow)
+        self.assertIn("github.event.pull_request.number || github.ref", workflow)
+        self.assertIn("cancel-in-progress: true", workflow)
+
     def test_self_tests_cover_main_push_and_pr(self):
         workflow = (ROOT / ".github/workflows/u-gas-self-tests.yml").read_text(encoding="utf-8")
         self.assertIn("  push:\n    branches: [main]", workflow)
