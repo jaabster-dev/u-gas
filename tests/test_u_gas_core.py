@@ -10,6 +10,34 @@ from check_u_gas import AI_FILES, SKILL_FILES, REQUIRED_SKILL_SECTIONS, check_di
 
 
 class CoreContractTests(unittest.TestCase):
+    def test_workspace_interruption_guardrails(self):
+        text = (ROOT / "ai/MULTI_AGENT_COLLABORATION.md").read_text(encoding="utf-8")
+        for marker in (
+            "On-demand workspace interruption check",
+            "local-only commits",
+            "A clean worktree does not establish that all commits were pushed",
+            "Never delete a lock",
+            "POSSIBLY INTERRUPTED",
+            "UNKNOWN",
+            "safe isolated environment",
+        ):
+            self.assertIn(marker, text, marker)
+
+    def test_pending_acceptance_durable_handoff_guardrails(self):
+        text = (ROOT / "ai/GITHUB_WORKFLOW.md").read_text(encoding="utf-8")
+        for marker in (
+            "Pending acceptance evidence",
+            "UNKNOWN",
+            "FAIL",
+            "SKIPPED",
+            "BLOCKED",
+            "existing",
+            "remote read-back",
+            "HANDOFF NOT SAVED / PARTIAL",
+            "ai/MULTI_AGENT_COLLABORATION.md",
+        ):
+            self.assertIn(marker, text, marker)
+
     def test_distribution_self_check(self):
         self.assertEqual(check_distribution(ROOT), [])
 
