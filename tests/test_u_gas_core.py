@@ -10,6 +10,13 @@ from check_u_gas import AI_FILES, SKILL_FILES, REQUIRED_SKILL_SECTIONS, check_di
 
 
 class CoreContractTests(unittest.TestCase):
+    def test_entry_bootstrap_loads_pica_selectively(self):
+        entry = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("read only the PICA surfaces needed for the task", entry)
+        self.assertIn("Do not read all four mechanically", entry)
+        self.assertIn("preserve unique work before mutation", entry)
+        self.assertIn("For resume or handoff work, read", entry)
+
     def test_self_tests_cover_main_push_and_pr(self):
         workflow = (ROOT / ".github/workflows/u-gas-self-tests.yml").read_text(encoding="utf-8")
         self.assertIn("  push:\n    branches: [main]", workflow)
