@@ -17,6 +17,10 @@ on:
       - 'examples/**'
       - '.github/workflows/u-gas-self-tests.yml'
 
+concurrency:
+  group: u-gas-self-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
