@@ -175,7 +175,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 </section>
 
 <section class="card">
-<h2>Next: send this to your AI</h2><p id="usageGuidance">Copy this prompt, then paste it into ChatGPT, Claude, or another AI.</p>
+<h2>Next: send this to your AI</h2><p id="usageGuidance">Copy this prompt into your AI. For My computer, the receiving AI needs access to the actual persistent folder to create files; a plain chat without that access should hand off to a capable local executor (such as Codex), not claim setup is complete. GitHub and server/cloud creation routes are not enabled in this Starter.</p>
 <div class="actions"><button id="copy" disabled>Copy prompt</button><span id="status" class="status"></span></div>
 <div id="nextStep" class="destination next-step hidden" aria-live="polite"><h3>NEXT STEP</h3><p><strong>Your prompt is copied.</strong> Open your AI chat, paste it, and send it.</p><p>Your AI will take it from here. U-GAS is the continuity workflow, not the coding agent: if local coding or setup needs another capable executor, your AI should give you one ready-to-copy instruction for Codex, Claude Code, or another suitable executor.</p><div class="destinations"><a id="chatgpt" class="button" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span class="provider-logo chatgpt" aria-hidden="true"><img src="assets/chatgpt-logo.png" alt=""></span>Open ChatGPT</a><a id="claude" class="button" href="https://claude.ai/" target="_blank" rel="noopener noreferrer"><span class="provider-logo claude" aria-hidden="true"><img src="assets/claude-logo.svg" alt=""></span>Open Claude</a><button id="otherAi" class="secondary" type="button"><svg class="destination-mark other" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 6 5.5 6L5 18M13 18h6"/></svg>Other AI</button></div><p id="otherAiHint" class="hint hidden">Open the AI you use, then paste the copied prompt and send it. U-GAS does not automatically paste or send your prompt.</p></div>
 <details class="preview"><summary>Preview prompt</summary><div id="prompt" class="prompt"></div></details>
@@ -272,7 +272,7 @@ function render(){
   }
   const loc=durableLocation();
   $('copy').disabled=!(name.value.trim()&&description.value.trim()&&loc);
-  $('usageGuidance').textContent='Copy this prompt, then paste it into ChatGPT, Claude, or another AI.';
+  $('usageGuidance').textContent='Copy this prompt into your AI. For My computer, the receiving AI needs access to the actual persistent folder to create files; a plain chat without that access should hand off to a capable local executor (such as Codex), not claim setup is complete. GitHub and server/cloud creation routes are not enabled in this Starter.';
   promptBox.textContent=newProjectPrompt();
 }
 document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>{status.textContent='';$('nextStep').classList.add('hidden');if(el.tagName==='TEXTAREA')autoSizeTextarea(el);render()}));document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(el=>el.addEventListener('change',()=>{status.textContent='';$('nextStep').classList.add('hidden');render()}));
