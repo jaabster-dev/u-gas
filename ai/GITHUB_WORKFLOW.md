@@ -36,6 +36,8 @@ At task entry, identify the acceptance condition and discover **only** the tools
 
 For a repository with a distinct authoritative working branch and release branch, `scripts/check_repository_health.py` provides a small read-only local preflight. Run it only when branch-role health matters; it is not a mandatory ceremony for every task. Supply the already-established authority branch and optional release branch. `GREEN` allows the ordinary case where the authority branch is ahead; `RED` means the release branch contains unique commits outside authority; missing refs or Git failures are visible as `ERROR`. The sensor reports evidence only: it never fetches, repairs, resets, merges, or rewrites repository state. Establish branch roles from current repository authority first; do not let the checker invent them.
 
+**Opt-in current-HEAD Actions inspection:** Only when GitHub Actions evidence materially affects the decision, run the same existing checker with --actions --github-repository owner/repo in addition to --authority-branch <verified-branch> and optional --repo/--release-branch. The script performs read-only GitHub REST requests (public repositories work without a token when allowed; private ones may require the caller's existing GITHUB_TOKEN with Actions:read). It resolves the **remote** branch HEAD before and after listing runs for that exact SHA, groups multiple runs of the same workflow instead of reporting historical failures as active, and distinguishes PASS, FAIL, PENDING, PARTIAL, NOT_RUN, and UNKNOWN. A 403 or moved HEAD is UNKNOWN, not a reason to invent permission or retry indefinitely. No runs is NOT_RUN, not evidence that required workflows were eligible or passed. A successful local branch comparison never upgrades Actions evidence. The optional read does not run CI, change branch state, schedule monitoring, add a GitHub registry, or make ordinary local-first U-GAS work depend on the network.
+
 ## Mutation side effects and atomic publication
 
 The scope of a remote mutation includes known automatic consequences of publishing it, not only the files in the diff. Before a commit/push/ref update that is known to trigger CI, builds, deployments, notifications, quota/cost consumption, release automation, or other external work, account for those consequences when selecting the mutation mechanism. Do not make the user absorb avoidable failure notifications or automation churn as an implementation detail.
@@ -67,6 +69,14 @@ During implementation, perform a scope reset when the diff grows beyond the expe
 ## Machine-handoff execution
 
 `ai/SESSION_CONTINUITY.md` owns the handoff semantics; this workflow owns safe repository and artifact mechanics. For an explicit physical-machine switch, start from the concrete next action and verify its required repository, artifact, execution, device, and external-service dependencies on the target environment. Routine reversible Git work and non-sensitive artifact copy/checksum work to an already owner-approved destination may be agent-owned when authorized. Do not invent a shared destination, upload sensitive signing/credential material to generic cloud storage, or rebuild a qualified immutable artifact merely to make it portable. When no safe transfer/access path exists, report `MACHINE HANDOFF: PARTIAL` or `BLOCKED` with the exact remaining dependency.
+
+
+## Native simulator adapter and machine-readiness evidence (conditional)
+
+When a real task needs read-only native simulator screenshots/UI state and a currently available XcodeBuildMCP adapter can provide them, prefer that supported route over inventing a screenshot harness. Verify/select the intended simulator explicitly (including session simulatorId defaults if the adapter needs them). A missing session default is an adapter setup gap, not proof that the simulator or product failed; still distinguish screenshot/snapshot, exercised UI interaction, build, device, and owner visual acceptance. Use a different already-authorized capable route if the adapter is absent, and keep unexercised claims UNKNOWN.
+
+A dated workstation/device inventory, if one already exists, is a discovery map and **not live proof** of capability. For a task or physical-machine handoff, check only the next action's relevant dependencies; distinguish installed, connected, exercised, and accepted rather than reporting readiness from software names alone. Do not require a workstation inventory or native tooling for ordinary GitHub/local-first tasks and do not create a new inventory service.
+
 
 ## Procedure discovery and lifecycle detail
 
