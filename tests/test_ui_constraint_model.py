@@ -81,6 +81,24 @@ def sample_model():
     }
 
 
+def paired_state_model():
+    """Synthetic two-state samples at two widths; no product-specific design."""
+    model = sample_model()
+    for observation in model["observations"]:
+        observation["state"] = {"panel": "closed"}
+    opened = copy.deepcopy(model["observations"])
+    for observation in opened:
+        observation["state"]["panel"] = "open"
+        observation["id"] += "-open"
+    model["observations"].extend(opened)
+    model["layout"]["stateInvariants"] = [{
+        "id": "stable-primary", "stateKey": "panel",
+        "values": ["closed", "open"], "nodes": ["primary"],
+        "attributes": ["leading", "width"], "strength": "REQUIRED"
+    }]
+    return model
+
+
 class UIConstraintGrammarTests(unittest.TestCase):
     def test_portable_model_solves_multiple_observations(self):
         model = sample_model()
@@ -102,6 +120,49 @@ class UIConstraintGrammarTests(unittest.TestCase):
         model = sample_model()
         model["environment"]["inputs"].append("tablet")
         with self.assertRaises(ui.ModelError):
+            ui.validate_model(model)
+
+
+    def test_state_pair_invariants_pass_at_two_widths(self):
+        model = paired_state_model()
+        self.assertEqual(ui.verify_model(model), [])
+
+    def test_state_pair_geometry_drift_fails(self):
+        model = paired_state_model()
+        model["observations"][2]["expectedGeometry"]["primary"]["width"] += 5
+        failures = ui.verify_model(model)
+        self.assertTrue(any("stable-primary primary.width" in failure for failure in failures))
+
+    def test_incomplete_state_pair_fails_closed(self):
+        model = paired_state_model()
+        model["observations"].pop()
+        with self.assertRaisesRegex(ui.ModelError, "incomplete state pair"):
+            ui.verify_model(model)
+
+    def test_duplicate_state_observation_fails_closed(self):
+        model = paired_state_model()
+        model["observations"].append(copy.deepcopy(model["observations"][2]))
+        with self.assertRaisesRegex(ui.ModelError, "duplicate observation"):
+            ui.verify_model(model)
+
+    def test_invalid_state_invariant_fails_closed(self):
+        model = paired_state_model()
+        model["layout"]["stateInvariants"][0]["values"] = ["closed", "closed"]
+        with self.assertRaises(ui.ModelError):
+            ui.validate_model(model)
+
+    def test_conditional_visibility_requires_expected_membership(self):
+        model = paired_state_model()
+        model["nodes"].append({
+            "id": "optional", "role": "decoration", "boxes": ["visual"],
+            "visibleWhen": {"stateKey": "panel", "equals": "open"}
+        })
+        for observation in model["observations"]:
+            if observation["state"]["panel"] == "open":
+                observation["expectedGeometry"]["optional"] = {"width": 10}
+        self.assertIs(ui.validate_model(model), model)
+        model["observations"][0]["expectedGeometry"]["optional"] = {"width": 10}
+        with self.assertRaisesRegex(ui.ModelError, "visibility disagrees"):
             ui.validate_model(model)
 
 
