@@ -26,7 +26,8 @@ V1 accepts:
 - `REQUIRED / STRONG / PREFERRED / FALLBACK` strengths;
 - declared adaptive-transform vocabulary;
 - solved observations as evidence;
-- relational assertions.
+- relational assertions;
+- observation state maps, state-conditioned node visibility, and state-paired measured-geometry invariants (v1 extension).
 
 Constraint resolution is deterministic:
 
@@ -47,6 +48,18 @@ Add a primitive only when a real approved surface cannot be expressed safely wit
 The public distribution uses a synthetic two-pane regression fixture. It verifies that one relational model solves multiple observations, min/max track clamping redistributes remaining space deterministically, same-strength conflicts fail closed, stronger constraints override weaker ones, and device names are rejected as environment inputs.
 
 Product-specific evidence remains in the product/GAS authority that performed the dogfood; U-GAS does not need to ship a private or product-bound fixture to preserve the portable contract.
+
+
+## State-paired observation invariant (v1 extension)
+
+A bounded state change may show or hide a region while other boxes must retain their approved geometry. A single-frame solver check cannot establish that cross-state requirement.
+
+- `observations[].state` records named state dimensions for each measured observation.
+- `nodes[].visibleWhen` declares an optional `stateKey` / `equals` visibility condition checked against observation membership.
+- `layout.stateInvariants[]` compares selected measured attributes of specified nodes across all declared values of one state dimension, grouped by the same environment and other state dimensions.
+- Missing/duplicate state pairs, missing measurements, invalid predicates, and geometry mismatches fail closed; no unseen state is inferred.
+
+This is an **observation verification extension**, not a new layout solver or permission to infer responsive constraints from screenshots. A passing paired-state check does not establish visual, physical-device, or production acceptance. Use generic synthetic regression tests in this portable distribution; keep product-specific observations in their product authority.
 
 ## Standards boundary rechecked 2026-10-07
 
