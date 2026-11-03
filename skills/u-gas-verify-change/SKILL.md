@@ -30,6 +30,7 @@ Do not use as implementation itself, or where no requirement or acceptance bound
 10. Do not promote one evidence class into another, and compare any required external or manual evidence.
 11. Return one truthful verdict: `PASS`, `FAIL`, or `NEEDS HUMAN VERIFICATION` (or another canonical U-GAS equivalent when policy requires it).
 12. Preserve the unresolved boundary and exact next verification action.
+13. If a repository defines a separate release branch, compare the *verified intended content* against it only when eligible for promotion. Surface a pending promotion when equivalent verified content is absent; do not auto-promote without authority. Merge-only ancestry differences are not content defects.
 
 ## Hard boundaries / Invariants
 
