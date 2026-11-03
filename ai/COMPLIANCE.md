@@ -4,6 +4,8 @@ This is a portable, local, read-only self-check contract. It protects the public
 
 The optional repository-health preflight is a read-only local Git sensor, not fleet monitoring or repair. It may compare an already-established authority branch with an optional release branch; ordinary authority-ahead state is healthy, release-unique history is action-worthy, and unresolved refs/errors remain visible. It never determines branch authority, fetches, mutates, merges, resets, or repairs repositories.
 
+With explicit --actions and --github-repository owner/repo, the existing preflight may also read GitHub Actions for the verified remote authority branch and exact HEAD. This is an **opt-in remote read** separate from the always-local default. Report FAIL, PENDING, PARTIAL, NOT_RUN, UNKNOWN, or PASS only for observed current-SHA runs; do not infer missing workflow eligibility, treat prior-commit failures as current, or turn API denial into success. Deduplicate workflow summaries while keeping repeated current-SHA failure counts visible. Network/API/token limitations never trigger a rewrite, background check, credential request in chat, or automatic repair.
+
 ## Invariants
 
 - The four root PICA controls exist.
@@ -12,7 +14,7 @@ The optional repository-health preflight is a read-only local Git sensor, not fl
 - Referenced local canonical documents and route targets exist.
 - `IDEAS.md` has one canonical responsibility and is not casually duplicated.
 - README is navigation, not a second state/progress/spec authority.
-- U-GAS source self-tests protect this distribution contract, including direct-first capability routing, scope reset/changed-file relevance, selective bootstrap, and compact current-state lifecycle semantics.
+- U-GAS source self-tests protect this distribution contract, including direct-first capability routing, scope reset/changed-file relevance, selective bootstrap, compact current-state lifecycle semantics, opt-in exact-HEAD Actions diagnostics, and default local-only execution.
 - `CURRENT_STATE_REVIEW` is a conservative read-only diagnostic signal for unusually large current-state surfaces; it never rewrites files and is not itself a compliance failure.
 - Diagnostics are read-only unless an actual authorized repair is separately requested.
 
