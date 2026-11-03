@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections import defaultdict
 from pathlib import Path
 
 SCHEMA_VERSION = 1
@@ -46,6 +47,16 @@ def validate_model(model):
         for key in ("inlineSize", "blockSize"):
             if key in node and node[key] not in SIZE_BEHAVIORS:
                 raise ModelError(f"{node['id']}: invalid {key}")
+        visibility = node.get("visibleWhen")
+        if visibility is not None and (
+            not isinstance(visibility, dict)
+            or not isinstance(visibility.get("stateKey"), str)
+            or not visibility["stateKey"]
+            or not isinstance(visibility.get("equals"), str)
+            or not visibility["equals"]
+            or set(visibility) != {"stateKey", "equals"}
+        ):
+            raise ModelError(f"{node['id']}: invalid visibleWhen")
     if len(ids) != len(set(ids)):
         raise ModelError("duplicate node id")
     node_ids = set(ids)
@@ -95,6 +106,30 @@ def validate_model(model):
         if transform.get("node") not in node_ids or transform.get("type") not in TRANSFORMS:
             raise ModelError("invalid transform")
 
+    state_invariants = layout.get("stateInvariants", [])
+    if not isinstance(state_invariants, list):
+        raise ModelError("stateInvariants must be a list")
+    invariant_ids = []
+    for invariant in state_invariants:
+        if not isinstance(invariant, dict):
+            raise ModelError("state invariant must be an object")
+        invariant_ids.append(invariant.get("id"))
+        if (set(invariant) != {"id", "stateKey", "values", "nodes", "attributes", "strength"}
+                or not isinstance(invariant.get("stateKey"), str) or not invariant["stateKey"]
+                or not isinstance(invariant.get("values"), list) or len(invariant["values"]) < 2
+                or any(not isinstance(value, str) or not value for value in invariant["values"])
+                or len(invariant["values"]) != len(set(invariant["values"]))
+                or not isinstance(invariant.get("nodes"), list) or not invariant["nodes"]
+                or any(node not in node_ids for node in invariant["nodes"])
+                or len(invariant["nodes"]) != len(set(invariant["nodes"]))
+                or not isinstance(invariant.get("attributes"), list) or not invariant["attributes"]
+                or any(attr not in ATTRS for attr in invariant["attributes"])
+                or len(invariant["attributes"]) != len(set(invariant["attributes"]))
+                or invariant.get("strength") not in STRENGTHS):
+            raise ModelError("invalid state invariant")
+    if len(invariant_ids) != len(set(invariant_ids)) or any(not isinstance(i, str) or not i for i in invariant_ids):
+        raise ModelError("state invariant ids must be unique non-empty strings")
+
     observations = model.get("observations")
     if not isinstance(observations, list) or not observations:
         raise ModelError("observations required")
@@ -104,11 +139,24 @@ def validate_model(model):
             if not isinstance(env.get(required), (int, float)) or env[required] <= 0:
                 raise ModelError(f"observation {observation.get('id')}: {required} required")
         expected = observation.get("expectedGeometry", {})
+        state = observation.get("state", {})
+        if not isinstance(state, dict) or any(not isinstance(k, str) or not k or not isinstance(v, str) or not v for k, v in state.items()):
+            raise ModelError(f"observation {observation.get('id')}: invalid state")
         for node, attrs in expected.items():
             if node not in node_ids:
                 raise ModelError(f"observation {observation.get('id')}: unknown node {node}")
             if not isinstance(attrs, dict) or any(key not in ATTRS or not isinstance(value, (int, float)) for key, value in attrs.items()):
                 raise ModelError(f"observation {observation.get('id')}: invalid geometry")
+        for node in nodes:
+            condition = node.get("visibleWhen")
+            if condition is None:
+                continue
+            key = condition["stateKey"]
+            if key not in state:
+                raise ModelError(f"observation {observation.get('id')}: missing visibility state {key}")
+            is_visible = state[key] == condition["equals"]
+            if (node["id"] in expected) != is_visible:
+                raise ModelError(f"observation {observation.get('id')}: {node['id']} visibility disagrees with state")
 
     for assertion in model.get("assertions", []):
         if assertion.get("strength") not in STRENGTHS:
@@ -118,6 +166,42 @@ def validate_model(model):
             if node not in node_ids:
                 raise ModelError(f"assertion {key} node unknown")
     return model
+
+
+def verify_state_invariants(model, tolerance=1e-6):
+    """Require paired observations to preserve selected measured geometry."""
+    observations = model.get("observations", [])
+    failures = []
+    for invariant in model.get("layout", {}).get("stateInvariants", []):
+        key = invariant["stateKey"]
+        groups = defaultdict(dict)
+        for observation in observations:
+            state = observation.get("state", {})
+            if key not in state or state[key] not in invariant["values"]:
+                continue
+            context = (json.dumps(observation.get("environment", {}), sort_keys=True),
+                       json.dumps({k: v for k, v in state.items() if k != key}, sort_keys=True))
+            value = state[key]
+            if value in groups[context]:
+                raise ModelError(f"state invariant {invariant['id']}: duplicate observation for {value}")
+            groups[context][value] = observation
+        if not groups:
+            raise ModelError(f"state invariant {invariant['id']}: no paired observations")
+        for context, pair in groups.items():
+            if set(pair) != set(invariant["values"]):
+                raise ModelError(f"state invariant {invariant['id']}: incomplete state pair")
+            baseline = pair[invariant["values"][0]]
+            for value in invariant["values"][1:]:
+                other = pair[value]
+                for node in invariant["nodes"]:
+                    for attr in invariant["attributes"]:
+                        left = baseline.get("expectedGeometry", {}).get(node, {}).get(attr)
+                        right = other.get("expectedGeometry", {}).get(node, {}).get(attr)
+                        if left is None or right is None:
+                            raise ModelError(f"state invariant {invariant['id']}: missing {node}.{attr}")
+                        if abs(left - right) > tolerance:
+                            failures.append(f"{invariant['id']} {node}.{attr}: {baseline['id']}={left} vs {other['id']}={right}")
+    return failures
 
 
 def _derived(geometry, attr):
@@ -295,6 +379,7 @@ def verify_model(model):
     failures = []
     for observation in model["observations"]:
         failures.extend(verify_observation(model, observation))
+    failures.extend(verify_state_invariants(model))
     return failures
 
 
