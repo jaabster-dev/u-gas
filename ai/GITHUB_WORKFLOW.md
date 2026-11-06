@@ -20,6 +20,14 @@ At task entry, identify the acceptance condition and discover **only** the tools
 
 **Regression example:** four CI failures are in scope; after fixing one and committing, three remain and CI is pending. Continue resolving independently actionable failures rather than returning a terminal `PARTIAL`. Do not weaken tests or invent evidence just to claim PASS.
 
+### Coordinating CHAT-first execution and bounded Codex handoff
+
+For accepted work, the coordinating ChatGPT agent completes the maximum safe, verifiable work available through its authorized repository tools and CI before handing off. Do not send Codex to repeat already completed repo inspection, planning, documentation, PR administration, or CI. Handoff only the specific remaining local-only build, simulator, device, or runtime requirement, respecting concurrent ownership.
+
+Before handoff, provide the exact authoritative branch/commit, relevant Issue/PR and files, completed evidence, user-visible acceptance criteria, the missing local capability, known-good minimal commands/tests, task-relevant verified procedures (or explicit UNKNOWN), cost/signing/publication gates, and expected result. Codex executes and diagnoses that bounded local slice; CHAT then resumes available GitHub review, CI, merge and continuity. Do not claim a handoff is product delivery or omit necessary physical acceptance to save credits.
+
+**Fail-closed merge gate:** Before merging any PR, review the diff and verify all applicable required CI checks on its exact current head SHA. FAIL, PENDING, NOT_RUN/missing, or UNKNOWN is not approval, even when GitHub reports mergeable or branch protection is unavailable. Document a source-grounded inapplicable-check exception before merge; never substitute an unrelated green run.
+
 ## Standard sequence
 
 1. Identify the exact repository and authoritative branch.
