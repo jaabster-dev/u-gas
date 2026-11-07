@@ -10,6 +10,8 @@ This is the compact U-GAS resume surface. U-GAS is experimental; independent use
 
 U-GAS is the public product authority for portable U-GAS product state, PICA contracts, onboarding/product decisions, and distribution state. It remains in early external testing; the public repository is seeking its first independent tester.
 
+**First-contact evidence (owner report, 2026-11-07):** the owner showed U-GAS to a couple of colleagues without stating authorship. They found the first page intimidating; local Git/file-creation permissions prompted distrust and were declined. Actual independent usage and end-to-end success remain **UNKNOWN**. Targeted response: [PR #42](https://github.com/jaabster-dev/u-gas/pull/42) introduces a quiet no-write preview, explicit before-write permission request in generated prompts, and voluntary feedback/star/anonymous manual success paths. This is observed friction, not independent validation or proof that the redesign works for novices.
+
 The portable v0.3 baseline also includes an optional repository-backed long-handoff adapter: compact one-copy prompts remain default, while long/structured or previously failed clipboard payloads can use a generic `handoffs/pending/` contract with read-only validation and stale replay protection. This does not execute payloads or create orchestration. The README now presents this model through a human-first value/workflow/Quick Start journey, with local-first as the recommended route for a genuinely new project and GitHub retained for existing or later-published projects. The portable governance and README now require capability discovery before escalation and one complete copyable handoff when persistent/local execution is unavailable; Codex is a tested example, not a hard dependency.
 
 Owner-led Project Starter evidence has been reconciled into the product boundary: the route `Project Starter -> ordinary ChatGPT capability boundary -> authorized local execution -> user-controlled persistent workspace -> PICA -> real application -> human browser verification` worked on the owner's Mac. Ordinary ChatGPT correctly failed closed when it lacked Mac filesystem access, and did not substitute provider-hosted/session storage. This is owner-led evidence, not independent validation.
@@ -28,7 +30,7 @@ Current GAS v3.13 portability review adds two bounded portable corrections witho
 
 ## NEXT
 
-Run a real novice first-use E2E without owner coaching: Starter opened → project described → prompt copied → destination understood → prompt sent → useful next action reached. Capture only material friction.
+Run a real novice first-use E2E without owner coaching: safe preview understood → setup chosen → prompt copied → proposed local file/Git plan explained → permission accepted or declined appropriately → useful next action reached. Capture hesitation and actual OS permission scope. Do not mark a refusal as user failure. Capture only material friction.
 
 After novice evidence, run a dedicated GitHub-route E2E before enabling that route. Keep My server / cloud later. Do not continue wording/cosmetic churn without external evidence or a genuine blocker.
 
