@@ -32,6 +32,8 @@ h2{font-size:25px;line-height:1.2;letter-spacing:-.025em;margin:0 0 10px}h3{font
 .feedback{margin-top:44px;padding-top:24px;border-top:1px solid #dce5dd}.feedback h2{font-size:20px}.feedback p,.feedback-actions{font-size:14px}.feedback-actions{gap:22px}.credit{font-size:12px;color:#879588;margin-top:25px}
 @media(max-width:670px){.wrap{padding:18px 15px 44px}.site-head{margin-bottom:42px}.hero h1{font-size:37px}.hero p{font-size:16px}.hero-actions button,.actions button{width:100%}.card{padding:18px 15px}.routes,.project-modes,.demo-lines{grid-template-columns:1fr}.permission-panel{padding:18px}.destinations>*{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.safety-first{margin:16px 0 0;max-width:650px;padding:13px 15px;background:#eff3ef;border:1px solid #dce5dc;border-radius:10px}.safety-first p{font-size:13px;margin:8px 0}.file-plan{padding-left:19px;font-size:13px;color:#4b6553;line-height:1.6}.file-plan li{margin:4px 0}.permission-panel code{overflow-wrap:anywhere}.demo-box strong{display:block;margin-top:8px}.demo-privacy{margin-top:13px}.destination:focus{outline:3px solid #8bbda7;outline-offset:3px}.permission-panel h3{margin-top:19px;font-size:15px}.permission-panel li{line-height:1.5}
 </style>
 </head>
 <body>
@@ -42,18 +44,40 @@ h2{font-size:25px;line-height:1.2;letter-spacing:-.025em;margin:0 0 10px}h3{font
 <h1 id="heroTitle">Keep your AI project from starting over.</h1>
 <p>Keep decisions and next actions, so the next chat or coding agent can continue without making you retell everything.</p>
 <div class="hero-actions"><button id="seeDemo" type="button">See how it works — no files</button><button id="openSetup" class="secondary" type="button">Set up my project</button></div>
-<p class="assurance">No file access, Git, or sign-in needed to see the example.</p>
+<p class="assurance">The example needs no file access, Git or sign-in. Actual setup is always optional.</p>
+<details class="preview safety-first"><summary>What would U-GAS need access to later?</summary>
+<p>For a lasting project, an AI coding tool needs permission to work in a real folder. U-GAS's webpage cannot enforce the tool's access limits. Your computer may show a broader permission prompt than the project needs; you should decline if you are unsure. We show the proposed changes before asking for setup.</p>
+<p><a href="https://github.com/jaabster-dev/u-gas" target="_blank" rel="noopener noreferrer">Read the public source code</a> · <a href="https://support.apple.com/en-ca/guide/security/secddd1d86a6/web" target="_blank" rel="noopener noreferrer">How macOS protects folders</a></p></details>
 </section>
 <section id="demoPanel" class="card hidden" aria-labelledby="demoHeading">
-<div class="demo-label">Safe preview</div><h2 id="demoHeading" tabindex="-1">What the next AI will know</h2>
-<p>Instead of asking you to explain everything again, the next chat reads a short project summary.</p>
-<div class="demo-lines"><div class="demo-box"><div class="demo-label">Without saved context</div><p>“What were we working on? Which version was right?”</p></div>
-<div class="demo-box"><div class="demo-label">With U-GAS</div><strong>CURRENT_STATE.md</strong><p><b>Now:</b> Garden planner has a working plant list.</p><p><b>Next:</b> Add reminders without changing saved plants.</p></div></div>
-<p class="demo-privacy">Fictional demonstration. Nothing on your computer is read or changed.</p>
-<button id="demoSetup" type="button">Try with my own project</button>
+<div class="demo-label">Try it without installing anything</div>
+<h2 id="demoHeading" tabindex="-1">See what a new AI chat would know</h2>
+<p>This interactive example runs in your browser. You can see what happens without giving access to your files.</p>
+<div class="demo-lines">
+ <div class="demo-box"><div class="demo-label">A project you've been working on</div><strong>Garden planner</strong><p>Already done: a list of plants and garden beds.</p><p>Next: add seasonal reminders.</p></div>
+ <div class="demo-box"><div class="demo-label">The note U-GAS would preserve</div><strong>CURRENT_STATE.md</strong><p><b>NOW:</b> Plant list works.</p><p><b>NEXT:</b> Add reminders. Keep saved plants unchanged.</p></div>
+</div>
+<button id="demoPlay" type="button">Simulate a new AI chat</button>
+<div id="demoAnswer" class="destination hidden" role="status" aria-live="polite" tabindex="-1">
+ <strong>The next AI can continue:</strong>
+ <p>“I can see the plant list is finished. The next task is reminders, and existing plant data must be preserved. I'll start with the smallest safe plan.”</p>
+ <p><b>Try it for real, without file access:</b> copy a sample message and paste it into an AI chat. It will ask the AI to explain the next action, not create files or run commands.</p>
+ <div class="actions"><button id="demoCopy" class="secondary" type="button">Copy read-only sample</button><span id="demoCopyStatus" class="status" role="status" aria-live="polite"></span></div>
+ <details class="preview"><summary>View the exact sample text</summary><pre id="demoPrompt" class="prompt">This is a fictional demonstration of AI project continuity, not a real U-GAS installation.
+Do not use any tools, browse files, run Terminal, access Git, create or edit files, or request permissions.
+Project: Garden planner.
+NOW: A plant list and saved garden beds already work.
+NEXT: Add seasonal reminders.
+PRESERVE: Existing saved plants.
+Please tell me what you understand has already been done and propose one small next step. Do not claim you have accessed or saved real project data.</pre></details>
+ <p class="hint">When you paste any message into an AI service, that service receives the text you send. This sample contains no personal or project data.</p>
+</div>
+<p class="demo-privacy">No installation, Git, local storage, file reading or file writing is used in this demonstration. The example is fictional and does not create lasting project memory.</p>
+<button id="demoSetup" class="secondary" type="button">I understand — set up my own project</button>
 </section>
 <section id="setupSection" class="hidden" aria-label="U-GAS project setup">
-<div class="step-heading"><h2 id="setupHeading" tabindex="-1">Set up a project</h2><p>Describe your goal. Before anything is written to your computer, the AI will show a plan and ask.</p></div>
+<div class="step-heading"><h2 id="setupHeading" tabindex="-1">Set up a project</h2><p>Describe your goal, review the exact proposed changes below, then send the prompt to your AI. No files are created from this webpage.</p>
+<p class="hint">You can stop here or return to the browser-only demonstration at any time.</p></div>
 <section class="card">
 <div class="field"><label>What would you like to do?</label><div class="routes project-modes">
 <label class="route"><strong class="route-head"><input type="radio" name="projectMode" value="new" checked><span class="route-title">Start a new project</span></strong><span>Turn an idea into a project you can keep.</span></label>
@@ -61,7 +85,7 @@ h2{font-size:25px;line-height:1.2;letter-spacing:-.025em;margin:0 0 10px}h3{font
 </div></div>
 <div class="field"><label for="name">Project name</label><input id="name" placeholder="Garden planner"></div>
 <div id="newProjectFields">
-<div class="field"><label for="description">What do you want to make?</label><textarea id="description" placeholder="Describe the project in ordinary language. You do not need technical terms."></textarea><button id="example" class="text-help" type="button">Show an example</button></div>
+<div class="field"><label for="description">What do you want to make?</label><textarea id="description" placeholder="Describe the project in ordinary language. You do not need technical terms."></textarea><p class="hint">We do not send your description from this page. If you paste it into an AI chat, that AI service receives the text. Do not include passwords or private information.</p><button id="example" class="text-help" type="button">Show an example</button></div>
 <details class="advanced setup-options"><summary>More options</summary><div class="setup-options-body"><div class="field"><label>Where should the project live?</label><div class="routes">
 <label class="route"><strong class="route-head"><input type="radio" name="route" value="computer" checked><svg class="route-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.8"/><path d="M8 20h8M10 16v4m4-4v4"/></svg><span class="route-title">My computer</span></strong><span>A folder you control on your own computer.</span></label>
 <label class="route disabled" title="Not validated for this public Starter release"><strong class="route-head"><input type="radio" name="route" value="github" disabled><svg class="route-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.93c.46.08.63-.2.63-.45v-1.77c-2.57.56-3.11-1.1-3.11-1.1-.42-1.07-1.03-1.36-1.03-1.36-.84-.57.06-.56.06-.56.93.06 1.42.95 1.42.95.83 1.42 2.17 1.01 2.7.77.08-.6.32-1.01.59-1.24-2.05-.23-4.2-1.03-4.2-4.56 0-1.01.36-1.84.95-2.49-.1-.23-.41-1.17.09-2.44 0 0 .77-.25 2.53.95a8.8 8.8 0 0 1 4.61 0c1.76-1.2 2.53-.95 2.53-.95.5 1.27.19 2.21.09 2.44.59.65.95 1.48.95 2.49 0 3.54-2.15 4.33-4.2 4.56.33.29.62.86.62 1.73v2.57c0 .25.17.54.64.45A9.2 9.2 0 0 0 12 2.8Z"/></svg><span class="route-title">GitHub</span></strong><span>Planned route — unavailable until its end-to-end test passes.</span></label>
@@ -87,12 +111,31 @@ h2{font-size:25px;line-height:1.2;letter-spacing:-.025em;margin:0 0 10px}h3{font
 </div>
 </section>
 <section class="permission-panel" aria-labelledby="permissionHeading">
-<div class="eyebrow">You stay in control</div><h2 id="permissionHeading">No files are created by this page</h2>
-<p>Copying the prompt does not grant permission to change your computer. The AI should first show its plan, then ask for your approval.</p>
-<ol><li><strong>Read first:</strong> inspect existing information without changing it.</li>
-<li><strong>Explain:</strong> name the proposed folder and files. Local Git means private version history, not a GitHub upload.</li>
-<li><strong>Ask:</strong> if you decline, or your computer asks for broader file access, the AI must respect that choice.</li></ol>
-<p class="hint">A plain chat without access to the actual persistent folder must not claim setup is complete.</p>
+<div class="eyebrow">Before you give any permission</div>
+<h2 id="permissionHeading">See exactly what is proposed</h2>
+<div id="newPermissionPreview">
+<p><b>Location:</b> a dedicated project folder, not your entire computer:</p>
+<p><code id="previewLocation">~/U-GAS Projects/project</code></p>
+<p><b>Files that would be created if you approve:</b></p>
+<ul class="file-plan">
+<li><code>AGENTS.md</code> — how the AI should work</li>
+<li><code>CURRENT_STATE.md</code> — current work and the next action</li>
+<li><code>PROGRESS.md</code> — what has been completed</li>
+<li><code>IDEAS.md</code> — ideas for later</li>
+<li><code>GIVE THIS TO YOUR NEXT AI CHAT.txt</code> — a simple way to resume</li>
+<li><code>.git/</code> — optional local private history; not a GitHub upload</li>
+</ul>
+<p class="hint">The exact folder must be checked by the AI. It must not overwrite an existing project or create a public GitHub repository.</p>
+</div>
+<div id="existingPermissionPreview" class="hidden">
+<p><b>Existing project:</b> <code id="previewExistingLocation">Project location to be confirmed</code></p>
+<p>First, the AI will ask permission to <strong>read only this project</strong>. Reading files can itself trigger macOS access prompts. After inspecting, it must list any proposed files or modifications and request separate permission before writing. It must not silently migrate or overwrite your work.</p>
+</div>
+<h3>What happens next?</h3>
+<ol><li><b>Review:</b> the AI first explains its intended access and names the folder. A permission prompt is not proof of safety.</li>
+<li><b>Choose:</b> allow only access you understand. Do not grant <em>Full Disk Access</em> or unexpected access to unrelated folders for this setup.</li>
+<li><b>Verify:</b> the AI reports actual files and tests. If you refuse, it must stop local work and offer a read-only alternative without asking again.</li></ol>
+<p class="hint"><strong>Important:</strong> this webpage does not sandbox or control the AI application. Its permission requests are governed by that app and your operating system. GitHub sign-in is not needed for the local setup.</p>
 </section>
 <section class="card">
 <h2>Next: send this to your AI</h2><p id="usageGuidance">Copy this prompt into your AI. For My computer, the receiving AI needs access to the actual persistent folder to create files; a plain chat without that access should hand off to a capable local executor (such as Codex), not claim setup is complete. GitHub and server/cloud creation routes are not enabled in this Starter.</p>
@@ -162,7 +205,7 @@ const projectMode=()=>document.querySelector('input[name="projectMode"]:checked'
 const route=()=>document.querySelector('input[name="route"]:checked').value;
 const routeMeta={computer:{title:'MY COMPUTER'},github:{label:'GitHub repository',placeholder:'https://github.com/example/garden-planner',hint:'Use a repository URL or owner/repo. Do not paste credentials.',title:'GITHUB'},cloud:{label:'Server / cloud location',placeholder:'My Hetzner server, project workspace /garden-planner',hint:'Describe the user-controlled location without secrets or credentials.',title:'MY SERVER / CLOUD'}};
 function slugify(text){return text.trim().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60)||'project'}
-function suggestedPath(){return `~/Documents/U-GAS Projects/${slugify(name.value)}`}
+function suggestedPath(){return `~/U-GAS Projects/${slugify(name.value)}`}
 function durableLocation(){return route()==='computer'?(customLocation.value.trim()||suggestedPath()):locationInput.value.trim()}
 function value(v,fallback){return v.trim()||fallback}
 function existingProjectLocation(){return existingLocationUnknown.checked?'I do not know the repository or local project location. Discover it safely from the current environment.':value(existingLocation.value,'<REPOSITORY URL OR LOCAL PROJECT FOLDER>')}
@@ -172,6 +215,10 @@ function existingProjectPrompt(){return fillPromptTemplate('existingPromptTempla
 function autoSizeTextarea(el){el.style.height='auto';el.style.height=`${Math.max(el.scrollHeight,64)}px`}
 function render(){
   const existing=projectMode()==='existing',r=route(),m=routeMeta[r];
+  $('newPermissionPreview').classList.toggle('hidden',existing);
+  $('existingPermissionPreview').classList.toggle('hidden',!existing);
+  $('previewExistingLocation').textContent=existingLocationUnknown.checked?'Location not known yet; AI must ask before accessing files.':(existingLocation.value.trim()||'Project location to be confirmed');
+  $('previewLocation').textContent=durableLocation()||suggestedPath();
   $('newProjectFields').classList.toggle('hidden',existing);
   $('existingProjectFields').classList.toggle('hidden',!existing);
   $('computerLocation').classList.toggle('hidden',existing||r!=='computer');
@@ -199,6 +246,9 @@ function showOnboarding(which){$('demoPanel').classList.toggle('hidden',which!==
 $('seeDemo').addEventListener('click',()=>showOnboarding('demo'));
 $('openSetup').addEventListener('click',()=>showOnboarding('setup'));
 $('demoSetup').addEventListener('click',()=>showOnboarding('setup'));
+$('demoPlay').addEventListener('click',()=>{$('demoAnswer').classList.remove('hidden');$('demoAnswer').focus({preventScroll:true});$('demoAnswer').scrollIntoView({behavior:'smooth',block:'nearest'});});
+$('demoCopy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('demoPrompt').textContent);$('demoCopyStatus').textContent='Sample copied. Paste it into an AI chat; no files are needed.';}catch(e){$('demoCopyStatus').textContent='Clipboard blocked. Open “View the exact sample text” and copy it manually.';}});
+
 document.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>{status.textContent='';$('nextStep').classList.add('hidden');if(el.tagName==='TEXTAREA')autoSizeTextarea(el);render()}));document.querySelectorAll('input[type="radio"],input[type="checkbox"]').forEach(el=>el.addEventListener('change',()=>{status.textContent='';$('nextStep').classList.add('hidden');render()}));
 $('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(promptBox.textContent);recordStarterAttempt();status.textContent='Copied.';$('nextStep').classList.remove('hidden')}catch(e){status.textContent='Copy was blocked by this browser. Open Preview prompt and copy it manually.'}});
 $('otherAi').addEventListener('click',()=>{$('otherAiHint').classList.remove('hidden');status.textContent='Use the AI chat you prefer, then paste and send the copied prompt.'});
