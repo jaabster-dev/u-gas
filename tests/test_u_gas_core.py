@@ -283,7 +283,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn('value="computer" checked', starter)
         self.assertIn('value="github" disabled', starter)
         self.assertIn('value="cloud" disabled', starter)
-        self.assertIn("~/Documents/U-GAS Projects/", starter)
+        self.assertIn("~/U-GAS Projects/", starter)
         self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", starter)
         self.assertIn("https://github.com/jaabster-dev/u-gas", starter)
         self.assertIn("Made with U-GAS by ĀBŌ", starter)
@@ -451,7 +451,7 @@ class CoreContractTests(unittest.TestCase):
             "existingPreserve",
         ):
             self.assertNotIn(value_name, event_block)
-        self.assertIn("~/Documents/U-GAS Projects/", starter)
+        self.assertIn("~/U-GAS Projects/", starter)
         self.assertIn("GIVE THIS TO YOUR NEXT AI CHAT.txt", starter)
         self.assertIn("Made with U-GAS by ĀBŌ", starter)
         self.assertIn("PUBLIC STARTER", starter)
@@ -467,9 +467,9 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn('id="setupSection" class="hidden"', starter)
         self.assertIn('id="seeDemo"', starter)
         self.assertIn('id="openSetup"', starter)
-        self.assertIn("Nothing on your computer is read or changed.", starter)
+        self.assertIn("No installation, Git, local storage, file reading or file writing is used in this demonstration.", starter)
         self.assertIn("No files are created by this page", starter)
-        self.assertIn("Local Git means private version history, not a GitHub upload", starter)
+        self.assertIn("private history, not a GitHub upload", starter)
         self.assertIn("★ Star on GitHub", starter)
         self.assertIn('href="https://github.com/jaabster-dev/u-gas/issues/1"', starter)
         self.assertIn('href="signal.html"', starter)
@@ -481,6 +481,30 @@ class CoreContractTests(unittest.TestCase):
             self.assertIsNotNone(match)
             for phrase in phrases:
                 self.assertIn(phrase, match.group(1))
+
+    def test_starter_real_no_access_demo_and_permission_boundary(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+        for marker in (
+            'id="demoPlay"',
+            'id="demoAnswer"',
+            'id="demoCopy"',
+            'id="demoPrompt"',
+            "Do not use any tools, browse files, run Terminal, access Git",
+            "No installation, Git, local storage, file reading or file writing",
+            "This sample contains no personal or project data.",
+            "If you paste it into an AI chat, that AI service receives the text.",
+            'id="previewLocation"',
+            'id="previewExistingLocation"',
+            "Full Disk Access",
+            "existingPermissionPreview",
+            "newPermissionPreview",
+        ):
+            self.assertIn(marker, starter)
+        self.assertIn("Do not read even local project files until the owner approves read-only inspection", starter)
+        self.assertIn("Before any local reads or writes", starter)
+        self.assertIn("if you refuse", starter.casefold())
+        self.assertIn('function suggestedPath(){return `~/U-GAS Projects/', starter)
+        self.assertIn("This is a proposed folder in your home directory", starter)
 
     def test_starter_generated_prompts_are_compact_and_semantic(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
@@ -500,7 +524,7 @@ class CoreContractTests(unittest.TestCase):
                 "projectName": "Garden planner",
                 "projectDescription": "Plan beds, plants, tasks, and notes.",
                 "projectRoute": "MY COMPUTER",
-                "projectLocation": "~/Documents/U-GAS Projects/garden-planner",
+                "projectLocation": "~/U-GAS Projects/garden-planner",
             },
         )
         existing_prompt = render(
@@ -549,7 +573,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn("If the stable GIVE THIS TO YOUR NEXT AI CHAT.txt ticket is missing", existing_prompt)
         self.assertIn("Garden planner", new_prompt)
         self.assertIn("Plan beds, plants, tasks, and notes.", new_prompt)
-        self.assertIn("~/Documents/U-GAS Projects/garden-planner", new_prompt)
+        self.assertIn("~/U-GAS Projects/garden-planner", new_prompt)
         self.assertIn("Flashcard Generator", existing_prompt)
         self.assertIn("https://github.com/example/flashcards", existing_prompt)
         self.assertIn("Import the next deck without breaking existing behavior.", existing_prompt)
