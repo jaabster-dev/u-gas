@@ -46,8 +46,8 @@ h2{font-size:25px;line-height:1.2;letter-spacing:-.025em;margin:0 0 10px}h3{font
 <div class="hero-actions"><button id="seeDemo" type="button">See how it works — no files</button><button id="openSetup" class="secondary" type="button">Set up my project</button></div>
 <p class="assurance">The example needs no file access, Git or sign-in. Actual setup is always optional.</p>
 <details class="preview safety-first"><summary>What would U-GAS need access to later?</summary>
-<p>For a lasting project, an AI coding tool needs permission to work in a real folder. U-GAS's webpage cannot enforce the tool's access limits. Your computer may show a broader permission prompt than the project needs; you should decline if you are unsure. We show the proposed changes before asking for setup.</p>
-<p><a href="https://github.com/jaabster-dev/u-gas" target="_blank" rel="noopener noreferrer">Read the public source code</a> · <a href="https://support.apple.com/en-ca/guide/security/secddd1d86a6/web" target="_blank" rel="noopener noreferrer">How macOS protects folders</a></p></details>
+<p>For a lasting project, an AI coding tool needs permission to work in a real folder. U-GAS's webpage cannot enforce the tool's access limits. Your computer may show a broader permission prompt than the project needs; you should decline if you are unsure. If your coding tool has a read-only or project-only permission mode, use that before granting broader access. We show the proposed changes before asking for setup.</p>
+<p><a href="https://github.com/jaabster-dev/u-gas" target="_blank" rel="noopener noreferrer">Read the public source code</a> · <a href="https://support.apple.com/en-ca/guide/security/secddd1d86a6/web" target="_blank" rel="noopener noreferrer">How macOS protects folders</a> · <a href="https://learn.chatgpt.com/docs/permissions" target="_blank" rel="noopener noreferrer">Codex permission controls</a></p></details>
 </section>
 <section id="demoPanel" class="card hidden" aria-labelledby="demoHeading">
 <div class="demo-label">Try it without installing anything</div>
@@ -157,7 +157,7 @@ CURRENT U-GAS AUTHORITY
 Before changing files, read the current public U-GAS README.md and AGENTS.md at https://github.com/jaabster-dev/u-gas using a safe read-only method. Use relevant current procedures, not an old policy snapshot.
 
 FIRST: PERMISSION BEFORE WRITING
-This Starter changed no files. This prompt is NOT consent to create them. Read only public U-GAS instructions via web, not local files. Even reading local files can trigger OS permission. Before any local reads or writes, show the exact folder, PICA files, resume ticket and proposed local Git history. Explain git init is private history, NOT a GitHub upload. Warn if OS permission covers unrelated folders or Full Disk Access. Ask for ONE yes/no approval before any folder/file creation, git init, local inspection or edit; STOP for the answer. A denial means no writes or repeated requests. Never bypass wider OS permissions.
+This Starter changed no files. This prompt is NOT consent to create them. Read only public U-GAS instructions via web, not local files. Even reading local files can trigger OS permission. Before any local reads or writes, show the exact folder, PICA files, resume ticket and proposed local Git history. Explain git init is private history, NOT a GitHub upload. Prefer the tool's narrowest supported read-only or project-only permissions; do not claim the prompt enforces isolation. Warn if OS permission covers unrelated folders or Full Disk Access. Ask for ONE yes/no approval before any folder/file creation, git init, local inspection or edit; STOP for the answer. A denial means no writes or repeated requests. Never bypass wider OS permissions.
 
 WORK SAFELY
 1. Verify the actual persistent folder and project authority; no provider/session storage, temporary folders, downloads or duplicate projects.
@@ -186,7 +186,7 @@ CURRENT U-GAS AUTHORITY
 Before changing files, read the current public U-GAS README.md and AGENTS.md at https://github.com/jaabster-dev/u-gas using a safe read-only method. Use relevant current procedures, not an old policy snapshot.
 
 FIRST: PERMISSION BEFORE WRITING
-The Starter changed no files. Do not read even local project files until the owner permits read-only inspection: macOS can ask for permission just to read. If permitted, inspect only the named project; then show exactly which files/changes you propose, and whether local git init is necessary. Local Git is private history, not a GitHub upload. Ask once for clear approval before creating PICA, editing, git init, or wider OS access. A denial means no writes or repeated requests; never bypass it. If read permission is denied, give a no-access explanation instead.
+The Starter changed no files. Do not read even local project files until the owner permits read-only inspection: macOS can ask for permission just to read. If permitted, inspect only the named project; then show exactly which files/changes you propose, and whether local git init is necessary. Local Git is private history, not a GitHub upload. Prefer the tool's narrowest read-only or project-only access; this prompt does not enforce isolation. Ask once for clear approval before creating PICA, editing, git init, or wider OS access. A denial means no writes or repeated requests; never bypass it. If read permission is denied, give a no-access explanation instead.
 
 SAFE CONTINUATION
 1. Establish actual authority: current remote/canonical clone or persistent local project. Never create a duplicate or use temporary/provider-hosted storage. If unknown, safely discover or state the boundary.
