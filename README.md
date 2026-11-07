@@ -28,9 +28,14 @@ The diagram shows the supported **local-first or existing-project** route: a cap
 
 <a href="https://jaabster-dev.github.io/u-gas/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
 
-Start with the runnable Starter. Choose **Start a new project** (the default) or
+You can first choose **See how it works — no files** for a fictional demonstration.
+That preview does not access your computer or set anything up.
+Then choose **Set up my project**. Select **Start a new project** (the default) or
 **Continue an existing project**, describe what you want next, and send the generated
-prompt to your AI.
+prompt to your AI. Copying a prompt is not approval for filesystem changes: the AI
+must show the precise folder/files and ask once before writing or initializing local Git.
+Local Git is private change history, not an upload to GitHub. If an OS prompt asks for
+more file access than expected, the user can decline and no write may be bypassed.
 
 ### How to use it
 
@@ -53,6 +58,11 @@ name that target directly; you should not derive it from routine output.
 U-GAS makes no claim about credits, plans, entitlements, pricing, or guaranteed savings.
 
 ### Privacy-first adoption signals
+
+The Starter also links to voluntary GitHub feedback (Issue #1), the repository's
+Star control and an optional anonymous success signal for people who actually completed
+a setup or resume. Stars indicate interest, not verified users, and GitHub feedback
+requires signing in. The signal must be opened by the person, never by an AI agent.
 
 The public Starter uses aggregate GoatCounter analytics to distinguish basic discovery from real first-use attempts. It records the Starter page path and a once-per-tab `starter-attempt` event after a successful Copy action. After a verified successful U-GAS bootstrap or resume, U-GAS may also offer one **optional** anonymous success-signal page outside the compact generated Starter prompt. No agent may open or fetch that page automatically, and declining it does not change the workflow.
 
