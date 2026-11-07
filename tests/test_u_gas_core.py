@@ -500,7 +500,7 @@ class CoreContractTests(unittest.TestCase):
             "newPermissionPreview",
         ):
             self.assertIn(marker, starter)
-        self.assertIn("Do not read even local project files until the owner permits read-only inspection", starter)
+        self.assertIn("Do not read even local project files until the owner approves read-only inspection", starter)
         self.assertIn("Before any local reads or writes", starter)
         self.assertIn("if you refuse", starter.casefold())
         self.assertIn('function suggestedPath(){return `~/U-GAS Projects/', starter)
