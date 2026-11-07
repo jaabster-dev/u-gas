@@ -461,6 +461,27 @@ class CoreContractTests(unittest.TestCase):
             " ".join(starter_readme.split()),
         )
 
+    def test_starter_read_only_preview_and_informed_consent(self):
+        starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
+        self.assertIn('id="demoPanel" class="card hidden"', starter)
+        self.assertIn('id="setupSection" class="hidden"', starter)
+        self.assertIn('id="seeDemo"', starter)
+        self.assertIn('id="openSetup"', starter)
+        self.assertIn("Nothing on your computer is read or changed.", starter)
+        self.assertIn("No files are created by this page", starter)
+        self.assertIn("Local Git means private version history, not a GitHub upload", starter)
+        self.assertIn("★ Star on GitHub", starter)
+        self.assertIn('href="https://github.com/jaabster-dev/u-gas/issues/1"', starter)
+        self.assertIn('href="signal.html"', starter)
+        for template_id, phrases in (
+            ("newPromptTemplate", ("This prompt is NOT consent", "Ask for ONE yes/no approval", "before any folder/file creation, git init", "A denial means no writes")),
+            ("existingPromptTemplate", ("FIRST: PERMISSION BEFORE WRITING", "Ask once for clear approval", "A denial means no writes")),
+        ):
+            match = re.search(rf'<template id="{template_id}">(.*?)</template>', starter, re.S)
+            self.assertIsNotNone(match)
+            for phrase in phrases:
+                self.assertIn(phrase, match.group(1))
+
     def test_starter_generated_prompts_are_compact_and_semantic(self):
         starter = (ROOT / "starter/index.html").read_text(encoding="utf-8")
 
