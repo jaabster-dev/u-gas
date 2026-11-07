@@ -469,7 +469,7 @@ class CoreContractTests(unittest.TestCase):
         self.assertIn('id="openSetup"', starter)
         self.assertIn("No installation, Git, local storage, file reading or file writing is used in this demonstration.", starter)
         self.assertIn("No files are created by this page", starter)
-        self.assertIn("private version history, not a GitHub upload", starter)
+        self.assertIn("private history, not a GitHub upload", starter)
         self.assertIn("★ Star on GitHub", starter)
         self.assertIn('href="https://github.com/jaabster-dev/u-gas/issues/1"', starter)
         self.assertIn('href="signal.html"', starter)
@@ -495,13 +495,10 @@ class CoreContractTests(unittest.TestCase):
             "If you paste it into an AI chat, that AI service receives the text.",
             'id="previewLocation"',
             'id="previewExistingLocation"',
-            "what OS permission",
             "Full Disk Access",
             "existingPermissionPreview",
             "newPermissionPreview",
         ):
-            if marker == "what OS permission":
-                continue
             self.assertIn(marker, starter)
         self.assertIn("Do not read even local project files until the owner permits read-only inspection", starter)
         self.assertIn("Before any local reads or writes", starter)
