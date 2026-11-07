@@ -28,14 +28,22 @@ The diagram shows the supported **local-first or existing-project** route: a cap
 
 <a href="https://jaabster-dev.github.io/u-gas/" target="_blank" rel="noopener noreferrer"><strong>OPEN PROJECT STARTER →</strong></a>
 
-You can first choose **See how it works — no files** for a fictional demonstration.
-That preview does not access your computer or set anything up.
+You can first choose **See how it works — no files** and run an interactive
+fictional resume demonstration in the browser. Optionally copy its sample message into
+an AI chat: the sample explicitly prohibits tools, files, Terminal, Git and permissions.
+This is useful for learning, but it does not create durable project memory.
+The preview does not access your computer or set anything up.
 Then choose **Set up my project**. Select **Start a new project** (the default) or
 **Continue an existing project**, describe what you want next, and send the generated
 prompt to your AI. Copying a prompt is not approval for filesystem changes: the AI
-must show the precise folder/files and ask once before writing or initializing local Git.
-Local Git is private change history, not an upload to GitHub. If an OS prompt asks for
-more file access than expected, the user can decline and no write may be bypassed.
+must show the precise folder/files and ask before reading or writing local files
+or initializing local Git. Existing projects require read-only inspection permission
+followed by a separate permission for any actual changes. Local Git is private change
+history, not an upload to GitHub. The proposed dedicated home folder
+(`~/U-GAS Projects/<project-name>`) avoids using the macOS-protected Documents folder by
+default, but coding agents may still request permissions. If an OS prompt asks for
+unrelated folder access or Full Disk Access, decline and continue with the no-access demo.
+The Starter does not sandbox or control the receiving AI application's permissions.
 
 ### How to use it
 
